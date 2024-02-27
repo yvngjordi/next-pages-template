@@ -5,7 +5,12 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 export default withBundleAnalyzer({
-  reactStrictMode: false,
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {
+  styledComponents: true,
+
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
