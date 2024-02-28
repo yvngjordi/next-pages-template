@@ -1,13 +1,16 @@
 import React, { useState, useEffect, ReactNode } from 'react';
+import { Paper } from '@mantine/core';
 
 type CarouselWrapperProps = {
   children: ReactNode[];
   seconds?: number;
+  fill?: boolean;
 };
 
 const CarouselWrapper: React.FC<CarouselWrapperProps> = ({
   children,
   seconds = 10,
+  fill = false,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const totalSlides = React.Children.count(children);
@@ -25,7 +28,7 @@ const CarouselWrapper: React.FC<CarouselWrapperProps> = ({
   };
 
   return (
-    <div style={{ width: '100%', overflow: 'hidden' }}>
+    <Paper withBorder={fill} style={{ width: '100%', overflow: 'hidden' }} p="sm">
       <div
         style={{
           display: 'flex',
@@ -39,7 +42,7 @@ const CarouselWrapper: React.FC<CarouselWrapperProps> = ({
           </div>
         ))}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', marginBottom: '10px' }}>
         {Array.from({ length: totalSlides }).map((_, index) => (
           <button
             key={index}
@@ -57,7 +60,7 @@ const CarouselWrapper: React.FC<CarouselWrapperProps> = ({
           />
         ))}
       </div>
-    </div>
+    </Paper>
   );
 };
 

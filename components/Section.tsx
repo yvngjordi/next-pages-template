@@ -44,59 +44,65 @@ const Section: React.FC<SectionProps> = ({
   switch (variant) {
     case 'A':
       return (
-    <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
-    <TransitionWrapper blur transitionFrom="top">
-    <Flex justify="center" align="center">
-      <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign }}>
-        {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
-        <Divider my={4} mt={8} />
-        {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
-      <Box p="xs">
-        {typeof paragraph === 'string' ? (
-          <Text >{paragraph}</Text>
-        ) : (
-          paragraph?.map((p, index) => <Text key={index} >{p}</Text>)
+        <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
+        <TransitionWrapper blur transitionFrom="top">
+        <Flex direction={isMobile ? 'column' : 'row-reverse'}>
+        {image && (
+          <Flex align="center" justify="center" w="100%">
+            {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: theme.radius.md }} />}
+          </Flex>
         )}
-      </Box>
-        {list && (
-          <Box component="ul">
-            {list.map((item, index) => (
-              <Text key={index} component="li">
-                {item}
-              </Text>
-            ))}
+        <Flex justify="center" align="center" w="100%">
+          <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign }}>
+            {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
+            <Divider my={4} mt={8} />
+            {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
+          <Box p="xs">
+            {typeof paragraph === 'string' ? (
+              <Text >{paragraph}</Text>
+            ) : (
+              paragraph?.map((p, index) => <Text key={index} >{p}</Text>)
+            )}
           </Box>
-        )}
-        {image && <Image src={image} alt="" style={{ width: '20vw', borderRadius: theme.radius.md }} />}
-        {button && (
-          <Button
-            onClick={button.onClick}
-            style={{
-              color: button.color,
-              backgroundColor: button.backgroundColor,
-              border: button.border,
-            }}
-          >
-            {button.text}
-          </Button>
-        )}
-        {button2 && (
-          <Button
-            onClick={button2.onClick}
-            style={{
-              color: button2.color,
-              backgroundColor: button2.backgroundColor,
-              border: button2.border,
-            }}
-            ml={theme.spacing.sm}
-          >
-            {button2.text}
-          </Button>
-        )}
-      </Box>
-      </Flex>
-      </TransitionWrapper>
-    </Box>
+            {list && (
+              <Box component="ul">
+                {list.map((item, index) => (
+                  <Text key={index} component="li">
+                    {item}
+                  </Text>
+                ))}
+              </Box>
+            )}
+            {button && (
+              <Button
+                onClick={button.onClick}
+                style={{
+                  color: button.color,
+                  backgroundColor: button.backgroundColor,
+                  border: button.border,
+                }}
+              >
+                {button.text}
+              </Button>
+            )}
+            {button2 && (
+              <Button
+                onClick={button2.onClick}
+                style={{
+                  color: button2.color,
+                  backgroundColor: button2.backgroundColor,
+                  border: button2.border,
+                }}
+                ml={theme.spacing.sm}
+              >
+                {button2.text}
+              </Button>
+            )}
+          </Box>
+          </Flex>
+          </Flex>
+          </TransitionWrapper>
+        </Box>
   );
 
 case 'B':
@@ -241,11 +247,17 @@ default:
   return (
     <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
     <TransitionWrapper blur transitionFrom="top">
-    <Flex justify="center" align="center">
+    <Flex direction={isMobile ? 'column' : 'row-reverse'}>
+    {image && (
+      <Flex align="center" justify="center" w="100%">
+        {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: theme.radius.md }} />}
+      </Flex>
+    )}
+    <Flex justify="center" align="center" w="100%">
       <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign }}>
         {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
         <Divider my={4} mt={8} />
-        {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
+        {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
       <Box p="xs">
         {typeof paragraph === 'string' ? (
           <Text >{paragraph}</Text>
@@ -262,7 +274,6 @@ default:
             ))}
           </Box>
         )}
-        {image && <Image src={image} alt="" style={{ width: '20vw', borderRadius: theme.radius.md }} />}
         {button && (
           <Button
             onClick={button.onClick}
@@ -289,6 +300,7 @@ default:
           </Button>
         )}
       </Box>
+      </Flex>
       </Flex>
       </TransitionWrapper>
     </Box>

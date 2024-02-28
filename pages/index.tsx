@@ -8,8 +8,9 @@ import Contact from '../components/Contact';
 import CarouselWrapper from '../components/wrappers/CarouselWrapper';
 import SectionWrapper from '../components/wrappers/SectionWrapper';
 import { Box, Flex, Divider } from '@mantine/core';
-import { IconStethoscope, IconHeart, IconMap, IconVaccine, IconApple } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
+import { GoogleMap } from '../components/GoogleMap';
 
 const links = [
   { link: '/', label: 'Home' },
@@ -102,17 +103,70 @@ export default function HomePage() {
           </SectionWrapper>
           <SectionWrapper
             py={60}
-            px={isMobile ? 20 : 200}
-            background="linear-gradient(135deg, white, navy)"
+            background="url('bg4.jpg')"
+
+            px={isMobile ? 20 : 240}
             fill={true}
           >
+                <Section
+                  heading="Now serving students!"
+                  paragraph={["Come by our clinic if you're a student for anything from XYZ to ABC. We'll address what you need help with and work alongside you."]}
+                  image="https://via.placeholder.com/150"
+                  textLeft
+                />
+          </SectionWrapper>
+          <SectionWrapper
+            py={50}
+            px={isMobile ? 30 : 200}
+          >
+            <GridWrapper
+              heading="Our Services"
+              columns={4}
+              spacing="md"
+              verticalSpacing={{ base: 'sm', lg: 'md' }}
+              button={{ color: 'white', backgroundColor: 'navy', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
+            >
+              <Block
+                icon={<IconStethoscope size={44} />}
+                textCenter
+                heading="General Pediatrics"
+                subheading="Comprehensive Care"
+                paragraph="We provide a wide range of pediatric care services, from routine checkups to immunizations."
+              />
+              <Block
+                icon={<IconVaccine size={44} />}
+                textCenter
+                heading="Immunizations"
+                subheading="Protecting Health"
+                paragraph="Our clinic offers all recommended childhood vaccines to protect against various diseases."
+              />
+              <Block
+                icon={<IconApple size={44} />}
+                textCenter
+                heading="Nutrition Advice"
+                subheading="Healthy Eating"
+                paragraph="Guidance on best nutrition practices to ensure the healthy growth and development of your child."
+              />
+              <Block
+                icon={<IconNotebook size={44} />}
+                textCenter
+                heading="Screening"
+                subheading="Monitoring Growth"
+                paragraph="Early detection and intervention for developmental disorders to keep your child happy and healthy."
+              />
+            </GridWrapper>
+          </SectionWrapper>
+          <SectionWrapper
+            py={60}
+            px={isMobile ? 20 : 200}
+          >
+          <Flex direction="column">
             <Section
               heading="Meet Our Team"
               paragraph="Our clinic is staffed by dedicated pediatricians and healthcare professionals who are passionate about children's health. Get to know the faces who will be caring for your child."
-              textLeft
+              textCenter
             />
-            <Divider my={4} />
-            <CarouselWrapper seconds={10} transitionEffect="opacity">
+            <CarouselWrapper seconds={10} fill transitionEffect="opacity">
               <Flex direction="column">
                 <Section
                   variant="B"
@@ -141,50 +195,13 @@ export default function HomePage() {
                 />
               </Flex>
             </CarouselWrapper>
-          </SectionWrapper>
-          <SectionWrapper
-            py={50}
-            px={isMobile ? 30 : 200}
-          >
-            <GridWrapper
-              heading="Our Services"
-              columns={4}
-              spacing="md"
-              verticalSpacing={{ base: 'sm', lg: 'md' }}
-              button={{ color: 'white', backgroundColor: 'navy', text: 'Discover More', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
-              button2={{ color: 'black', backgroundColor: 'gray', text: 'Get in Touch', onClick: () => console.log('Get in Touch Clicked!'), border: 'none' }}
-            >
-              <Block
-                icon={<IconStethoscope size={44} />}
-                textCenter
-                heading="General Pediatrics"
-                subheading="Comprehensive Care"
-                paragraph="We provide a wide range of pediatric care services, from routine checkups to immunizations."
-              />
-              <Block
-                icon={<IconVaccine size={44} />}
-                textCenter
-                heading="Immunizations"
-                subheading="Protecting Health"
-                paragraph="Our clinic offers all recommended childhood vaccines to protect against various diseases."
-              />
-              <Block
-                icon={<IconApple size={44} />}
-                textCenter
-                heading="Nutrition Advice"
-                subheading="Healthy Eating"
-                paragraph="Guidance on nutrition to ensure the healthy growth and development of your child."
-              />
-              <Block
-                icon={<IconHeart size={44} />}
-                textCenter
-                heading="Developmental Screening"
-                subheading="Monitoring Growth"
-                paragraph="Early detection and intervention for developmental disorders."
-              />
-            </GridWrapper>
+            </Flex>
           </SectionWrapper>
         </Box>
+        <SectionWrapper
+          py={40}
+          px={isMobile ? 20 : 100}
+        >
         <Contact
           dropdown={dropdownOptions}
           image={imageSrc}
@@ -198,6 +215,18 @@ export default function HomePage() {
           buttonLabel="Submit"
           button={{ backgroundColor: 'navy', color: '#FFFFFF' }}
       />
+      </SectionWrapper>
+      <SectionWrapper
+        py={40}
+        px={isMobile ? 20 : 200}
+      >
+        <GoogleMap
+          address="1039 Upper James St. Hamilton Ontario"
+          title="Ancaster Central Childrens Clinic"
+          height={400}
+          borderRadius="8px"
+        />
+      </SectionWrapper>
         <Footer
           data={data}
           image="logo.PNG"
