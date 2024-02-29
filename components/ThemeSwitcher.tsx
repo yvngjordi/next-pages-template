@@ -4,7 +4,7 @@ import { IconMoon, IconSun } from '@tabler/icons-react';
 
 export function ThemeSwitcher() {
   const { colorScheme, setColorScheme } = useMantineColorScheme();
-  const toggleColorScheme = (value) => () => setColorScheme(value);
+  const toggleColorScheme = (value: any) => () => setColorScheme(value);
 
   return (
     <Group position="center">
