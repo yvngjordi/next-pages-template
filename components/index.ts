@@ -5,7 +5,7 @@ export { default as GridWrapper } from './wrappers/GridWrapper';
 export { default as SectionWrapper } from './wrappers/SectionWrapper';
 export { default as TransitionWrapper } from './wrappers/TransitionWrapper';
 export { default as Banner } from './Banner';
-export { default as Card } from './Card';
+export { default as Block } from './Block';
 export { default as Contact } from './Contact';
 export { default as Embed } from './Embed';
 export { default as Footer } from './Footer';
