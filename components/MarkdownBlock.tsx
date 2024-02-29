@@ -10,7 +10,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import dynamic from 'next/dynamic';
 
 interface CodeComponentProps {
-    node: any;
+    node?: any;
     inline?: boolean;
     className?: string;
     children: React.ReactNode;
@@ -148,7 +148,7 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
           </code>
         );
           },
-        } as any }
+        }}
       >
         {markdown}
       </ReactMarkdown>
