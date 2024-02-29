@@ -74,7 +74,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
     <Card withBorder radius="md" p="xl" className={classes.card}>
     <TransitionWrapper transitionFrom="bottom">
     <Box style={{ flexGrow: 1, textAlign: textAlign }}>
-    {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
+    {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
     {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
     <Box p="xs">
       {typeof paragraph === 'string' ? (

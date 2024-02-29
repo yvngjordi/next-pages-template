@@ -66,7 +66,7 @@ export default function Footer({ data, image, heading, paragraph, linkTwitter, l
           <Group gap={5}>
             <Flex direction="column" align={isMobile ? 'center' : ''} justify={isMobile ? 'center' : ''}>
               <img src={image} alt="Logo" style={{ height: '100px', width:'100px' }} />
-              <Text size="xl" weight={500} style={{textAlign: isMobile ? 'center' : 'left'}}>{heading}</Text>
+              <Text size="xl" style={{textAlign: isMobile ? 'center' : 'left'}}>{heading}</Text>
             </Flex>
           </Group>
           <Flex direction="column" align="center" justify="center" p="xs">
