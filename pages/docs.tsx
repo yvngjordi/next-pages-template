@@ -5,6 +5,11 @@ import { IconStethoscope, IconNotebook, IconCode, IconVaccine, IconMap, IconAppl
 import { useMediaQuery } from '@mantine/hooks';
 import { markdownArray } from '../data/markdownArray';
 
+const tabs = [
+  { value: 'component', label: 'Component' },
+  { value: 'code', label: 'Code' },
+];
+
 const links = [
   { link: '/', label: 'Home' },
   { link: '/about', label: 'About' },
@@ -21,12 +26,21 @@ const links = [
 
 const data = [
   {
-    title: 'Sitemap',
+    title: 'Company',
     links: [
       { label: 'About', link: '#' },
       { label: 'Contact', link: '#' },
-      { label: 'Resource 1', link: '#' },
-      { label: 'Resource 2', link: '#' },
+      { label: 'Terms & Conditions', link: '#' },
+      { label: 'Privacy Policy', link: '#' },
+    ],
+  },
+  {
+    title: 'Elements',
+    links: [
+      { label: 'Navbar', link: '#' },
+      { label: 'Footer', link: '#' },
+      { label: 'Feature', link: '#' },
+      { label: 'Section', link: '#' },
     ],
   },
 ];
@@ -53,12 +67,12 @@ export default function Docs() {
         <Box mt="-18.6vh">
         <Wrapper
           type="section"
-          py={120}
+          py={40}
           px={isMobile ? 20 : 100}
           fill
         >
           {markdownArray.map(({ content, name }, index) => (
-            <Flex key={index} direction="column" w="100%">
+            <Flex key={index} direction="column" w={isMobile ? '90vw' : '70vw'}>
               <Block
                 type="section"
                 variant="C"
@@ -66,18 +80,47 @@ export default function Docs() {
                 paragraph="Description of element"
               />
               <Divider my={8} />
+              <Wrapper
+                type="tabs"
+                tabs={tabs}
+                color="blue"
+                defaultValue="component"
+              >
+              <Wrapper
+                type="scroll"
+                height={500}
+                py={20}
+                px={20}
+              >
               <Block
                 type={name}
                 links={links}
                 data={data}
-                heading={`${name} element ${index + 1}`}
-                paragraph="This is some example text for this block type"
+                heading={`${name} element`}
+                paragraph="This is some example paragraph text for this block type. Copy the code in the tab above!"
                 image="logo.PNG"
+                linkTwitter="x"
+                linkInstagram="x"
+                linkFacebook="x"
+                linkLinkedin="x"
+                linkX="x"
+                linkGithub="x"
+                linkMeta="x"
+                linkYoutube="x"
               />
+              </Wrapper>
+              <Wrapper
+                type="scroll"
+                height={500}
+                py={20}
+                px={20}
+              >
               <Block
                 type="markdown"
                 markdown={content}
               />
+              </Wrapper>
+              </Wrapper>
             </Flex>
           ))}
         </Wrapper>

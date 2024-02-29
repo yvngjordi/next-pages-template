@@ -78,6 +78,7 @@ const Markdown: React.FC<MarkdownProps> = ({
           </Box>
         )}
       </Transition>
+      {heading || paragraph || subheading && (
       <Box style={{ textAlign: textAlign }} p="md">
         {heading && <Title>{heading}</Title>}
         {subheading && <Text size="lg" color="dimmed">{subheading}</Text>}
@@ -87,6 +88,7 @@ const Markdown: React.FC<MarkdownProps> = ({
           paragraph?.map((p, index) => <Text key={index}>{p}</Text>)
         )}
       </Box>
+    )}
       <ReactMarkdown
       components={{
         code({ node, inline = false, className, children, ...props }: CodeComponentProps) {
@@ -97,9 +99,9 @@ const Markdown: React.FC<MarkdownProps> = ({
                   String(children);
             return !inline && match ? (
               <>
-              <Code style={{width: isMobile ? "80vw" : "60vw"}}>
+              <Code style={{width: "100%", height:'100%'}}>
               <Header style={{borderTopLeftRadius:'6px', borderTopRightRadius:'6px', display:'flex'}}>
-                <ActionIcon style={{right:'5px', float:'right'}} onClick={() => copyToClipboard(String(children).replace(/\n$/, ''))}>
+                <ActionIcon variant="transparent" style={{right:'5px', float:'right'}} onClick={() => copyToClipboard(String(children).replace(/\n$/, ''))}>
                   <IconClipboard size="1rem" style={{marginRight:'3px', color:'white'}}/>
                 </ActionIcon>
                 </Header>

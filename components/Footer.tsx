@@ -74,7 +74,7 @@ export default function Footer({
               <Text size="xl" style={{textAlign: isMobile ? 'center' : 'left'}}>{heading}</Text>
             </Flex>
           </Group>
-          <Flex direction="column" align="center" justify="center" p="xs">
+          <Flex direction="column" align="center" justify="center">
             {typeof paragraph === 'string' ? (
               <Text style={{textAlign: isMobile ? 'center' : 'left'}} size="xs" color="dimmed" className={classes.description}>{paragraph}</Text>
             ) : (
@@ -114,6 +114,11 @@ export default function Footer({
           {linkFacebook && (
             <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkFacebook} target="_blank">
               <IconBrandFacebook style={{ width: 18, height: 18 }} stroke={1.5} />
+            </ActionIcon>
+          )}
+          {linkLinkedin && (
+            <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkLinkedin} target="_blank">
+              <IconBrandLinkedin style={{ width: 18, height: 18 }} stroke={1.5} />
             </ActionIcon>
           )}
           {linkMeta && (
