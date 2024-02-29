@@ -32,7 +32,7 @@ const GridWrapper: React.FC<GridProps> = ({
 }) => {
   const theme = useMantineTheme();
 
-  let textAlign = 'left';
+  let textAlign: React.CSSProperties['textAlign'] = 'left';
   if (textRight) textAlign = 'right';
   else if (textCenter) textAlign = 'center';
 

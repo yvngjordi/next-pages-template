@@ -37,7 +37,7 @@ const Section: React.FC<SectionProps> = ({
   const theme = useMantineTheme();
   const isMobile = useMediaQuery('(max-width: 768px)');
 
-  let textAlign = 'left';
+  let textAlign: React.CSSProperties['textAlign'] = 'left';
   if (textRight) textAlign = 'right';
   else if (textCenter) textAlign = 'center';
 
