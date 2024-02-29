@@ -42,7 +42,7 @@ const Block: React.FC<BlockProps> = ({
   };
 
   return (
-    <Paper p="md" style={{ textAlign }} shadow="xs" withBorder>
+    <Paper p="md" style={{ textAlign: textAlign }} shadow="xs" withBorder>
       {icon && renderIcon()}
       {heading && <Title order={3} mt="sm">{heading}</Title>}
       {subheading && <Text size="sm" color="dimmed">{subheading}</Text>}
