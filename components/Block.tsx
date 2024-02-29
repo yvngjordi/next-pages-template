@@ -42,7 +42,7 @@ const Block: React.FC<BlockProps> = ({ type, ...props }) => {
   }, [type]);
 
   if (!Component) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return <Component {...props} />;

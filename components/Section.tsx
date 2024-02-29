@@ -3,7 +3,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
+const Transition = dynamic(() => import('./wrappers/Transition'), {
   ssr: false,
 });
 
@@ -45,7 +45,7 @@ const Section: React.FC<SectionProps> = ({
     case 'A':
       return (
         <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
-        <TransitionWrapper blur transitionFrom="top">
+        <Transition blur transitionFrom="top">
         <Flex direction={isMobile ? 'column' : 'row-reverse'}>
         {image && (
           <Flex align="center" justify="center" w="100%">
@@ -101,29 +101,29 @@ const Section: React.FC<SectionProps> = ({
           </Box>
           </Flex>
           </Flex>
-          </TransitionWrapper>
+          </Transition>
         </Box>
   );
 
 case 'B':
   return (
     <Box style={{ margin: 'auto', maxWidth: 1200, display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', gap: theme.spacing.md }}>
-    <TransitionWrapper transitionFrom="left">
+    <Transition transitionFrom="left">
     {isMobile && image && (
       <Box p="lg">
         <Image p="xl" src={image} alt="" style={{ width: '100%', borderRadius: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
       </Box>
     )}
-    </TransitionWrapper>
+    </Transition>
     <Flex>
-    <TransitionWrapper transitionFrom="left">
+    <Transition transitionFrom="left">
       {!isMobile && image && (
         <Box p="lg">
           <Image src={image} alt="" style={{ width: '100%', borderRadius: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', alignSelf: 'center' }} />
         </Box>
       )}
-    </TransitionWrapper>
-    <TransitionWrapper transitionFrom="right" blur>
+    </Transition>
+    <Transition transitionFrom="right" blur>
       <Box style={{ flexGrow: 1, textAlign: textAlign }} p="md">
         {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
         {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
@@ -169,7 +169,7 @@ case 'B':
           </Button>
         )}
       </Box>
-      </TransitionWrapper>
+      </Transition>
     </Flex>
     </Box>
   );
@@ -177,22 +177,22 @@ case 'B':
 case 'C':
   return (
     <Box>
-    <TransitionWrapper transitionFrom="left">
+    <Transition transitionFrom="left">
     {isMobile && image && (
       <Box p="xl">
         <Image src={image} alt="" style={{ width: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
       </Box>
     )}
-    </TransitionWrapper>
+    </Transition>
     <Flex>
-    <TransitionWrapper transitionFrom="left">
+    <Transition transitionFrom="left">
       {!isMobile && image && (
           <Box p="xl">
             <Image src={image} alt="" style={{ width: '33vw', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', alignSelf: 'center' }} />
           </Box>
       )}
-    </TransitionWrapper>
-    <TransitionWrapper transitionFrom="bottom" blur>
+    </Transition>
+    <Transition transitionFrom="bottom" blur>
       <Box p="sm" style={{ flexGrow: 1, textAlign: textAlign }}>
         {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
         {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
@@ -238,7 +238,7 @@ case 'C':
           </Button>
         )}
       </Box>
-      </TransitionWrapper>
+      </Transition>
       </Flex>
     </Box>
   );
@@ -246,7 +246,7 @@ case 'C':
 default:
   return (
     <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
-    <TransitionWrapper blur transitionFrom="top">
+    <Transition blur transitionFrom="top">
     <Flex direction={isMobile ? 'column' : 'row-reverse'}>
     {image && (
       <Flex align="center" justify="center" w="100%">
@@ -302,7 +302,7 @@ default:
       </Box>
       </Flex>
       </Flex>
-      </TransitionWrapper>
+      </Transition>
     </Box>
   );
 }

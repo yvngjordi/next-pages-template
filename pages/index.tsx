@@ -3,10 +3,8 @@ import Banner from '../components/Banner';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Block from '../components/Block';
-import GridWrapper from '../components/wrappers/GridWrapper';
+import Wrapper from '../components/Wrapper';
 import Contact from '../components/Contact';
-import CarouselWrapper from '../components/wrappers/CarouselWrapper';
-import SectionWrapper from '../components/wrappers/SectionWrapper';
 import { Box, Flex, Divider } from '@mantine/core';
 import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
@@ -54,7 +52,8 @@ export default function HomePage() {
   return (
     <>
     <Box>
-    <Banner
+    <Block
+      type="banner"
       heading="We have recently moved locations!"
       background="navy"
       color="white"
@@ -68,7 +67,8 @@ export default function HomePage() {
           sticky
         />
         <Box mt="-18.6vh">
-          <SectionWrapper
+          <Wrapper
+            type="section"
             py={120}
             px={isMobile ? 20 : 200}
             background="url('bg4.jpg')"
@@ -83,8 +83,9 @@ export default function HomePage() {
               textCenter
               variant="A"
             />
-          </SectionWrapper>
-          <SectionWrapper
+          </Wrapper>
+          <Wrapper
+            type="section"
             py={20}
             px={isMobile ? 20 : 200}
           >
@@ -103,8 +104,9 @@ export default function HomePage() {
               button={{ color: 'white', backgroundColor: 'navy', text: 'Read More', onClick: () => console.log('Read More Clicked!'), border: 'none' }}
               button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
             />
-          </SectionWrapper>
-          <SectionWrapper
+          </Wrapper>
+          <Wrapper
+            type="section"
             py={60}
             background="url('bg4.jpg')"
 
@@ -118,12 +120,14 @@ export default function HomePage() {
                   image="https://via.placeholder.com/150"
                   textLeft
                 />
-          </SectionWrapper>
-          <SectionWrapper
+          </Wrapper>
+          <Wrapper
+            type="section"
             py={50}
             px={isMobile ? 30 : 200}
           >
-            <GridWrapper
+            <Wrapper
+              type="grid"
               heading="Our Services"
               columns={4}
               spacing="md"
@@ -162,9 +166,10 @@ export default function HomePage() {
                 subheading="Monitoring Growth"
                 paragraph="Early detection and intervention for developmental disorders to keep your child happy and healthy."
               />
-            </GridWrapper>
-          </SectionWrapper>
-          <SectionWrapper
+            </Wrapper>
+          </Wrapper>
+          <Wrapper
+            type="section"
             py={60}
             px={isMobile ? 20 : 200}
           >
@@ -175,7 +180,12 @@ export default function HomePage() {
               paragraph="Our clinic is staffed by dedicated pediatricians and healthcare professionals who are passionate about children's health. Get to know the faces who will be caring for your child."
               textCenter
             />
-            <CarouselWrapper seconds={10} fill transitionEffect="opacity">
+            <Wrapper
+              type="carousel"
+              seconds={10}
+              fill
+              transitionEffect="opacity"
+              >
               <Flex direction="column">
                 <Block
                   type="section"
@@ -206,11 +216,12 @@ export default function HomePage() {
                   image="https://via.placeholder.com/150"
                 />
               </Flex>
-            </CarouselWrapper>
+            </Wrapper>
             </Flex>
-          </SectionWrapper>
+          </Wrapper>
         </Box>
-        <SectionWrapper
+        <Wrapper
+          type="section"
           py={40}
           px={isMobile ? 20 : 100}
         >
@@ -228,8 +239,9 @@ export default function HomePage() {
           buttonLabel="Submit"
           button={{ backgroundColor: 'navy', color: '#FFFFFF' }}
       />
-      </SectionWrapper>
-      <SectionWrapper
+      </Wrapper>
+      <Wrapper
+        type="section"
         py={40}
         px={isMobile ? 20 : 200}
       >
@@ -240,7 +252,7 @@ export default function HomePage() {
           height={400}
           borderRadius="8px"
         />
-      </SectionWrapper>
+      </Wrapper>
         <Block
           type="footer"
           data={data}

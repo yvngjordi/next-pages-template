@@ -5,7 +5,7 @@ import classes from './footer.module.css';
 import dynamic from 'next/dynamic';
 import { useMediaQuery } from '@mantine/hooks';
 
-const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
+const Transition = dynamic(() => import('./wrappers/Transition'), {
   ssr: false,
 });
 
@@ -61,7 +61,7 @@ export default function Footer({ data, image, heading, paragraph, linkTwitter, l
   return (
     <footer className={classes.footer}>
       <Container className={classes.inner}>
-      <TransitionWrapper transitionFrom="left">
+      <Transition transitionFrom="left">
         <div className={classes.logo} style={{textAlign: isMobile ? 'center' : 'left'}}>
           <Group gap={5}>
             <Flex direction="column" align={isMobile ? 'center' : ''} justify={isMobile ? 'center' : ''}>
@@ -77,10 +77,10 @@ export default function Footer({ data, image, heading, paragraph, linkTwitter, l
             )}
           </Flex>
         </div>
-      </TransitionWrapper>
+      </Transition>
         <div className={classes.groups}>{groups}</div>
       </Container>
-      <TransitionWrapper transitionFrom="bottom">
+      <Transition transitionFrom="bottom">
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
           © 2024 {heading} | All rights reserved.
@@ -123,7 +123,7 @@ export default function Footer({ data, image, heading, paragraph, linkTwitter, l
           )}
         </Group>
       </Container>
-      </TransitionWrapper>
+      </Transition>
     </footer>
   );
 }

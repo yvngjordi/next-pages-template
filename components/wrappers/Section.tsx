@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Paper } from '@mantine/core';
 import dynamic from 'next/dynamic';
 
-const TransitionWrapper = dynamic(() => import('./TransitionWrapper'), {
+const Transition = dynamic(() => import('./Transition'), {
   ssr: false,
 });
 
@@ -44,11 +44,11 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   );
 
   return (
-    <TransitionWrapper>
+    <Transition>
       <div style={wrapperStyle}>
         {content}
       </div>
-    </TransitionWrapper>
+    </Transition>
   );
 };
 

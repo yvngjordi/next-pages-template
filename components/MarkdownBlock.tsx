@@ -16,7 +16,7 @@ interface CodeComponentProps {
     children?: React.ReactNode;
 }
 
-const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
+const Transition = dynamic(() => import('./wrappers/Transition'), {
   ssr: false,
 });
 
@@ -71,13 +71,13 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
 
   return (
     <Box>
-      <TransitionWrapper transitionFrom="left">
+      <Transition transitionFrom="left">
         {!isMobile && image && (
           <Box p="lg">
             <Image src={image} alt="" style={{ width: '100%', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
           </Box>
         )}
-      </TransitionWrapper>
+      </Transition>
       <Box style={{ textAlign: textAlign }} p="md">
         {heading && <Title>{heading}</Title>}
         {subheading && <Text size="lg" color="dimmed">{subheading}</Text>}

@@ -3,7 +3,7 @@ import { useForm } from '@mantine/form';
 import { useMediaQuery } from '@mantine/hooks';
 import { TextInput, Textarea, Select, Button, Paper, Box, Title, Divider, Text, Image, Flex } from '@mantine/core';
 import ReCAPTCHA from "react-google-recaptcha";
-import TransitionWrapper from './wrappers/TransitionWrapper';
+import Transition from './wrappers/Transition';
 
 interface ContactFormProps {
     dropdown: { value: string; label: string }[];
@@ -67,7 +67,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
     return (
         <Box style={{ paddingLeft: '5%', paddingRight: '5%' }}>
-            <TransitionWrapper transitionFrom="right">
+            <Transition transitionFrom="right">
                 <Paper p="md" shadow="md">
                     {heading && <Title mb="sm">{heading}</Title>}
                     {subheading && <Text mt={4} color="dimmed">{subheading}</Text>}
@@ -75,7 +75,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     <Divider my={12} />
                     <Flex direction={isMobile ? 'column-reverse' : 'row'}>
                         <form onSubmit={form.onSubmit(handleSubmit)} style={{ width: isMobile ? '100%' : '50%', marginTop: isMobile ? '4vh' : '0' }}>
-                            <TransitionWrapper blur transitionFrom="bottom">
+                            <Transition blur transitionFrom="bottom">
                                 <TextInput required radius="lg" label="Name" placeholder="Enter your name..." {...form.getInputProps('name')} />
                                 <TextInput mt={4} required radius="lg" label="Email" placeholder="Enter your email..." {...form.getInputProps('email')} />
                                 <Select style={{ zIndex: 999999 }} mt={4} radius="lg" label="Purpose" placeholder="Choose one" data={dropdown} {...form.getInputProps('purpose')} />
@@ -87,16 +87,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
                                 )}
                                 {/* Use the added props for button customization */}
                                 <Button type="submit" style={{ ...button }}>{buttonLabel || 'Send Message'}</Button>
-                            </TransitionWrapper>
+                            </Transition>
                         </form>
                         <div style={{ width: isMobile ? '100%' : '50%', padding: isMobile ? '0px' : '1%' }}>
-                            <TransitionWrapper blur transitionFrom="top">
+                            <Transition blur transitionFrom="top">
                                 <Image src={image} radius="md" my={8} mx={8} />
-                            </TransitionWrapper>
+                            </Transition>
                         </div>
                     </Flex>
                 </Paper>
-            </TransitionWrapper>
+            </Transition>
         </Box>
     );
 };

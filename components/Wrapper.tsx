@@ -8,44 +8,43 @@ type OptionalProps<T extends object> = {
   [P in keyof T]?: T[P];
 };
 
-type BlockProps = OptionalProps<{
+type WrapperProps = OptionalProps<{
   type: string;
   [key: string]: any;
 }>;
 
-const Block: React.FC<BlockProps> = ({ type, ...props }) => {
+const Wrapper: React.FC<WrapperProps> = ({ type, ...props }) => {
   const [Component, setComponent] = useState<React.ComponentType<any> | null>(null);
 
   useEffect(() => {
-    const loadComponent = async () => {
+    const loadWrapperComponent = async () => {
       let normalizedType = type.toLowerCase();
       try {
-        const module = await import(`./${normalizedType}.tsx`);
+        const module = await import(`./wrappers/${normalizedType}.tsx`);
         const WrappedComponent = withDefaultProps(module.default);
         setComponent(() => WrappedComponent);
       } catch (lowerCaseError) {
-        console.error(`Component ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
-
+        console.error(`Wrapper ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
         normalizedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
         try {
-          const module = await import(`./${normalizedType}.tsx`);
+          const module = await import(`./wrappers/${normalizedType}.tsx`);
           const WrappedComponent = withDefaultProps(module.default);
           setComponent(() => WrappedComponent);
         } catch (upperCaseError) {
-          console.error(`Component ${normalizedType} not found.`, upperCaseError);
+          console.error(`Wrapper ${normalizedType} not found.`, upperCaseError);
           setComponent(null);
         }
       }
     };
 
-    loadComponent();
+    loadWrapperComponent();
   }, [type]);
 
   if (!Component) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return <Component {...props} />;
 };
 
-export default Block;
+export default Wrapper;

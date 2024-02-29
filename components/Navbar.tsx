@@ -6,7 +6,7 @@ import classes from './navbar.module.css';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import dynamic from 'next/dynamic';
 
-const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
+const Transition = dynamic(() => import('./wrappers/Transition'), {
   ssr: false,
 });
 
@@ -96,18 +96,18 @@ export default function Navbar({ links, image, heading, sticky = false, theme }:
     <header className={classes.header} style={headerStyle}>
       <Container size="md">
         <div className={classes.inner}>
-        <TransitionWrapper transitionFrom="left">
+        <Transition transitionFrom="left">
           <Group gap={5}>
             <img src={image} alt="Logo" style={{ height: '30px' }} />
             <Title size="h3">{heading}</Title>
           </Group>
-        </TransitionWrapper>
-        <TransitionWrapper transitionFrom="bottom">
+        </Transition>
+        <Transition transitionFrom="bottom">
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
-        </TransitionWrapper>
-        <TransitionWrapper transitionFrom="right">
+        </Transition>
+        <Transition transitionFrom="right">
           <div style={{right:0}}>
           <Flex gap="lg">
           {theme && (
@@ -118,7 +118,7 @@ export default function Navbar({ links, image, heading, sticky = false, theme }:
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
           </Flex>
           </div>
-        </TransitionWrapper>
+        </Transition>
         </div>
       </Container>
       {mobileMenu}

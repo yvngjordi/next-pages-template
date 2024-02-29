@@ -4,7 +4,7 @@ import { useMediaQuery } from '@mantine/hooks';
 
 import dynamic from 'next/dynamic';
 
-const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
+const Transition = dynamic(() => import('./wrappers/Transition'), {
   ssr: false,
 });
 
@@ -46,17 +46,17 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
     <Group justify="space-between" className={classes.item} wrap="nowrap" gap="xl" key={item.title}>
       <div>
         <Text>
-          <TransitionWrapper transitionFrom="left">
+          <Transition transitionFrom="left">
             {item.title}
-          </TransitionWrapper>
+          </Transition>
         </Text>
         <Text size="xs" color="dimmed">
-          <TransitionWrapper transitionFrom="left">
+          <Transition transitionFrom="left">
             {item.description}
-          </TransitionWrapper>
+          </Transition>
         </Text>
       </div>
-      <TransitionWrapper transitionFrom="left">
+      <Transition transitionFrom="left">
       <Switch
         onLabel="ON"
         offLabel="OFF"
@@ -66,13 +66,13 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
         onChange={(event) => onSwitchChange(item.title, event.currentTarget.checked)}
         disabled={item.disabled}
       />
-      </TransitionWrapper>
+      </Transition>
     </Group>
   ));
 
   return (
     <Card withBorder radius="md" p="xl" className={classes.card}>
-    <TransitionWrapper transitionFrom="bottom">
+    <Transition transitionFrom="bottom">
     <Box style={{ flexGrow: 1, textAlign: textAlign }}>
     {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
     {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
@@ -84,7 +84,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
       )}
     </Box>
     </Box>
-    </TransitionWrapper>
+    </Transition>
     {(heading || subheading || paragraph) &&  (
       <>
         <Divider my={8} />
