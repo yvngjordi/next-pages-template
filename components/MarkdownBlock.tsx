@@ -8,10 +8,20 @@ import { ActionIcon, Box, Text, Title, Image } from '@mantine/core';
 import { css } from '@emotion/react';
 import { useMediaQuery } from "@mantine/hooks";
 import dynamic from 'next/dynamic';
+import { NormalComponents, SpecialComponents } from 'react-markdown/lib/ast-to-react';
 
 const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
   ssr: false,
 });
+
+interface CustomComponents extends Omit<NormalComponents, 'code'>, SpecialComponents {
+  code: ({ node, inline, className, children, ...props }: {
+    node: any;
+    inline?: boolean;
+    className?: string;
+    children: React.ReactNode;
+  } & React.HTMLProps<HTMLPreElement>) => React.ReactNode;
+}
 
 const Header = styled.div`
     align-items: center;
@@ -82,7 +92,7 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
       </Box>
       <ReactMarkdown
       components={{
-          code({ node, inline, className, children, ...props }) {
+        code({ node, inline = false, className, children, ...props }: CustomComponents['code']) => {
               const match = /language-(\w+)/.exec(className || '');
               const shouldApplySpecialStyling = String(children).startsWith('$$!');
               const contentToDisplay = shouldApplySpecialStyling ?
@@ -141,7 +151,7 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
           </code>
         );
           },
-        }}
+        } as CustomComponents }
       >
         {markdown}
       </ReactMarkdown>
