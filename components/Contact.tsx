@@ -5,8 +5,31 @@ import { TextInput, Textarea, Select, Button, Paper, Box, Title, Divider, Text, 
 import ReCAPTCHA from "react-google-recaptcha";
 import TransitionWrapper from './wrappers/TransitionWrapper';
 
-// Add props for heading, subheading, paragraphs, and button customization
-const ContactForm = ({ dropdown, image, fetchLink, captcha, siteKey, heading, subheading, paragraphs, buttonLabel, button }) => {
+interface ContactFormProps {
+    dropdown: { value: string; label: string }[];
+    image: string;
+    fetchLink: string;
+    captcha: boolean;
+    siteKey: string;
+    heading?: string;
+    subheading?: string;
+    paragraphs?: string[];
+    buttonLabel?: string;
+    button?: React.CSSProperties;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({
+    dropdown,
+    image,
+    fetchLink,
+    captcha,
+    siteKey,
+    heading,
+    subheading,
+    paragraphs,
+    buttonLabel,
+    button,
+}) => {
     const isMobile = useMediaQuery('(max-width: 768px)');
     const form = useForm({
         initialValues: {
