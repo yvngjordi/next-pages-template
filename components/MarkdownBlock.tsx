@@ -13,7 +13,7 @@ interface CodeComponentProps {
     node?: any;
     inline?: boolean;
     className?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
