@@ -17,73 +17,47 @@ type LinkItem = {
 };
 
 type HeaderMenuProps = {
-  links: LinkItem[];
-  image: string;
-  heading: string;
-  sticky: boolean;
+  links?: LinkItem[];
+  image?: string;
+  heading?: string;
+  sticky?: boolean;
   theme?: boolean;
 };
 
-export default function Navbar({ links, image, heading, sticky = false, theme }: HeaderMenuProps) {
+export default function Navbar({ links = [], image, heading, sticky = false, theme }: HeaderMenuProps) {
   const [opened, { toggle }] = useDisclosure(false);
 
-  const items = links.map((link) => {
+  const items = links?.map((link) => {
     const menuItems = link.links?.map((item) => (
       <Menu.Item key={item.link}>{item.label}</Menu.Item>
     ));
 
-    if (menuItems) {
-      return (
-        <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
-          <Menu.Target>
-            <a
-              href={link.link}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
-              <Center>
-                <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size="0.9rem" stroke={1.5} />
-              </Center>
-            </a>
-          </Menu.Target>
-          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-        </Menu>
-      );
-    }
-
-    return (
-      <a
-        key={link.label}
-        href={link.link}
-        className={classes.link}
-        onClick={(event) => event.preventDefault()}
-      >
+    return menuItems ? (
+      <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+        <Menu.Target>
+          <a href={link.link} className={classes.link} onClick={(event) => event.preventDefault()}>
+            <Center>
+              <span className={classes.linkLabel}>{link.label}</span>
+              <IconChevronDown size="0.9rem" stroke={1.5} />
+            </Center>
+          </a>
+        </Menu.Target>
+        <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+      </Menu>
+    ) : (
+      <a key={link.label} href={link.link} className={classes.link} onClick={(event) => event.preventDefault()}>
         {link.label}
       </a>
     );
-  });
+  }) || [];
 
-  // Collapsible Menu for mobile view
   const mobileMenu = (
-    <Drawer
-      opened={opened}
-      onClose={toggle}
-      title={heading}
-      padding="md"
-      size="sm"
-      position="right"
-    >
-      {links.map((link) => (
-        <a
-          key={link.label}
-          href={link.link}
-          className={classes.link}
-          onClick={(event) => {
-            event.preventDefault();
-            toggle();
-          }}
-        >
+    <Drawer opened={opened} onClose={toggle} title={heading} padding="md" size="sm" position="right">
+      {links?.map((link) => (
+        <a key={link.label} href={link.link} className={classes.link} onClick={(event) => {
+          event.preventDefault();
+          toggle();
+        }}>
           {link.label}
         </a>
       ))}
@@ -96,29 +70,29 @@ export default function Navbar({ links, image, heading, sticky = false, theme }:
     <header className={classes.header} style={headerStyle}>
       <Container size="md">
         <div className={classes.inner}>
-        <Transition transitionFrom="left">
-          <Group gap={5}>
-            <img src={image} alt="Logo" style={{ height: '30px' }} />
-            <Title size="h3">{heading}</Title>
-          </Group>
-        </Transition>
-        <Transition transitionFrom="bottom">
-          <Group gap={5} visibleFrom="sm">
-            {items}
-          </Group>
-        </Transition>
-        <Transition transitionFrom="right">
-          <div style={{right:0}}>
-          <Flex gap="lg">
-          {theme && (
-            <>
-            <ThemeSwitcher />
-            </>
-          )}
-          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
-          </Flex>
-          </div>
-        </Transition>
+          <Transition transitionFrom="left">
+            <Group gap={5}>
+              <img src={image} alt="Logo" style={{ height: '30px' }} />
+              <Title size="h3">{heading}</Title>
+            </Group>
+          </Transition>
+          <Transition transitionFrom="bottom">
+            <Group gap={5} visibleFrom="sm">
+              {items}
+            </Group>
+          </Transition>
+          <Transition transitionFrom="right">
+            <div style={{right:0}}>
+              <Flex gap="lg">
+                {theme && (
+                  <>
+                    <ThemeSwitcher />
+                  </>
+                )}
+                <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+              </Flex>
+            </div>
+          </Transition>
         </div>
       </Container>
       {mobileMenu}

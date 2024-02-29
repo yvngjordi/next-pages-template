@@ -57,14 +57,29 @@ export default function Docs() {
           px={isMobile ? 20 : 100}
           fill
         >
-        <Flex w="60vw">
-        <Block
-          type="markdown"
-          markdown={markdownArray['navbar']}
-          heading="Element name"
-          paragraph="Description of element"
-        />
-        </Flex>
+          {markdownArray.map(({ content, name }, index) => (
+            <Flex key={index} direction="column" w="100%">
+              <Block
+                type="section"
+                variant="C"
+                heading={`Element ${name}`}
+                paragraph="Description of element"
+              />
+              <Divider my={8} />
+              <Block
+                type={name}
+                links={links}
+                data={data}
+                heading={`${name} element ${index + 1}`}
+                paragraph="This is some example text for this block type"
+                image="logo.PNG"
+              />
+              <Block
+                type="markdown"
+                markdown={content}
+              />
+            </Flex>
+          ))}
         </Wrapper>
         </Box>
         <Block
@@ -72,7 +87,7 @@ export default function Docs() {
           data={data}
           image="logo.PNG"
           heading="Sparkblock UI"
-          paragraph={["Providing compassionate and comprehensive pediatric care in Ancaster, Ontario. Our team is dedicated to supporting your child's health and well-being."]}
+          paragraph={["The fastest and simplest UI kit in the world."]}
         />
       </Box>
     </>

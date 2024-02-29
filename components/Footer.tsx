@@ -20,9 +20,9 @@ type GroupData = {
 };
 
 type FooterLinksProps = {
-  data: GroupData[];
-  image: string;
-  heading: string;
+  data?: GroupData[];
+  image?: string;
+  heading?: string;
   paragraph?: string | string[];
   linkTwitter?: string;
   linkYoutube?: string;
@@ -34,10 +34,15 @@ type FooterLinksProps = {
   linkX?: string;
 };
 
-export default function Footer({ data, image, heading, paragraph, linkTwitter, linkYoutube, linkInstagram, linkLinkedin, linkGithub, linkFacebook, linkMeta, linkX }: FooterLinksProps) {
+export default function Footer({
+  data = [],
+  image, heading, paragraph,
+  linkTwitter, linkYoutube, linkInstagram, linkLinkedin, linkGithub,
+  linkFacebook, linkMeta, linkX
+}: FooterLinksProps) {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
-  const groups = data.map((group) => {
+  const groups = data.length > 0 ? data.map((group) => {
     const links = group.links.map((link, index) => (
       <Text<'a'>
         key={index}
@@ -56,7 +61,7 @@ export default function Footer({ data, image, heading, paragraph, linkTwitter, l
         {links}
       </div>
     );
-  });
+  }) : null;
 
   return (
     <footer className={classes.footer}>

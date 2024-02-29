@@ -9,16 +9,15 @@ fs.mkdirSync(path.dirname(outputFilePath), { recursive: true });
 
 const filenames = fs.readdirSync(mdxDirectory);
 
-const markdownContent = filenames
+const markdownArray = filenames
   .filter(filename => filename.endsWith('.mdx'))
-  .reduce((acc, filename) => {
+  .map(filename => {
     const slug = filename.replace(/\.mdx$/, '');
     const filePath = path.join(mdxDirectory, filename);
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { content } = matter(fileContent);
-    acc[slug] = content;
-    return acc;
-  }, {});
+    return { name: slug, content };
+  });
 
-const moduleContent = `export const markdownArray = ${JSON.stringify(markdownContent, null, 2)};`;
+const moduleContent = `export const markdownArray = ${JSON.stringify(markdownArray, null, 2)};`;
 fs.writeFileSync(outputFilePath, moduleContent);
