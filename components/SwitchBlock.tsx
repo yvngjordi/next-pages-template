@@ -75,7 +75,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
     <TransitionWrapper transitionFrom="bottom">
     <Box style={{ flexGrow: 1, textAlign: textAlign }}>
     {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
-    {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
+    {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
     <Box p="xs">
       {typeof paragraph === 'string' ? (
         <Text>{paragraph}</Text>
