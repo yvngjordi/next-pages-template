@@ -54,7 +54,7 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
   textLeft,
 }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  let textAlign = 'left';
+  let textAlign: React.CSSProperties['textAlign'] = 'left';
   if (textRight) textAlign = 'right';
   else if (textCenter) textAlign = 'center';
 
