@@ -18,23 +18,28 @@ const Block: React.FC<BlockProps> = ({ type, ...props }) => {
 
   useEffect(() => {
     const loadComponent = async () => {
-      let normalizedType = type.toLowerCase();
-      try {
-        const module = await import(`./${normalizedType}.tsx`);
-        const WrappedComponent = withDefaultProps(module.default);
-        setComponent(() => WrappedComponent);
-      } catch (lowerCaseError) {
-        console.error(`Component ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
-
-        normalizedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+      if (type) {
+        let normalizedType = type.toLowerCase();
         try {
           const module = await import(`./${normalizedType}.tsx`);
           const WrappedComponent = withDefaultProps(module.default);
           setComponent(() => WrappedComponent);
-        } catch (upperCaseError) {
-          console.error(`Component ${normalizedType} not found.`, upperCaseError);
-          setComponent(null);
+        } catch (lowerCaseError) {
+          console.error(`Component ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
+
+          normalizedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+          try {
+            const module = await import(`./${normalizedType}.tsx`);
+            const WrappedComponent = withDefaultProps(module.default);
+            setComponent(() => WrappedComponent);
+          } catch (upperCaseError) {
+            console.error(`Component ${normalizedType} not found.`, upperCaseError);
+            setComponent(null);
+          }
         }
+      } else {
+        console.error("Type is undefined.");
+        setComponent(null);
       }
     };
 
