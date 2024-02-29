@@ -11,6 +11,5 @@ export { default as Embed } from './Embed';
 export { default as Footer } from './Footer';
 export { default as Navbar } from './Navbar';
 export { default as Section } from './Section';
-export { default as SparkProvider } from './SparkProvider';
 export { default as ThemeSwitcher } from './ThemeSwitcher';
 export { default as Video } from './Video';
