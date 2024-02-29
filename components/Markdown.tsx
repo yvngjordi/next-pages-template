@@ -50,7 +50,7 @@ interface MarkdownProps {
   textLeft?: boolean;
 }
 
-export const MarkdownBlock: React.FC<MarkdownProps> = ({
+const Markdown: React.FC<MarkdownProps> = ({
   markdown,
   image,
   heading,
@@ -155,3 +155,5 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
     </Box>
   );
 };
+
+export default Markdown;

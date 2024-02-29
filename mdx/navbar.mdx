@@ -1,0 +1,45 @@
+Creating a TypeScript component for a Next.js application involves defining a functional component that utilizes TypeScript features for type checking. Here's a simple example of a TypeScript Next.js component that displays a greeting message:
+
+```typescript
+// components/Greeting.tsx
+
+import React from 'react';
+
+// Define the props interface
+interface GreetingProps {
+  name: string; // Expect a name prop of type string
+}
+
+// Functional component with props type defined
+const Greeting: React.FC<GreetingProps> = ({ name }) => {
+  return (
+    <div>
+      <h1>Hello, {name}!</h1>
+    </div>
+  );
+};
+
+export default Greeting;
+```
+
+This component, named `Greeting`, takes a single prop `name` of type string. It returns a simple JSX that includes a greeting message that incorporates the `name` prop.
+
+To use this component in a Next.js page, you can import it and pass the required props as follows:
+
+```typescript
+// pages/index.tsx
+import type { NextPage } from 'next';
+import Greeting from '../components/Greeting';
+
+const Home: NextPage = () => {
+  return (
+    <div>
+      <Greeting name="John Doe" />
+    </div>
+  );
+};
+
+export default Home;
+```
+
+This example demonstrates how to define a simple TypeScript component in a Next.js application and use it within a page. The `Greeting` component is reusable and type-safe, ensuring that the `name` prop is always a string.

@@ -2,7 +2,7 @@ import React from 'react';
 import { ActionIcon, Group, useMantineColorScheme } from '@mantine/core';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 
-export function ThemeSwitcher() {
+export default function ThemeSwitcher() {
   const { colorScheme, setColorScheme } = useMantineColorScheme();
   const toggleColorScheme = (value: 'light' | 'dark') => () => setColorScheme(value);
 

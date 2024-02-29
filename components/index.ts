@@ -6,6 +6,7 @@ export { default as Wrapper } from './Wrapper';
 export { default as Contact } from './Contact';
 export { default as Embed } from './Embed';
 export { default as Footer } from './Footer';
+export { default as Markdown } from './Markdown';
 export { default as Navbar } from './Navbar';
 export { default as Section } from './Section';
 export { default as ThemeSwitcher } from './ThemeSwitcher';

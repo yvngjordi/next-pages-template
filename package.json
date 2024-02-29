@@ -3,12 +3,14 @@
   "name": "mantine-next-template",
 
   "version": "1.0.0",
-
+    "type": "module",
   "private": true,
 
   "scripts": {
 
     "dev": "next dev",
+
+    "prebuild": "node scripts/genMdx.js",
 
     "build": "next build",
 
@@ -55,6 +57,8 @@
     "@next/bundle-analyzer": "^14.0.1",
 
     "@tabler/icons-react": "^2.40.0",
+
+    "gray-matter": "^4.0.3",
 
     "next": "14.0.1",
 
@@ -163,4 +167,3 @@
   "packageManager": "yarn@4.0.1"
 
 }
-
