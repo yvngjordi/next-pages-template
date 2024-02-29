@@ -1,8 +1,8 @@
 export * from '@mantine/core';
 
-export { default as CarouselWrapper } from './wrappers/CarouselWrapper';
-export { default as GridWrapper } from './wrappers/GridWrapper';
-export { default as SectionWrapper } from './wrappers/SectionWrapper';
+export { default as Carousel } from './wrappers/Carousel';
+export { default as Grid } from './wrappers/Grid';
+export { default as Section } from './wrappers/Section';
 export { default as Transition } from './wrappers/Transition';
 export { default as Banner } from './Banner';
 export { default as Block } from './Block';
