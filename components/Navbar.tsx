@@ -3,7 +3,7 @@ import { Menu, Group, Center, Burger, Container, Drawer, Title, Flex } from '@ma
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './navbar.module.css';
-import { ThemeSwitcher } from './ThemeSwitcher';
+import ThemeSwitcher from './ThemeSwitcher';
 import dynamic from 'next/dynamic';
 
 const Transition = dynamic(() => import('./wrappers/Transition'), {
