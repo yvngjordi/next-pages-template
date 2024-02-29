@@ -1,21 +1,37 @@
 ```typescript
-// components/Greeting.tsx
+import { Block } from '@sparkblock/core';
 
-import React from 'react';
+const links = [
+  { link: '/', label: 'Home' },
+  { link: '/about', label: 'About' },
+  {
+    link: '#1',
+    label: 'Resources',
+    links: [
+      { link: '/resource-1', label: 'Resource 1' },
+      { link: '/resource-2', label: 'Resource 2' },
+    ],
+  },
+  { link: '/contact', label: 'Contact' },
+];
 
-// Define the props interface
-interface GreetingProps {
-  name: string; // Expect a name prop of type string
-}
-
-// Functional component with props type defined
-const Greeting: React.FC<GreetingProps> = ({ name }) => {
+const Docs() {
   return (
-    <div>
-      <h1>Hello, {name}!</h1>
-    </div>
+    <Block
+      type={name}
+      data={data}
+      heading={`Footer title`}
+      paragraph="This is some example paragraph text for this block type. Copy the code in the tab above!"
+      image="logo.PNG"
+      linkTwitter="#"
+      linkInstagram="#"
+      linkFacebook="#"
+      linkLinkedin="#"
+      linkX="#"
+      linkGithub="#"
+      linkMeta="#"
+      linkYoutube="#"
+    />
   );
-};
-
-export default Greeting;
+}
 ```
