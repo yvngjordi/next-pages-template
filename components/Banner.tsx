@@ -14,8 +14,8 @@ const Banner: React.FC<BannerProps> = ({ heading, icon, color, background, onCli
   const bannerStyle = {
     height: '30px',
     width: '100%',
-    backgroundColor: background,
-    color: color,
+    backgroundColor: background || 'black',
+    color: color || 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
