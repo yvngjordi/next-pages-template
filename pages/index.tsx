@@ -55,6 +55,8 @@ export default function HomePage() {
     <Block
       type="banner"
       heading="We have recently moved locations!"
+      background="navy"
+      color="white"
       icon={<IconMap size={20} />}
     />
         <Block
