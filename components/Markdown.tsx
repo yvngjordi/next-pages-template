@@ -65,6 +65,15 @@ const Markdown: React.FC<MarkdownProps> = ({
   if (textRight) textAlign = 'right';
   else if (textCenter) textAlign = 'center';
 
+  const renderParagraphs = () => {
+    if (typeof paragraph === 'string') {
+      return <Text>{paragraph}</Text>;
+    } else if (Array.isArray(paragraph)) {
+      return paragraph.map((p, index) => <Text key={index}>{p}</Text>);
+    }
+    return null;
+  };
+
   const copyToClipboard = (code: string) => {
     navigator.clipboard.writeText(code);
   };
@@ -78,17 +87,13 @@ const Markdown: React.FC<MarkdownProps> = ({
           </Box>
         )}
       </Transition>
-      {heading || paragraph || subheading && (
-      <Box style={{ textAlign: textAlign }} p="md">
-        {heading && <Title>{heading}</Title>}
-        {subheading && <Text size="lg" color="dimmed">{subheading}</Text>}
-        {typeof paragraph === 'string' ? (
-          <Text>{paragraph}</Text>
-        ) : (
-          paragraph?.map((p, index) => <Text key={index}>{p}</Text>)
-        )}
-      </Box>
-    )}
+      {(heading || paragraph || subheading) && (
+        <Box style={{ textAlign: textAlign }} p="md">
+          {heading && <Title>{heading}</Title>}
+          {subheading && <Text size="lg" color="dimmed">{subheading}</Text>}
+          {renderParagraphs()}
+        </Box>
+      )}
       <ReactMarkdown
       components={{
         code({ node, inline = false, className, children, ...props }: CodeComponentProps) {
