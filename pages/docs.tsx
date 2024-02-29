@@ -60,7 +60,7 @@ export default function Docs() {
         <Flex w="60vw">
         <Block
           type="markdown"
-          markdown={markdownArray}
+          markdown={markdownArray['navbar']}
           heading="Element name"
           paragraph="Description of element"
         />
