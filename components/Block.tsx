@@ -1,7 +1,22 @@
 import React from 'react';
 import { Paper, Image, Text, Title, Button, Box, useMantineTheme } from '@mantine/core';
 
-const Block = ({
+interface BlockProps {
+  icon?: any;
+  heading?: string;
+  subheading?: string;
+  paragraph?: string | string[];
+  image?: string;
+  variant?: string;
+  button?: { color?: string; backgroundColor?: string; text?: string; onClick?: () => void; border?: string };
+  button2?: { color?: string; backgroundColor?: string; text?: string; onClick?: () => void; border?: string };
+  textRight?: boolean;
+  textCenter?: boolean;
+  textLeft?: boolean;
+  list?: string[];
+}
+
+const Block: React.FC<BlockProps> = ({
   icon,
   heading,
   subheading,
