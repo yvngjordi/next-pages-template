@@ -18,21 +18,23 @@ const Wrapper: React.FC<WrapperProps> = ({ type, ...props }) => {
 
   useEffect(() => {
     const loadWrapperComponent = async () => {
+    if (type) {
       let normalizedType = type.toLowerCase();
-      try {
-        const module = await import(`./wrappers/${normalizedType}.tsx`);
-        const WrappedComponent = withDefaultProps(module.default);
-        setComponent(() => WrappedComponent);
-      } catch (lowerCaseError) {
-        console.error(`Wrapper ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
-        normalizedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
         try {
           const module = await import(`./wrappers/${normalizedType}.tsx`);
           const WrappedComponent = withDefaultProps(module.default);
           setComponent(() => WrappedComponent);
-        } catch (upperCaseError) {
-          console.error(`Wrapper ${normalizedType} not found.`, upperCaseError);
-          setComponent(null);
+        } catch (lowerCaseError) {
+          console.error(`Wrapper ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
+          normalizedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+          try {
+            const module = await import(`./wrappers/${normalizedType}.tsx`);
+            const WrappedComponent = withDefaultProps(module.default);
+            setComponent(() => WrappedComponent);
+          } catch (upperCaseError) {
+            console.error(`Wrapper ${normalizedType} not found.`, upperCaseError);
+            setComponent(null);
+          }
         }
       }
     };
