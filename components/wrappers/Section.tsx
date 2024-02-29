@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, CSSProperties } from 'react';
 import { Paper } from '@mantine/core';
 import dynamic from 'next/dynamic';
 
@@ -21,7 +21,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   background,
   fill = false,
 }) => {
-  const wrapperStyle = {
+  const wrapperStyle: CSSProperties = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
