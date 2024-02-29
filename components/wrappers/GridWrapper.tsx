@@ -38,7 +38,7 @@ const GridWrapper: React.FC<GridProps> = ({
 
   return (
     <Box>
-      <Box style={{ textAlign, marginBottom: theme.spacing.md }}>
+      <Box style={{ textAlign: textAlign, marginBottom: theme.spacing.md }}>
         {heading && <Title>{heading}</Title>}
         {subheading && <Text color="dimmed">{subheading}</Text>}
         {typeof paragraph === 'string' ? (

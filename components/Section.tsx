@@ -53,7 +53,7 @@ const Section: React.FC<SectionProps> = ({
           </Flex>
         )}
         <Flex justify="center" align="center" w="100%">
-          <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign }}>
+          <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign: textAlign }}>
             {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
             <Divider my={4} mt={8} />
             {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
@@ -124,7 +124,7 @@ case 'B':
       )}
     </TransitionWrapper>
     <TransitionWrapper transitionFrom="right" blur>
-      <Box style={{ flexGrow: 1, textAlign }} p="md">
+      <Box style={{ flexGrow: 1, textAlign: textAlign }} p="md">
         {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
         {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
       <Box p="xs">
@@ -193,7 +193,7 @@ case 'C':
       )}
     </TransitionWrapper>
     <TransitionWrapper transitionFrom="bottom" blur>
-      <Box p="sm" style={{ flexGrow: 1, textAlign }}>
+      <Box p="sm" style={{ flexGrow: 1, textAlign: textAlign }}>
         {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
         {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
       <Box p="xs">
