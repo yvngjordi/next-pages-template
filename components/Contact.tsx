@@ -43,7 +43,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
     const recaptchaRef = React.createRef<ReCAPTCHA>();
 
-    const handleSubmit = async (values) => {
+    const handleSubmit = async (values: any) => {
         let formData = { ...values };
         if (captcha && recaptchaRef.current) {
             const recaptchaValue = recaptchaRef.current.getValue();
@@ -69,7 +69,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <Box style={{ paddingLeft: '5%', paddingRight: '5%' }}>
             <TransitionWrapper transitionFrom="right">
                 <Paper p="md" shadow="md">
-                    {/* Use the added props for heading, subheading, and paragraphs */}
                     {heading && <Title mb="sm">{heading}</Title>}
                     {subheading && <Text mt={4} color="dimmed">{subheading}</Text>}
                     {paragraphs && paragraphs.map((paragraph, index) => <Text key={index}>{paragraph}</Text>)}

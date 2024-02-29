@@ -38,7 +38,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
 }) => {
 
   const isMobile = useMediaQuery('(max-width: 768px)');
-  let textAlign = 'left';
+  let textAlign: React.CSSProperties['textAlign'] = 'left';
   if (textRight) textAlign = 'right';
   else if (textCenter) textAlign = 'center';
 
@@ -73,7 +73,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
   return (
     <Card withBorder radius="md" p="xl" className={classes.card}>
     <TransitionWrapper transitionFrom="bottom">
-    <Box style={{ flexGrow: 1, textAlign }}>
+    <Box style={{ flexGrow: 1, textAlign: textAlign }}>
     {heading && <Title size={isMobile ? 'h1' : 'h1'} weight={500}>{heading}</Title>}
     {subheading && <Title size={isMobile ? 'h3' : 'h4'} color="dimmed">{subheading}</Title>}
     <Box p="xs">
