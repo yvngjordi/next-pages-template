@@ -20,5 +20,5 @@ const markdownContent = filenames
     return acc;
   }, {});
 
-const moduleContent = `export const markdownContent = ${JSON.stringify(markdownContent, null, 2)};`;
+const moduleContent = `export const markdownArray = ${JSON.stringify(markdownContent, null, 2)};`;
 fs.writeFileSync(outputFilePath, moduleContent);
