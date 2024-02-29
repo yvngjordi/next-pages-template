@@ -90,7 +90,7 @@ export default function Navbar({ links, image, heading, sticky = false, theme }:
     </Drawer>
   );
 
-  const headerStyle = sticky ? { position: 'sticky', top: 0, zIndex: 1000 } : {};
+  const headerStyle: React.CSSProperties = sticky ? { position: 'sticky', top: 0, zIndex: 1000 } : {};
 
   return (
     <header className={classes.header} style={headerStyle}>
