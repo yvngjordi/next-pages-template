@@ -89,7 +89,7 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
       </Box>
       <ReactMarkdown
       components={{
-        code({ node, inline = false, className, children, ...props }: CodeComponentProps) => {
+        code({ node, inline = false, className, children, ...props }: CodeComponentProps) {
               const match = /language-(\w+)/.exec(className || '');
               const shouldApplySpecialStyling = String(children).startsWith('$$!');
               const contentToDisplay = shouldApplySpecialStyling ?
