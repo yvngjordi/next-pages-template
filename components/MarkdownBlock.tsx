@@ -9,6 +9,13 @@ import { css } from '@emotion/react';
 import { useMediaQuery } from "@mantine/hooks";
 import dynamic from 'next/dynamic';
 
+interface CodeComponentProps {
+    node: any;
+    inline?: boolean;
+    className?: string;
+    children: React.ReactNode;
+}
+
 const TransitionWrapper = dynamic(() => import('./wrappers/TransitionWrapper'), {
   ssr: false,
 });
@@ -82,7 +89,7 @@ export const MarkdownBlock: React.FC<MarkdownProps> = ({
       </Box>
       <ReactMarkdown
       components={{
-        code({ node, inline = false, className, children, ...props }: CustomComponents['code']) => {
+        code({ node, inline = false, className, children, ...props }: CodeComponentProps) => {
               const match = /language-(\w+)/.exec(className || '');
               const shouldApplySpecialStyling = String(children).startsWith('$$!');
               const contentToDisplay = shouldApplySpecialStyling ?
