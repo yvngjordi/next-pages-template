@@ -68,7 +68,7 @@ const ScrollEffectWrapper: React.FC<ScrollEffectWrapperProps> = ({
   return (
     <Wrapper
       inView={hasEnteredView}
-      $transitionFrom={transitionFrom}
+      transitionFrom={transitionFrom}
       duration={duration}
       delay={delay}
       startOpacityAt={startOpacityAt}
