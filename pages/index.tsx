@@ -223,8 +223,8 @@ export default function HomePage() {
         </Box>
         <Wrapper
           type="section"
-          py={40}
-          px={isMobile ? 20 : 100}
+          py={20}
+          px={isMobile ? 10 : 100}
         >
         <Block
           type="contact"
