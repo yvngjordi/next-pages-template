@@ -67,7 +67,7 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
   const headerStyle: React.CSSProperties = sticky ? { position: 'sticky', top: 0, zIndex: 1000 } : {};
 
   return (
-    <header className={classes.header} style={{headerStyle, width:'100%'}}>
+    <header className={classes.header} style={headerStyle}>
       <Container size="xl" w="100%">
         <div className={classes.inner}>
           <Transition transitionFrom="left">
