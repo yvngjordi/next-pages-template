@@ -65,6 +65,7 @@ export default function HomePage() {
           image="logo.png"
           heading="Ancaster Central"
           sticky
+          theme
         />
         <Box mt="-18.6vh">
           <Wrapper
