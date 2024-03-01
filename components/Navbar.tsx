@@ -52,7 +52,7 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
   }) || [];
 
   const mobileMenu = (
-    <Drawer opened={opened} onClose={toggle} title={heading} padding="md" size="sm" position="right">
+    <Drawer opened={opened} onClose={toggle} title={heading} padding="md" size="sm" position="right" style={{zIndex:99999}}>
       {links?.map((link) => (
         <a key={link.label} href={link.link} className={classes.link} onClick={(event) => {
           event.preventDefault();
@@ -64,11 +64,11 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
     </Drawer>
   );
 
-  const headerStyle: React.CSSProperties = sticky ? { position: 'sticky', top: 0, zIndex: 1000 } : {};
+  const headerStyle: React.CSSProperties = sticky ? { position: 'sticky', top: 0, zIndex: 3 } : {};
 
   return (
     <header className={classes.header} style={headerStyle}>
-      <Container size="xl" w="100%">
+      <Container size="xl" w="100%" style={{zIndex:0}}>
         <div className={classes.inner}>
           <Transition transitionFrom="left">
             <Group gap={5}>
@@ -95,7 +95,9 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
           </Transition>
         </div>
       </Container>
+      <div style={{zIndex:999999}}>
       {mobileMenu}
+      </div>
     </header>
   );
 }

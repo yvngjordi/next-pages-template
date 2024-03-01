@@ -49,7 +49,7 @@ const CarouselWrapper: React.FC<CarouselWrapperProps> = ({
             style={{
               border: 'none',
               background: activeIndex === index ? 'black' : 'lightgray',
-              borderRadius: '50%',
+              borderRadius: '100%',
               width: '15px',
               height: '15px',
               margin: '0 5px',
