@@ -62,7 +62,7 @@ export default function HomePage() {
         <Block
           type="navbar"
           links={links}
-          image="logo.PNG"
+          image="logo.png"
           heading="Ancaster Central"
           sticky
         />
@@ -100,7 +100,7 @@ export default function HomePage() {
                   "Experienced Pediatricians", "Friendly Staff", "Modern Facilities"
                 ]
               }
-              image="logo-full.PNG"
+              image="logo-full.png"
               button={{ color: 'white', backgroundColor: 'navy', text: 'Read More', onClick: () => console.log('Read More Clicked!'), border: 'none' }}
               button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
             />
@@ -256,7 +256,7 @@ export default function HomePage() {
         <Block
           type="footer"
           data={data}
-          image="logo.PNG"
+          image="logo.png"
           heading="Ancaster Central Children's Clinic"
           paragraph={["Providing compassionate and comprehensive pediatric care in Ancaster, Ontario. Our team is dedicated to supporting your child's health and well-being."]}
         />

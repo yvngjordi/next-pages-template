@@ -22,7 +22,6 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   fill = false,
 }) => {
   const wrapperStyle: CSSProperties = {
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: py,
@@ -44,11 +43,11 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   );
 
   return (
-    <Transition>
       <div style={wrapperStyle}>
+          <Transition>
         {content}
+            </Transition>
       </div>
-    </Transition>
   );
 };
 
