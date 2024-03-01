@@ -87,9 +87,11 @@ export default function Footer({
       </Container>
       <Transition transitionFrom="bottom">
       <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="sm">
-          © 2024 {heading} | All rights reserved.
-        </Text>
+        <Flex w="100%" justify="center" align="center">
+          <Text color="dimmed" size="sm">
+            © 2024 {heading} | All rights reserved.
+          </Text>
+        </Flex>
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
           {linkTwitter && (
             <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkTwitter} target="_blank">

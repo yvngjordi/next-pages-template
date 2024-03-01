@@ -119,7 +119,7 @@ export default function HomePage() {
                   heading="Now serving students!"
                   paragraph={["Come by our clinic if you're a student for anything from XYZ to ABC. We'll address what you need help with and work alongside you."]}
                   image="https://via.placeholder.com/150"
-                  textLeft
+                  textCenter
                 />
           </Wrapper>
           <Wrapper
