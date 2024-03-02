@@ -3,9 +3,20 @@ import Wrapper from '../components/Wrapper';
 import { Box, Flex, Divider, Paper, Text, AppShell, Burger, Group, Skeleton } from '@mantine/core';
 import { IconStethoscope, IconNotebook, IconCode, IconVaccine, IconMap, IconApple, IconIcons } from '@tabler/icons-react';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
-import { blocksArray } from '../data/blocksArray';
-import { wrappersArray } from '../data/wrappersArray';
+import { blocksArray as importedBlocksArray } from '../data/blocksArray';
+import { wrappersArray as importedWrappersArray } from '../data/wrappersArray';
 import React, { useState } from 'react';
+
+interface BlockItem {
+  name: string;
+  content: string;
+  description?: string;
+  content2?: string;
+  props?: any[];
+}
+
+const blocksArray: BlockItem[] = importedBlocksArray as BlockItem[];
+const wrappersArray: BlockItem[] = importedWrappersArray as BlockItem[];
 
 const tabs = [
   { value: 'component', label: 'Component' },
