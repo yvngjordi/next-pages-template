@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, ComponentType, CSSProperties } from 'react';
 
 const withDefaultProps = <P extends object>(WrappedComponent: React.ComponentType<P>, defaultProps: Partial<P> = {}, styleProps?: React.CSSProperties) => {
   return (props: P) => {
