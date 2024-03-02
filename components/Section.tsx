@@ -1,6 +1,6 @@
 import { Box, Button, Image, Paper, Text, Divider, Title, Flex, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import dynamic from 'next/dynamic';
 
 const Transition = dynamic(() => import('./wrappers/Transition'), {
@@ -12,6 +12,9 @@ interface SectionProps {
   subheading?: string;
   paragraph?: string | string[];
   image?: string;
+  imageCircle?: boolean;
+  stack?: boolean;
+  style?: CSSProperties;
   variant?: string;
   button?: { color?: string; backgroundColor?: string; text?: string; onClick?: () => void; border?: string };
   button2?: { color?: string; backgroundColor?: string; text?: string; onClick?: () => void; border?: string };
@@ -26,6 +29,9 @@ const Section: React.FC<SectionProps> = ({
   subheading,
   paragraph,
   image,
+  imageCircle,
+  stack,
+  style,
   variant,
   button,
   button2,
@@ -41,19 +47,36 @@ const Section: React.FC<SectionProps> = ({
   if (textRight) textAlign = 'right';
   else if (textCenter) textAlign = 'center';
 
+  const containerStyleA: CSSProperties = {
+    margin: 'auto',
+    maxWidth: 1200,
+    width:'100%',
+    ...style,
+  };
+
+  const containerStyleB: CSSProperties = {
+   margin: 'auto',
+   maxWidth: 1200,
+   display: 'flex',
+   flexDirection: isMobile ? 'column' : 'row',
+   alignItems: 'center',
+   gap: theme.spacing.md,
+    ...style,
+  };
+  
   switch (variant) {
-    case 'A':
+    case 'A' || 'a':
       return (
-        <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
+        <Box p="md" style={containerStyleA}>
         <Transition blur transitionFrom="top">
         <Flex direction={isMobile ? 'column' : 'row-reverse'}>
         {image && (
-          <Flex align="center" justify="center" w="100%">
-            {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: theme.radius.md }} />}
+          <Flex align="center" justify="center" w="100%" mb="xs">
+            {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: imageCircle ? '100%' : theme.radius.md }} />}
           </Flex>
         )}
         <Flex justify="center" align="center" w="100%">
-          <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign: textAlign }}>
+          <Box style={{ flexDirection: 'column', gap: theme.spacing.md, textAlign }}>
             {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
             <Divider my={4} mt={8} />
             {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
@@ -105,21 +128,21 @@ const Section: React.FC<SectionProps> = ({
         </Box>
   );
 
-case 'B':
+case ('B' || 'b'):
   return (
-    <Box style={{ margin: 'auto', maxWidth: 1200, display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', gap: theme.spacing.md }}>
+    <Box style={containerStyleB}>
     <Transition transitionFrom="left">
-    {isMobile && image && (
+    {(isMobile && image) || (image && stack) && (
       <Box p="lg">
-        <Image p="xl" src={image} alt="" style={{ width: '100%', borderRadius: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+        <Image p="xl" src={image} alt="" style={{ width: '100%', borderRadius: imageCircle ? '100%' : theme.radius.md, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
       </Box>
     )}
     </Transition>
     <Flex>
     <Transition transitionFrom="left">
-      {!isMobile && image && (
+      {!isMobile && image && !stack && (
         <Box p="lg">
-          <Image src={image} alt="" style={{ width: '100%', borderRadius: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', alignSelf: 'center' }} />
+          <Image src={image} alt="" style={{ width: '100%', borderRadius: imageCircle ? '100%' : theme.radius.md, boxShadow: '0 2px 4px rgba(0,0,0,0.1)', alignSelf: 'center' }} />
         </Box>
       )}
     </Transition>
@@ -174,21 +197,21 @@ case 'B':
     </Box>
   );
 
-case 'C':
+case 'C' || 'c':
   return (
-    <Box>
+    <Box style={style}>
     <Transition transitionFrom="left">
-    {isMobile && image && (
+    {(isMobile && image) || (image && stack) && (
       <Box p="xl">
-        <Image src={image} alt="" style={{ width: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+        <Image src={image} alt="" style={{ width: '100%', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', borderRadius:imageCircle ? '100%' : theme.radius.md }} />
       </Box>
     )}
     </Transition>
     <Flex>
     <Transition transitionFrom="left">
-      {!isMobile && image && (
+      {!isMobile && image && !stack && (
           <Box p="xl">
-            <Image src={image} alt="" style={{ width: '33vw', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', alignSelf: 'center' }} />
+            <Image src={image} alt="" style={{ width: '33vw', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', alignSelf: 'center', borderRadius:imageCircle ? '100%' : theme.radius.md }} />
           </Box>
       )}
     </Transition>
@@ -245,12 +268,12 @@ case 'C':
 
 default:
   return (
-    <Box p="md" style={{ margin: 'auto', maxWidth: 1200 }}>
+    <Box p="md" style={containerStyleA}>
     <Transition blur transitionFrom="top">
     <Flex direction={isMobile ? 'column' : 'row-reverse'}>
     {image && (
-      <Flex align="center" justify="center" w="100%">
-        {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: theme.radius.md }} />}
+      <Flex align="center" justify="center" w="100%" mb="xs">
+        {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: imageCircle ? '100%' : theme.radius.md }} />}
       </Flex>
     )}
     <Flex justify="center" align="center" w="100%">

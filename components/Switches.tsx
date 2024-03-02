@@ -1,7 +1,7 @@
 import { Card, Group, Switch, Text, Box, Title, Divider } from '@mantine/core';
 import classes from './switchblock.module.css';
 import { useMediaQuery } from '@mantine/hooks';
-
+import React, { CSSProperties } from 'react';
 import dynamic from 'next/dynamic';
 
 const Transition = dynamic(() => import('./wrappers/Transition'), {
@@ -16,14 +16,15 @@ interface SwitchDataItem {
 }
 
 interface SwitchBlockProps {
-  data: SwitchDataItem[];
-  onSwitchChange: (title: string, checked: boolean) => void;
+  data?: SwitchDataItem[];
+  onSwitchChange?: (title: string, checked: boolean) => void;
   heading?: string;
   subheading?: string;
   paragraph?: string | string[];
   textRight?: boolean;
   textCenter?: boolean;
   textLeft?: boolean;
+  style?: CSSProperties;
 }
 
 export const SwitchBlock: React.FC<SwitchBlockProps> = ({
@@ -35,6 +36,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
   textRight,
   textCenter,
   textLeft,
+  style,
 }) => {
 
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -71,7 +73,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
   ));
 
   return (
-    <Card withBorder radius="md" p="xl" className={classes.card}>
+    <Card withBorder radius="md" p="xl" className={classes.card} style={style}>
     <Transition transitionFrom="bottom">
     <Box style={{ flexGrow: 1, textAlign: textAlign }}>
     {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}

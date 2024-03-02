@@ -1,0 +1,22 @@
+export const wrappersArray = [
+  {
+    "name": "carousel",
+    "content": "```typescript\r\nimport { Block } from '@sparkblock/core';\r\n\r\nconst links = [\r\n  { link: '/', label: 'Home' },\r\n  { link: '/about', label: 'About' },\r\n  {\r\n    link: '#1',\r\n    label: 'Resources',\r\n    links: [\r\n      { link: '/resource-1', label: 'Resource 1' },\r\n      { link: '/resource-2', label: 'Resource 2' },\r\n    ],\r\n  },\r\n  { link: '/contact', label: 'Contact' },\r\n];\r\n\r\nconst Docs() {\r\n  return (\r\n    <Block\r\n      type={name}\r\n      data={data}\r\n      heading={`Footer title`}\r\n      paragraph=\"This is some example paragraph text for this block type. Copy the code in the tab above!\"\r\n      image=\"logo.PNG\"\r\n      linkTwitter=\"#\"\r\n      linkInstagram=\"#\"\r\n      linkFacebook=\"#\"\r\n      linkLinkedin=\"#\"\r\n      linkX=\"#\"\r\n      linkGithub=\"#\"\r\n      linkMeta=\"#\"\r\n      linkYoutube=\"#\"\r\n    />\r\n  );\r\n}\r\n```\r\n"
+  },
+  {
+    "name": "grid",
+    "content": "```typescript\r\n// pages/index.tsx\r\nimport type { NextPage } from 'next';\r\nimport Greeting from '../components/Greeting';\r\n\r\nconst Home: NextPage = () => {\r\n  return (\r\n    <div>\r\n      <Greeting name=\"John Doe\" />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Home;\r\n```\r\n"
+  },
+  {
+    "name": "section",
+    "content": "```typescript\r\nimport { Block } from '@sparkblock/core';\r\n\r\nconst links = [\r\n  { link: '/', label: 'Home' },\r\n  { link: '/about', label: 'About' },\r\n  {\r\n    link: '#1',\r\n    label: 'Resources',\r\n    links: [\r\n      { link: '/resource-1', label: 'Resource 1' },\r\n      { link: '/resource-2', label: 'Resource 2' },\r\n    ],\r\n  },\r\n  { link: '/contact', label: 'Contact' },\r\n];\r\n\r\nconst Docs() {\r\n  return (\r\n    <Block\r\n      type={name}\r\n      data={data}\r\n      heading={`Footer title`}\r\n      paragraph=\"This is some example paragraph text for this block type. Copy the code in the tab above!\"\r\n      image=\"logo.PNG\"\r\n      linkTwitter=\"#\"\r\n      linkInstagram=\"#\"\r\n      linkFacebook=\"#\"\r\n      linkLinkedin=\"#\"\r\n      linkX=\"#\"\r\n      linkGithub=\"#\"\r\n      linkMeta=\"#\"\r\n      linkYoutube=\"#\"\r\n    />\r\n  );\r\n}\r\n```\r\n"
+  },
+  {
+    "name": "tabs",
+    "content": "```typescript\r\nimport { Block } from '@sparkblock/core';\r\n\r\nconst links = [\r\n  { link: '/', label: 'Home' },\r\n  { link: '/about', label: 'About' },\r\n  {\r\n    link: '#1',\r\n    label: 'Resources',\r\n    links: [\r\n      { link: '/resource-1', label: 'Resource 1' },\r\n      { link: '/resource-2', label: 'Resource 2' },\r\n    ],\r\n  },\r\n  { link: '/contact', label: 'Contact' },\r\n];\r\n\r\nconst Docs() {\r\n  return (\r\n    <Block\r\n      type={name}\r\n      data={data}\r\n      heading={`Footer title`}\r\n      paragraph=\"This is some example paragraph text for this block type. Copy the code in the tab above!\"\r\n      image=\"logo.PNG\"\r\n      linkTwitter=\"#\"\r\n      linkInstagram=\"#\"\r\n      linkFacebook=\"#\"\r\n      linkLinkedin=\"#\"\r\n      linkX=\"#\"\r\n      linkGithub=\"#\"\r\n      linkMeta=\"#\"\r\n      linkYoutube=\"#\"\r\n    />\r\n  );\r\n}\r\n```\r\n"
+  },
+  {
+    "name": "transition",
+    "content": "```typescript\r\nimport { Block } from '@sparkblock/core';\r\n\r\nconst links = [\r\n  { link: '/', label: 'Home' },\r\n  { link: '/about', label: 'About' },\r\n  {\r\n    link: '#1',\r\n    label: 'Resources',\r\n    links: [\r\n      { link: '/resource-1', label: 'Resource 1' },\r\n      { link: '/resource-2', label: 'Resource 2' },\r\n    ],\r\n  },\r\n  { link: '/contact', label: 'Contact' },\r\n];\r\n\r\nconst Docs() {\r\n  return (\r\n    <Block\r\n      type={name}\r\n      data={data}\r\n      heading={`Footer title`}\r\n      paragraph=\"This is some example paragraph text for this block type. Copy the code in the tab above!\"\r\n      image=\"logo.PNG\"\r\n      linkTwitter=\"#\"\r\n      linkInstagram=\"#\"\r\n      linkFacebook=\"#\"\r\n      linkLinkedin=\"#\"\r\n      linkX=\"#\"\r\n      linkGithub=\"#\"\r\n      linkMeta=\"#\"\r\n      linkYoutube=\"#\"\r\n    />\r\n  );\r\n}\r\n```\r\n"
+  }
+];
