@@ -65,7 +65,7 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
         className={classes.switch}
         size="lg"
         style={{ backgroundColor: item.backgroundColor ? item.backgroundColor : undefined }}
-        onChange={(event) => onSwitchChange(item.title, event.currentTarget.checked)}
+        onChange={(event) => onSwitchChange && onSwitchChange(item.title, event.currentTarget.checked)}
         disabled={item.disabled}
       />
       </Transition>
