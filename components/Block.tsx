@@ -1,9 +1,15 @@
 import React, { ReactNode, useEffect, useState, ComponentType, CSSProperties } from 'react';
 
-const withDefaultProps = <P extends object>(WrappedComponent: React.ComponentType<P>, defaultProps: Partial<P> = {}, styleProps?: React.CSSProperties) => {
-  return (props: P) => {
-    const mergedStyleProps = styleProps ? { style: { ...styleProps, ...props.style } } : {};
-    return <WrappedComponent {...defaultProps} {...props} {...mergedStyleProps} />;
+const withDefaultProps = <P extends object>(
+  WrappedComponent: ComponentType<P>,
+  defaultProps: Partial<P> = {},
+  styleProps?: CSSProperties
+) => {
+  return (props: ComponentPropsWithStyle<P>) => {
+    const mergedStyles = styleProps ? { ...styleProps, ...props.style } : props.style;
+    const mergedProps = { ...props, style: mergedStyles };
+
+    return <WrappedComponent {...defaultProps} {...mergedProps} />;
   };
 };
 
