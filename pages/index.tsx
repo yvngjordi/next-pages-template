@@ -56,7 +56,6 @@ export default function HomePage() {
       type="banner"
       heading="We have recently moved locations!"
       background="navy"
-      style={{height:'200px'}}
       color="white"
       icon={<IconMap size={20} />}
     />
