@@ -5,15 +5,25 @@ interface DataItem {
   [key: string]: React.ReactNode;
 }
 
-interface TableComponentProps extends TableProps {
+interface TableComponentProps {
   data: DataItem[];
   headers: { key: string; label: string }[];
   style?: CSSProperties;
+  striped?: boolean;
+  highlightOnHover?: boolean;
 }
 
-const TableComponent: React.FC<TableComponentProps> = ({ data, headers, style, ...tableProps }) => {
-  return (
-    <Table {...tableProps} style={style}>
+const TableComponent: React.FC<TableComponentProps> = ({
+  data,
+  headers,
+  style,
+  striped = false,
+  highlightOnHover = false,
+  ...restProps
+}) => {
+
+    return (
+      <Table style={style} striped={striped} highlightOnHover={highlightOnHover} {...restProps}>
       <Table.Thead>
         <Table.Tr>
           {headers?.map(({ label }, index) => (
