@@ -5,11 +5,13 @@ const withDefaultProps = <P extends object>(
   defaultProps: Partial<P> = {},
   styleProps?: CSSProperties
 ) => {
-  return (props: ComponentPropsWithStyle<P>) => {
-    const mergedStyles = styleProps ? { ...styleProps, ...props.style } : props.style;
-    const mergedProps = { ...props, style: mergedStyles };
+  type ComponentPropsWithStyle = P & { style?: CSSProperties };
 
-    return <WrappedComponent {...defaultProps} {...mergedProps} />;
+  return (props: ComponentPropsWithStyle) => {
+    const mergedStyles = { ...styleProps, ...props.style };
+    const finalProps = { ...defaultProps, ...props, style: mergedStyles };
+
+    return <WrappedComponent {...finalProps} />;
   };
 };
 
