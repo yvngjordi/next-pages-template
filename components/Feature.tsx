@@ -1,5 +1,6 @@
-import React from 'react';
-import { Paper, Image, Text, Title, Button, Box, useMantineTheme } from '@mantine/core';
+import React, { CSSProperties } from 'react';
+import { Paper, Image, Text, Title, Button, Box, Flex, Divider, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 
 interface FeatureProps {
   icon?: any;
@@ -13,6 +14,8 @@ interface FeatureProps {
   textRight?: boolean;
   textCenter?: boolean;
   textLeft?: boolean;
+  style?: CSSProperties;
+  stack?: boolean;
   list?: string[];
 }
 
@@ -26,9 +29,12 @@ const Feature: React.FC<FeatureProps> = ({
   textRight,
   textCenter,
   textLeft,
+  style,
+  stack,
   list,
 }) => {
   const theme = useMantineTheme();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   let textAlign: React.CSSProperties['textAlign'] = 'left';
   if (textRight) textAlign = 'right';
@@ -36,15 +42,47 @@ const Feature: React.FC<FeatureProps> = ({
 
   const renderIcon = () => {
     if (typeof icon === 'string') {
-      return <Image src={icon} alt="Icon" style={{ display: 'block', margin: '0 auto' }} width={36} height={36} />;
+      return <Image src={icon} alt="Icon" style={{ margin: textCenter ? '0 auto' : 'none' }} width={36} height={36} />;
     }
-    return React.cloneElement(icon, { style: { display: 'block', margin: '0 auto' } });
+    return React.cloneElement(icon, { style: { margin: textCenter ? '0 auto' : 'none' } });
+  };
+
+  const containerStyle: CSSProperties = {
+    textAlign: textAlign,
+    ...style,
   };
 
   return (
-    <Paper p="md" style={{ textAlign: textAlign }} shadow="xs" withBorder>
+    <Paper p="md" style={containerStyle} shadow="xs" withBorder>
+    {!isMobile ? (
+      <>
+      {!textRight ? (
+        <>
+      <Flex justify={textCenter ? 'center' : 'left'} direction={stack ? 'column' : 'row'}>
+        <Box mt="xs">
+          {icon && renderIcon()}
+        </Box>
+        {heading && <Title order={3} ml="sm" mt="0.8vh">{heading}</Title>}
+      </Flex>
+      </>
+    ) : (
+      <>
+      <Flex justify="right" direction={stack ? 'column' : 'row'}>
+        {heading && <Title order={3} mr="sm" mt="0.8vh">{heading}</Title>}
+        <Box mt="xs">
+          {icon && renderIcon()}
+        </Box>
+      </Flex>
+      </>
+    )}
+      </>
+    ) : (
+      <>
       {icon && renderIcon()}
-      {heading && <Title order={3} mt="sm">{heading}</Title>}
+      {heading && <Title order={3}>{heading}</Title>}
+      </>
+    )}
+          <Divider my={8} />
       {subheading && <Text size="sm" color="dimmed">{subheading}</Text>}
       {typeof paragraph === 'string' ? (
         <Text p="xs" size="xs">{paragraph}</Text>

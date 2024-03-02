@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, Container, Group, Title, ActionIcon, Box, Flex } from '@mantine/core';
+import React, { CSSProperties } from 'react';
+import { Text, Container, Group, Title, ActionIcon, Box, Flex, useMantineColorScheme  } from '@mantine/core';
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandFacebook, IconBrandMeta, IconBrandX } from '@tabler/icons-react';
 import classes from './footer.module.css';
 import dynamic from 'next/dynamic';
@@ -22,8 +22,10 @@ type GroupData = {
 type FooterLinksProps = {
   data?: GroupData[];
   image?: string;
+  imageDarkMode?: string;
   heading?: string;
   paragraph?: string | string[];
+  style?: CSSProperties;
   linkTwitter?: string;
   linkYoutube?: string;
   linkInstagram?: string;
@@ -36,11 +38,24 @@ type FooterLinksProps = {
 
 export default function Footer({
   data = [],
-  image, heading, paragraph,
-  linkTwitter, linkYoutube, linkInstagram, linkLinkedin, linkGithub,
-  linkFacebook, linkMeta, linkX
+  image,
+  imageDarkMode,
+  heading,
+  paragraph,
+  style,
+  linkTwitter,
+  linkYoutube,
+  linkInstagram,
+  linkLinkedin,
+  linkGithub,
+  linkFacebook,
+  linkMeta,
+  linkX,
 }: FooterLinksProps) {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const { colorScheme } = useMantineColorScheme();
+
+  const effectiveImage = colorScheme === 'dark' && imageDarkMode ? imageDarkMode : image;
 
   const groups = data.length > 0 ? data.map((group) => {
     const links = group.links.map((link, index) => (
@@ -64,13 +79,13 @@ export default function Footer({
   }) : null;
 
   return (
-    <footer className={classes.footer}>
+    <footer className={classes.footer} style={style}>
       <Container className={classes.inner}>
       <Transition transitionFrom="left">
-        <div className={classes.logo} style={{textAlign: isMobile ? 'center' : 'left'}}>
+        <div className={classes.logo} style={{textAlign: isMobile ? 'center' : 'left', marginLeft: isMobile ? '0px' : '1.5vw'}}>
           <Group gap={5}>
             <Flex direction="column" align={isMobile ? 'center' : ''} justify={isMobile ? 'center' : ''}>
-              <img src={image} alt="Logo" style={{ height: '100px', width:'100px' }} />
+              <Box p="sm"><img src={effectiveImage} alt="Logo" style={{ height: '100px' }} /> </Box>
               <Text size="xl" style={{textAlign: isMobile ? 'center' : 'left'}}>{heading}</Text>
             </Flex>
           </Group>
@@ -87,11 +102,17 @@ export default function Footer({
       </Container>
       <Transition transitionFrom="bottom">
       <Container className={classes.afterFooter}>
+      {isMobile ? (
         <Flex w="100%" justify="center" align="center">
           <Text color="dimmed" size="sm">
             © 2024 {heading} | All rights reserved.
           </Text>
         </Flex>
+      ) : (
+          <Text color="dimmed" size="sm">
+            © 2024 {heading} | All rights reserved.
+          </Text>
+      )}
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
           {linkTwitter && (
             <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkTwitter} target="_blank">

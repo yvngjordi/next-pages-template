@@ -1,7 +1,10 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-const withDefaultProps = <P extends object>(WrappedComponent: React.ComponentType<P>, defaultProps: Partial<P> = {}) => {
-  return (props: P) => <WrappedComponent {...defaultProps} {...props} />;
+const withDefaultProps = <P extends object>(WrappedComponent: React.ComponentType<P>, defaultProps: Partial<P> = {}, styleProps?: React.CSSProperties) => {
+  return (props: P) => {
+    const mergedStyleProps = styleProps ? { style: { ...styleProps, ...props.style } } : {};
+    return <WrappedComponent {...defaultProps} {...props} {...mergedStyleProps} />;
+  };
 };
 
 type OptionalProps<T extends object> = {
@@ -10,10 +13,11 @@ type OptionalProps<T extends object> = {
 
 type BlockProps = OptionalProps<{
   type: string;
+  style?: React.CSSProperties;
   [key: string]: any;
 }>;
 
-const Block: React.FC<BlockProps> = ({ type, ...props }) => {
+const Block: React.FC<BlockProps> = ({ type, style, ...props }) => {
   const [Component, setComponent] = useState<React.ComponentType<any> | null>(null);
 
   useEffect(() => {
@@ -22,7 +26,7 @@ const Block: React.FC<BlockProps> = ({ type, ...props }) => {
         let normalizedType = type.toLowerCase();
         try {
           const module = await import(`./${normalizedType}.tsx`);
-          const WrappedComponent = withDefaultProps(module.default);
+          const WrappedComponent = withDefaultProps(module.default, {}, style);
           setComponent(() => WrappedComponent);
         } catch (lowerCaseError) {
           console.error(`Component ${normalizedType} not found. Trying with first character uppercase.`, lowerCaseError);
@@ -30,7 +34,7 @@ const Block: React.FC<BlockProps> = ({ type, ...props }) => {
           normalizedType = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
           try {
             const module = await import(`./${normalizedType}.tsx`);
-            const WrappedComponent = withDefaultProps(module.default);
+            const WrappedComponent = withDefaultProps(module.default, {}, style);
             setComponent(() => WrappedComponent);
           } catch (upperCaseError) {
             console.error(`Component ${normalizedType} not found.`, upperCaseError);
@@ -44,7 +48,7 @@ const Block: React.FC<BlockProps> = ({ type, ...props }) => {
     };
 
     loadComponent();
-  }, [type]);
+  }, [type, style]);
 
   if (!Component) {
     return <div></div>;

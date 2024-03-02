@@ -6,7 +6,7 @@ import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
 import Contact from '../components/Contact';
 import { Box, Flex, Divider } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple, IconHome } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import Map from '../components/Map';
 
@@ -54,17 +54,16 @@ export default function HomePage() {
     <Box>
     <Block
       type="banner"
-      heading="We have recently moved locations!"
-      background="navy"
-      style={{height:'200px'}}
-      color="white"
-      icon={<IconMap size={20} />}
+      heading="Check out our listings!"
+      background="linear-gradient(90deg, #AE8625, #F7EF8A 40%, #D2AC47 80%, #EDC967)"
+      color="#000"
+      icon={<IconHome size={20} />}
     />
         <Block
           type="navbar"
           links={links}
-          image="logo.png"
-          heading="Ancaster Central"
+          image="xp/logo.png"
+          imageDarkMode="xp/logo-light.png"
           sticky
           theme
         />
@@ -73,55 +72,55 @@ export default function HomePage() {
             type="section"
             py={120}
             px={isMobile ? 20 : 200}
-            background="url('bg4.jpg')"
+            background="url('xp/bg4.jpg')"
             fill={true}
           >
-            <Block
-              type="section"
-              heading="Trusted Care"
-              subheading="And happy smiles"
-              paragraph="At Ancaster Central Children's Clinic, we offer comprehensive pediatric care tailored to the unique needs of children. Our experienced team is here to support your child's health and development."
-              button={{ color: 'white', backgroundColor: 'navy', text: 'Learn More', onClick: () => console.log('Learn More Clicked!') }}
-              textCenter
-              variant="A"
-            />
+          <Block
+            type="section"
+            heading="Discover Your Perfect Getaway"
+            subheading="Home Away From Home"
+            paragraph="Explore our exclusive range of properties tailored to ensure your comfort and satisfaction. From beachfront villas to cozy mountain cabins, find the perfect setting for your next vacation."
+            button={{ color: '#000', backgroundColor: '#AE8625', text: 'Explore Now', onClick: () => console.log('Explore Now Clicked!') }}
+            textCenter
+            variant="A"
+          />
           </Wrapper>
           <Wrapper
             type="section"
-            py={20}
+            py={120}
             px={isMobile ? 20 : 200}
           >
             <Block
               type="section"
               variant="C"
-              heading="About Our Clinic"
-              subheading="Committed to Excellence"
-              paragraph={["Ancaster Central Children's Clinic has been providing quality pediatric care in Ancaster, Ontario. Our mission is to support your child's health through all stages of development."]}
+              heading="About Our Properties"
+              subheading="Exceeding Expectations"
+              paragraph={["Each of our properties is carefully selected and maintained to ensure the highest standards of quality and comfort. Enjoy the amenities and personalized service that make our rentals stand out."]}
               list={
                 [
-                  "Experienced Pediatricians", "Friendly Staff", "Modern Facilities"
+                  "Prime Locations", "Luxury Amenities", "Personalized Services"
                 ]
               }
-              image="logo-full.png"
-              button={{ color: 'white', backgroundColor: 'navy', text: 'Read More', onClick: () => console.log('Read More Clicked!'), border: 'none' }}
+              image="xp/bg5.jpg"
+              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Read More', onClick: () => console.log('Read More Clicked!'), border: 'none' }}
               button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
             />
           </Wrapper>
           <Wrapper
             type="section"
             py={60}
-            background="url('bg4.jpg')"
+            background="url('xp/bg7.jpg')"
 
             px={isMobile ? 20 : 240}
             fill={true}
           >
-                <Block
-                  type="section"
-                  heading="Now serving students!"
-                  paragraph={["Come by our clinic if you're a student for anything from XYZ to ABC. We'll address what you need help with and work alongside you."]}
-                  image="https://via.placeholder.com/150"
-                  textCenter
-                />
+          <Block
+            type="section"
+            heading="Special Offers for Early Bookings!"
+            paragraph={["Book your next holiday in advance and save! Check out our early bird specials and exclusive offers for an unforgettable getaway."]}
+            image="https://via.placeholder.com/150"
+            textCenter
+          />
           </Wrapper>
           <Wrapper
             type="section"
@@ -130,17 +129,17 @@ export default function HomePage() {
           >
             <Wrapper
               type="grid"
-              heading="Our Services"
+              heading="Your stay will feature..."
               columns={4}
               spacing="md"
               verticalSpacing={{ base: 'sm', lg: 'md' }}
+              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
             >
               <Block
                 type="feature"
                 icon={<IconStethoscope size={44} />}
                 textCenter
-                stack
-                heading="Pediatrics"
+                heading="General Pediatrics"
                 subheading="Comprehensive Care"
                 paragraph="We provide a wide range of pediatric care services, from routine checkups to immunizations."
               />
@@ -148,7 +147,6 @@ export default function HomePage() {
                 type="feature"
                 icon={<IconVaccine size={44} />}
                 textCenter
-                stack
                 heading="Immunizations"
                 subheading="Protecting Health"
                 paragraph="Our clinic offers all recommended childhood vaccines to protect against various diseases."
@@ -157,8 +155,7 @@ export default function HomePage() {
                 type="feature"
                 icon={<IconApple size={44} />}
                 textCenter
-                stack
-                heading="Nutrition"
+                heading="Nutrition Advice"
                 subheading="Healthy Eating"
                 paragraph="Guidance on best nutrition practices to ensure the healthy growth and development of your child."
               />
@@ -166,7 +163,6 @@ export default function HomePage() {
                 type="feature"
                 icon={<IconNotebook size={44} />}
                 textCenter
-                stack
                 heading="Screening"
                 subheading="Monitoring Growth"
                 paragraph="Early detection and intervention for developmental disorders to keep your child happy and healthy."
@@ -181,8 +177,8 @@ export default function HomePage() {
           <Flex direction="column">
             <Block
               type="section"
-              heading="Meet Our Team"
-              paragraph="Our clinic is staffed by dedicated pediatricians and healthcare professionals who are passionate about children's health. Get to know the faces who will be caring for your child."
+              heading="Our listings"
+              paragraph="View some of our listings on AirBnb and book a beautiful stay in a beautiful place of your choosing."
               textCenter
             />
             <Wrapper
@@ -195,7 +191,6 @@ export default function HomePage() {
                 <Block
                   type="section"
                   variant="B"
-                  imageCircle
                   heading="Dr. Smith"
                   subheading="Lead Pediatrician"
                   paragraph={["With years of experience, Dr. Smith leads our team with passion and dedication to pediatric care."]}
@@ -206,7 +201,6 @@ export default function HomePage() {
                 <Block
                   type="section"
                   variant="B"
-                  imageCircle
                   heading="Dr. Jones"
                   subheading="Pediatric Nurse Practitioner"
                   paragraph={["Dr. Jones specializes in pediatric nursing, providing compassionate care and support to our patients."]}
@@ -217,7 +211,6 @@ export default function HomePage() {
                 <Block
                   type="section"
                   variant="B"
-                  imageCircle
                   heading="Dr. Lee"
                   subheading="Child Development Specialist"
                   paragraph={["Dr. Lee offers specialized care in child development, helping children reach their full potential."]}
@@ -245,7 +238,7 @@ export default function HomePage() {
               "Feel free to reach out with any questions you might have. We look forward to hearing from you!",
           ]}
           buttonLabel="Submit"
-          button={{ backgroundColor: 'navy', color: '#FFFFFF' }}
+          button={{ backgroundColor: '#AE8625', color: '#000' }}
       />
       </Wrapper>
       <Wrapper
@@ -261,13 +254,13 @@ export default function HomePage() {
           borderRadius="8px"
         />
       </Wrapper>
-        <Block
-          type="footer"
-          data={data}
-          image="logo.png"
-          heading="Ancaster Central Children's Clinic"
-          paragraph={["Providing compassionate and comprehensive pediatric care in Ancaster, Ontario. Our team is dedicated to supporting your child's health and well-being."]}
-        />
+      <Block
+        type="footer"
+        data={data}
+        imageDarkMode="xp/logo-light.png"
+        image="xp/logo.png"
+        paragraph={["Join us for a stay at our premium properties and experience unparalleled hospitality and comfort."]}
+      />
       </Box>
     </>
   );

@@ -10,7 +10,7 @@
 
     "dev": "next dev",
 
-    "prebuild": "node scripts/genMdx.js",
+    "prebuild": "node scripts/genBlocksMdx.js && node scripts/genWrappersMdx.js",
 
     "build": "next build",
 

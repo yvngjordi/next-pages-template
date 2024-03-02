@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Flex } from '@mantine/core';
 import { IconApple } from '@tabler/icons-react';
 
@@ -8,18 +8,20 @@ interface BannerProps {
   color: string;
   background: string;
   onClick?: any;
+  style?: CSSProperties;
 }
 
-const Banner: React.FC<BannerProps> = ({ heading, icon, color, background, onClick }) => {
+const Banner: React.FC<BannerProps> = ({ heading, icon, color, background, onClick, style }) => {
   const bannerStyle = {
     height: '30px',
     width: '100%',
-    backgroundColor: background || 'black',
+    background: background || 'black',
     color: color || 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     padding: '0 10px',
+    ...style,
   };
 
   return (

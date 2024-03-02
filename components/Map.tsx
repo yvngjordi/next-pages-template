@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 type MapProps = {
   address: string;
@@ -6,16 +6,22 @@ type MapProps = {
   height?: string | number;
   width?: string | number;
   frame?: string | number;
+  style?: CSSProperties;
   borderRadius?: number | string;
 };
 
-const Map: React.FC<MapProps> = ({ address, title = "", height, width, frame, borderRadius }) => {
+const Map: React.FC<MapProps> = ({ address = "old Toronto, Canada", title = "Map example", height, width, frame, borderRadius, style }) => {
   const query = encodeURIComponent(`${address} (${title})`);
+
+  const containerStyle: CSSProperties = {
+    width: '100%',
+    ...style,
+  };
 
   const src = `https://maps.google.com/maps?width=100%&height=600&hl=en&q=${query}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={containerStyle}>
       <iframe
         width={width || '100%'}
         height={height || '600'}

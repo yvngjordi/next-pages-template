@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 interface EmbedProps {
   src: string;
   type: 'pdf' | 'docx' | 'pptx' | 'other';
   margin?: string;
+  style?: CSSProperties;
   padding?: string;
   controls?: boolean;
   width?: string;
@@ -13,6 +14,7 @@ interface EmbedProps {
 const Embed: React.FC<EmbedProps> = ({
   src,
   type,
+  style,
   margin = '0',
   padding = '0',
   controls = true,
@@ -35,8 +37,15 @@ const Embed: React.FC<EmbedProps> = ({
 
   const embedUrl = getEmbedUrl(src, type);
 
+  const containerStyle: CSSProperties = {
+    margin,
+    padding,
+    height,
+    ...style,
+  };
+
   return (
-    <div style={{ margin, padding, height }}>
+    <div style={containerStyle}>
       <iframe
         src={embedUrl}
         width={width}

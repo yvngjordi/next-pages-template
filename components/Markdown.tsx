@@ -8,6 +8,7 @@ import { ActionIcon, Box, Text, Title, Image } from '@mantine/core';
 import { css } from '@emotion/react';
 import { useMediaQuery } from "@mantine/hooks";
 import dynamic from 'next/dynamic';
+import React, { CSSProperties } from 'react';
 
 interface CodeComponentProps {
     node?: any;
@@ -48,6 +49,7 @@ interface MarkdownProps {
   textRight?: boolean;
   textCenter?: boolean;
   textLeft?: boolean;
+  style?: CSSProperties;
 }
 
 const Markdown: React.FC<MarkdownProps> = ({
@@ -59,6 +61,7 @@ const Markdown: React.FC<MarkdownProps> = ({
   textRight,
   textCenter,
   textLeft,
+  style,
 }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   let textAlign: React.CSSProperties['textAlign'] = 'left';
@@ -79,7 +82,7 @@ const Markdown: React.FC<MarkdownProps> = ({
   };
 
   return (
-    <Box>
+    <Box style={style}>
       <Transition transitionFrom="left">
         {!isMobile && image && (
           <Box p="lg">

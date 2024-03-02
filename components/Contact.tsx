@@ -16,6 +16,7 @@ interface ContactFormProps {
     paragraphs?: string[];
     buttonLabel?: string;
     button?: React.CSSProperties;
+    style?: CSSProperties;
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({
@@ -25,6 +26,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     captcha,
     siteKey,
     heading,
+    style,
     subheading,
     paragraphs,
     buttonLabel,
@@ -66,9 +68,9 @@ const ContactForm: React.FC<ContactFormProps> = ({
     };
 
     return (
-        <Box style={{ paddingLeft: '5%', paddingRight: '5%' }}>
+        <Paper style={style} pl="sm" pr="sm">
             <Transition transitionFrom="right">
-                <Paper p="md" shadow="md">
+                <Paper p="md">
                     {heading && <Title mb="sm">{heading}</Title>}
                     {subheading && <Text mt={4} color="dimmed">{subheading}</Text>}
                     {paragraphs && paragraphs.map((paragraph, index) => <Text key={index}>{paragraph}</Text>)}
@@ -85,8 +87,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                                         <ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
                                     </div>
                                 )}
-                                {/* Use the added props for button customization */}
-                                <Button type="submit" style={{ ...button }}>{buttonLabel || 'Send Message'}</Button>
+                                <Button mt="md" type="submit" style={{ ...button }}>{buttonLabel || 'Send Message'}</Button>
                             </Transition>
                         </form>
                         <div style={{ width: isMobile ? '100%' : '50%', padding: isMobile ? '0px' : '1%' }}>
@@ -97,7 +98,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     </Flex>
                 </Paper>
             </Transition>
-        </Box>
+        </Paper>
     );
 };
 

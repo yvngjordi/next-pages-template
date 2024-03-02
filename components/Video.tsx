@@ -1,5 +1,5 @@
-import React from 'react';
-import { Flex } from '@mantine/core';
+import React, { CSSProperties } from 'react';
+import { Paper } from '@mantine/core';
 
 interface VideoProps {
   src: string;
@@ -9,6 +9,7 @@ interface VideoProps {
   muted?: boolean;
   poster?: string;
   width?: string;
+  style?: CSSProperties;
   height?: string;
   className?: string;
   padding?: string | number;
@@ -22,6 +23,7 @@ const Video: React.FC<VideoProps> = ({
   loop = false,
   muted = false,
   poster = '',
+  style,
   width = '100%',
   height = '80vh',
   className = '',
@@ -40,7 +42,7 @@ const Video: React.FC<VideoProps> = ({
   };
 
   return (
-    <Flex justify="center" align="center" >
+    <Paper p="sm" style={style}>
     <div className={className} style={{ width, height, borderRadius:'10px', padding, margin }}>
       {isYouTubeLink ? (
         <iframe
@@ -65,7 +67,7 @@ const Video: React.FC<VideoProps> = ({
         />
       )}
     </div>
-    </Flex>
+    </Paper>
   );
 };
 

@@ -29,6 +29,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
     paddingLeft: px,
     paddingRight: px,
     background: background || 'none',
+    backgroundSize:'cover',
     width: '100%',
     height: '100%',
     boxSizing: 'border-box',

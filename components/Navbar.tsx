@@ -1,7 +1,7 @@
-import React from 'react';
-import { Menu, Group, Center, Burger, Container, Drawer, Title, Flex } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconChevronDown } from '@tabler/icons-react';
+import React, { CSSProperties } from 'react';
+import { Menu, Group, Center, Burger, Container, Drawer, Title, Flex, ActionIcon, Divider, Box, useMantineColorScheme  } from '@mantine/core';
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { IconChevronDown, IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandFacebook, IconBrandMeta, IconBrandX } from '@tabler/icons-react';
 import classes from './navbar.module.css';
 import ThemeSwitcher from './ThemeSwitcher';
 import dynamic from 'next/dynamic';
@@ -22,10 +22,41 @@ type HeaderMenuProps = {
   heading?: string;
   sticky?: boolean;
   theme?: boolean;
+  style?: CSSProperties;
+  linkTwitter?: string;
+  linkYoutube?: string;
+  linkInstagram?: string;
+  linkLinkedin?: string;
+  linkGithub?: string;
+  linkFacebook?: string;
+  linkMeta?: string;
+  linkX?: string;
+  imageDarkMode?: string;
 };
 
-export default function Navbar({ links = [], image, heading, sticky = false, theme }: HeaderMenuProps) {
+export default function Navbar({
+  links = [],
+  image,
+  imageDarkMode,
+  heading,
+  sticky = false,
+  theme,
+  style,
+  linkTwitter,
+  linkYoutube,
+  linkInstagram,
+  linkLinkedin,
+  linkGithub,
+  linkFacebook,
+  linkMeta,
+  linkX
+ }: HeaderMenuProps) {
   const [opened, { toggle }] = useDisclosure(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const { colorScheme } = useMantineColorScheme();
+
+  const effectiveImage = colorScheme === 'dark' && imageDarkMode ? imageDarkMode : image;
+
 
   const items = links?.map((link) => {
     const menuItems = link.links?.map((item) => (
@@ -61,10 +92,57 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
           {link.label}
         </a>
       ))}
+      {(linkTwitter || linkYoutube || linkX || linkMeta || linkTwitter || linkGithub || linkLinkedin || linkFacebook) && (
+      <Box h="100%">
+      <Divider my={16} />
+      <Flex justify="center" align="flex-end" h="100%" style={{bottom:0}}>
+      {linkTwitter && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkTwitter} target="_blank">
+          <IconBrandTwitter style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkYoutube && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkYoutube} target="_blank">
+          <IconBrandYoutube style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkInstagram && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkInstagram} target="_blank">
+          <IconBrandInstagram style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkGithub && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkGithub} target="_blank">
+          <IconBrandGithub style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkFacebook && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkFacebook} target="_blank">
+          <IconBrandFacebook style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkLinkedin && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkLinkedin} target="_blank">
+          <IconBrandLinkedin style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkMeta && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkMeta} target="_blank">
+          <IconBrandMeta style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkX && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkX} target="_blank">
+          <IconBrandX style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      </Flex>
+      </Box>
+    )}
     </Drawer>
   );
 
-  const headerStyle: React.CSSProperties = sticky ? { position: 'sticky', top: 0, zIndex: 3 } : {};
+  const headerStyle: React.CSSProperties = sticky ? { position: 'sticky', top: 0, zIndex: 3, ...style } : {style};
 
   return (
     <header className={classes.header} style={headerStyle}>
@@ -72,7 +150,7 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
         <div className={classes.inner}>
           <Transition transitionFrom="left">
             <Group gap={5}>
-              <img src={image} alt="Logo" style={{ height: '30px' }} />
+              <img src={effectiveImage} alt="Logo" style={{ height: '30px' }} />
               <Title size="h3">{heading}</Title>
             </Group>
           </Transition>
@@ -83,7 +161,51 @@ export default function Navbar({ links = [], image, heading, sticky = false, the
           </Transition>
           <Transition transitionFrom="right">
             <div style={{right:0}}>
-              <Flex gap="lg">
+              <Flex gap="xs">
+              {!isMobile && (
+              <>
+              {linkTwitter && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkTwitter} target="_blank">
+                  <IconBrandTwitter style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkYoutube && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkYoutube} target="_blank">
+                  <IconBrandYoutube style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkInstagram && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkInstagram} target="_blank">
+                  <IconBrandInstagram style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkGithub && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkGithub} target="_blank">
+                  <IconBrandGithub style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkFacebook && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkFacebook} target="_blank">
+                  <IconBrandFacebook style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkLinkedin && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkLinkedin} target="_blank">
+                  <IconBrandLinkedin style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkMeta && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkMeta} target="_blank">
+                  <IconBrandMeta style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkX && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkX} target="_blank">
+                  <IconBrandX style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              </>
+            )}
                 {theme && (
                   <>
                     <ThemeSwitcher />

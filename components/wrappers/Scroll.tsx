@@ -1,6 +1,6 @@
 // ScrollAreaWrapper.tsx
 import React from 'react';
-import { ScrollArea, ScrollAreaProps } from '@mantine/core';
+import { ScrollArea, ScrollAreaProps, Paper } from '@mantine/core';
 
 interface ScrollProps extends ScrollAreaProps {
   width?: string | number;
@@ -21,9 +21,11 @@ const Scroll: React.FC<ScrollProps> = ({
   const paddingX = typeof px === 'number' ? `${px}px` : px;
 
   return (
+    <Paper withBorder>
     <ScrollArea scrollbarSize={6} scrollHideDelay={500} {...scrollAreaProps} style={{ width, height, padding: `${paddingY} ${paddingX}` }}>
       {children}
     </ScrollArea>
+    </Paper>
   );
 };
 

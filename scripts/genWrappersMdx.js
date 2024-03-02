@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const mdxDirectory = path.join(process.cwd(), 'mdx');
-const outputFilePath = path.join(process.cwd(), 'data', 'markdownArray.js');
+const mdxDirectory = path.join(process.cwd(), 'mdx/wrappers');
+const outputFilePath = path.join(process.cwd(), 'data', 'wrappersArray.js');
 
 fs.mkdirSync(path.dirname(outputFilePath), { recursive: true });
 
@@ -19,5 +19,5 @@ const markdownArray = filenames
     return { name: slug, content };
   });
 
-const moduleContent = `export const markdownArray = ${JSON.stringify(markdownArray, null, 2)};`;
+const moduleContent = `export const wrappersArray = ${JSON.stringify(markdownArray, null, 2)};`;
 fs.writeFileSync(outputFilePath, moduleContent);
