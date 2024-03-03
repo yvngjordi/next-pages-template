@@ -133,14 +133,14 @@ export default function Docs() {
         <Divider my={8} />
         {blocksArray?.map(({ name }, index) => (
           <Box key={index} onClick={() => selectDocument(name, 'blocks')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
-            <Text c="dimmed">{name}</Text>
+            <Text c={selectedDoc === name ? `black` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
           </Box>
         ))}
         <Text mt="sm" size="lg" style={{fontWeight:'bold'}}>Wrappers</Text>
         <Divider my={8} />
         {wrappersArray?.map(({ name }, index) => (
           <Box key={index} onClick={() => selectDocument(name, 'wrappers')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
-            <Text c="dimmed">{name}</Text>
+            <Text c={selectedDoc === name ? `black` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
           </Box>
         ))}
       </AppShell.Navbar>
