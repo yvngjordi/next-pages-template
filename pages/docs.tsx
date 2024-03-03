@@ -1,7 +1,7 @@
 import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
-import { Box, Flex, Divider, Paper, Text, AppShell, Burger, Group, Skeleton } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconCode, IconVaccine, IconMap, IconApple, IconIcons } from '@tabler/icons-react';
+import { Box, Flex, Divider, Paper, Text, AppShell, Burger, Group, Skeleton, useMantineColorScheme } from '@mantine/core';
+import { IconStethoscope, IconNotebook, IconCode, IconVaccine, IconMap, IconApple, IconIcons, IconCube } from '@tabler/icons-react';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { blocksArray as importedBlocksArray } from '../data/blocksArray';
 import { wrappersArray as importedWrappersArray } from '../data/wrappersArray';
@@ -25,17 +25,22 @@ const tabs = [
 ];
 
 const links = [
-  { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
+  { link: '#', label: 'Home' },
+  { link: '#', label: 'About' },
   {
     link: '#1',
-    label: 'Resources',
+    label: 'Services',
     links: [
-      { link: '/resource-1', label: 'Resource 1' },
-      { link: '/resource-2', label: 'Resource 2' },
+      { link: '#', label: 'Marketing' },
+      { link: '#', label: 'Graphic design' },
     ],
   },
-  { link: '/contact', label: 'Contact' },
+  { link: '#', label: 'Contact' },
+];
+
+const switches = [
+  { title: "Enable Notifications", description: "Turn on notifications to stay updated.", backgroundColor: "#f0f2f5", disabled: false },
+  { title: "Dark Mode", description: "Enable dark mode for a better night-time reading experience.", disabled: false }
 ];
 
 const data = [
@@ -65,6 +70,18 @@ const headers = [
   { key: 'propDescription', label: 'Description' }
 ];
 
+const tableData = [
+  { id: '1', name: 'John Doe', email: 'john@doe.com', role: 'Administrator' },
+  { id: '2', name: 'Jane Doe', email: 'jane@doe.com', role: 'User' }
+];
+
+const tableHeaders = [
+  { key: 'id', label: 'ID' },
+  { key: 'name', label: 'Name' },
+  { key: 'email', label: 'Email' },
+  { key: 'role', label: 'Role' }
+];
+
 const safeBlocksArray = blocksArray || [];
 const safeWrappersArray = wrappersArray || [];
 
@@ -76,6 +93,9 @@ export default function Docs() {
   const [opened, { toggle }] = useDisclosure();
   const [selectedDoc, setSelectedDoc] = useState(defaultBlockName);
   const [selectedType, setSelectedType] = useState('blocks');
+  const { colorScheme } = useMantineColorScheme();
+
+  const currentSyntaxTheme = colorScheme === 'dark' ? 'vscdarkplus' : 'vs';
 
   const selectDocument = (docName: string, type: 'blocks' | 'wrappers') => {
     setSelectedDoc(docName);
@@ -84,6 +104,7 @@ export default function Docs() {
 
   const selectedArray = selectedType === 'blocks' ? safeBlocksArray : safeWrappersArray;
 
+  const markdownData = "## Welcome to Our Platform\nHere's some **Markdown** content with `code` snippets and more.\n```js\nconsole.log('Hello, world!');\n```"
   return (
     <>
       <AppShell
@@ -129,13 +150,13 @@ export default function Docs() {
             <Wrapper
               type="section"
               py={40}
-              px={isMobile ? 20 : 20}
+              px={isMobile ? 10 : 20}
               fill
             >
           {selectedArray
             .filter(({ name }) => name === selectedDoc)
             .map(({ name, description, content, content2, props }, index) => (
-              <Flex key={index} direction="column" w={isMobile ? '75vw' : '70vw'}>
+              <Flex key={index} direction="column" w={isMobile ? '75vw' : '78vw'}>
                 <Block
                   type="section"
                   variant="C"
@@ -159,16 +180,32 @@ export default function Docs() {
                 <Block
                   type={name}
                   links={links}
-                  data={data}
+                  headers={tableHeaders}
+                  data={name === 'switches' ? switches : name === 'table' ? tableData : data}
                   heading={`${name.charAt(0).toUpperCase() + name.slice(1)} Title`}
                   paragraph="This is some example paragraph text for this block type. Copy the code in the tab above!"
-                  image={name === 'navbar' || name === 'footer' ? "logo-sb.png" : "https://via.placeholder.com/1024"}
+                  image={name === 'navbar' || name === 'footer' ? "logo-sb.png" : name !== 'markdown' ? "https://via.placeholder.com/1024" : undefined}
                   linkLinkedin="x"
                   linkX="x"
                   linkGithub="x"
-                  icon={<IconIcons size={22}/>}
+                  icon={<IconCube size={22}/>}
                   textCenter
+                  background="rgb(3, 121, 234)"
                   theme
+                  sticky
+                  file="https://example.com/document.pdf"
+                  fileType="pdf"
+                  margin="10px"
+                  padding="20px"
+                  syntaxTheme="vs"
+                  markdown={markdownData}
+                  controls={true}
+                  video="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  autoplay={false}
+                  loop={true}
+                  muted={false}
+                  button={{ text: "Learn More", onClick: () => console.log("Clicked!"), color: "white", backgroundColor: "blue" }}
+                  button2={{ text: "Contact Us", onClick: () => console.log("Contact Clicked!"), color: "blue", backgroundColor: "transparent", border: "1px solid blue" }}
                 />
                 </Wrapper>
                 <Wrapper
@@ -179,6 +216,7 @@ export default function Docs() {
                 >
                 <Block
                   type="markdown"
+                  syntaxTheme={currentSyntaxTheme}
                   markdown={content}
                 />
                 </Wrapper>
@@ -191,6 +229,7 @@ export default function Docs() {
                 <Block
                   type="markdown"
                   markdown={content2}
+                  syntaxTheme={currentSyntaxTheme}
                 />
               </Flex>
             ))}

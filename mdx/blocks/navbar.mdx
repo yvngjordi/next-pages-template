@@ -1,15 +1,33 @@
 ```typescript
-// pages/index.tsx
-import type { NextPage } from 'next';
-import Greeting from '../components/Greeting';
+import { Block } from '@sparkblock/core';
 
-const Home: NextPage = () => {
+const links = [
+  { link: '#', label: 'Home' },
+  { link: '#', label: 'About' },
+  {
+    link: '#1',
+    label: 'Services',
+    links: [
+      { link: '#', label: 'Marketing' },
+      { link: '#', label: 'Graphic design' },
+    ],
+  },
+  { link: '#', label: 'Contact' },
+];
+
+const Component() {
   return (
-    <div>
-      <Greeting name="John Doe" />
-    </div>
+    <Block
+      type="navbar"
+      links={links}
+      heading="Navbar title"
+      image="logo.png"
+      linkLinkedin="#"
+      linkX="#"
+      linkGithub="#"
+      sticky
+      theme
+    />
   );
-};
-
-export default Home;
+}
 ```

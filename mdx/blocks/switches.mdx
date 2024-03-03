@@ -1,37 +1,23 @@
 ```typescript
 import { Block } from '@sparkblock/core';
 
-const links = [
-  { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
-  {
-    link: '#1',
-    label: 'Resources',
-    links: [
-      { link: '/resource-1', label: 'Resource 1' },
-      { link: '/resource-2', label: 'Resource 2' },
-    ],
-  },
-  { link: '/contact', label: 'Contact' },
+const data = [
+  { title: "Enable Notifications", description: "Turn on notifications to stay updated.", backgroundColor: "#f0f2f5", disabled: false },
+  { title: "Dark Mode", description: "Enable dark mode for a better night-time reading experience.", disabled: false }
 ];
 
-const Docs() {
+const Component() {
   return (
+  <>
     <Block
-      type={name}
+      type="switches"
       data={data}
-      heading={`Footer title`}
+      onSwitchChange={(title, checked) => console.log(`${title} is now ${checked ? 'enabled' : 'disabled'}`)}
+      heading="Switches Title"
       paragraph="This is some example paragraph text for this block type. Copy the code in the tab above!"
-      image="logo.PNG"
-      linkTwitter="#"
-      linkInstagram="#"
-      linkFacebook="#"
-      linkLinkedin="#"
-      linkX="#"
-      linkGithub="#"
-      linkMeta="#"
-      linkYoutube="#"
+      textCenter
     />
+  </>
   );
 }
 ```

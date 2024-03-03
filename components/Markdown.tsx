@@ -1,14 +1,46 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import {
+  vscDarkPlus,
+  prism,
+  coy,
+  solarizedlight,
+  tomorrow,
+  duotoneDark,
+  duotoneLight,
+  okaidia,
+  darcula,
+  github,
+  nightOwl,
+  nord,
+  synthwave84,
+  vs
+} from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import ReactMarkdown from 'react-markdown';
 import styled from '@emotion/styled';
 import { FunctionComponent, useState, useEffect } from 'react';
 import { IconClipboard } from '@tabler/icons-react';
-import { ActionIcon, Box, Text, Title, Image } from '@mantine/core';
+import { ActionIcon, Box, Text, Title, Image, Divider } from '@mantine/core';
 import { css } from '@emotion/react';
 import { useMediaQuery } from "@mantine/hooks";
 import dynamic from 'next/dynamic';
 import React, { CSSProperties } from 'react';
+
+const themeOptions = {
+  vscdarkplus: vscDarkPlus,
+  prism: prism,
+  coy: coy,
+  solarizedlight: solarizedlight,
+  tomorrow: tomorrow,
+  duotonedark: duotoneDark,
+  duotonelight: duotoneLight,
+  okaidia: okaidia,
+  darcula: darcula,
+  github: github,
+  nightowl: nightOwl,
+  nord: nord,
+  synthwave84: synthwave84,
+  vs: vs,
+};
 
 interface CodeComponentProps {
     node?: any;
@@ -50,6 +82,7 @@ interface MarkdownProps {
   textCenter?: boolean;
   textLeft?: boolean;
   style?: CSSProperties;
+  syntaxTheme?: keyof typeof themeOptions;
 }
 
 const Markdown: React.FC<MarkdownProps> = ({
@@ -62,6 +95,7 @@ const Markdown: React.FC<MarkdownProps> = ({
   textCenter,
   textLeft,
   style,
+  syntaxTheme = 'vs',
 }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   let textAlign: React.CSSProperties['textAlign'] = 'left';
@@ -82,7 +116,7 @@ const Markdown: React.FC<MarkdownProps> = ({
   };
 
   return (
-    <Box style={style}>
+    <Box style={style} p="sm" w="100%">
       <Transition transitionFrom="left">
         {!isMobile && image && (
           <Box p="lg">
@@ -91,11 +125,14 @@ const Markdown: React.FC<MarkdownProps> = ({
         )}
       </Transition>
       {(heading || paragraph || subheading) && (
+        <>
         <Box style={{ textAlign: textAlign }} p="md">
           {heading && <Title>{heading}</Title>}
           {subheading && <Text size="lg" color="dimmed">{subheading}</Text>}
           {renderParagraphs()}
         </Box>
+          <Divider my={8}/>
+        </>
       )}
       <ReactMarkdown
       components={{
@@ -140,7 +177,7 @@ const Markdown: React.FC<MarkdownProps> = ({
                         word-wrap: break-word;
                         overflow-x: auto;
                       `}
-                      style={vscDarkPlus as any}
+                      style={themeOptions[syntaxTheme]}
                       language={match?.[1] || 'text'}
                       PreTag="div"
                       {...props}

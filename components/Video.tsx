@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import { Paper } from '@mantine/core';
 
 interface VideoProps {
-  src: string;
+  video: string;
   autoplay?: boolean;
   controls?: boolean;
   loop?: boolean;
@@ -17,7 +17,7 @@ interface VideoProps {
 }
 
 const Video: React.FC<VideoProps> = ({
-  src,
+  video,
   autoplay = false,
   controls = true,
   loop = false,
@@ -30,15 +30,15 @@ const Video: React.FC<VideoProps> = ({
   padding = '0px',
   margin = '20px',
 }) => {
-  const isYouTubeLink = /youtu(be\.com|\.be)/i.test(src);
+  const isYouTubeLink = /youtu(be\.com|\.be)/i.test(video);
 
   const getVideoUrl = (): string => {
     if (isYouTubeLink) {
-      const videoId = src.split(/v=|\/v\/|youtu\.be\//)[1].split(/[?&]/)[0];
+      const videoId = video.split(/v=|\/v\/|youtu\.be\//)[1].split(/[?&]/)[0];
       const baseYouTubeUrl = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? '1' : '0'}&loop=${loop ? '1' : '0'}&playlist=${videoId}`;
       return baseYouTubeUrl;
     }
-    return src;
+    return video;
   };
 
   return (
@@ -56,7 +56,7 @@ const Video: React.FC<VideoProps> = ({
         ></iframe>
       ) : (
         <video
-          src={src}
+          src={video}
           controls={controls}
           autoPlay={autoplay}
           loop={loop}

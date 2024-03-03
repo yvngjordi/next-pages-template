@@ -15,7 +15,7 @@ interface SwitchDataItem {
   disabled?: boolean;
 }
 
-interface SwitchBlockProps {
+interface SwitchesProps {
   data?: SwitchDataItem[];
   onSwitchChange?: (title: string, checked: boolean) => void;
   heading?: string;
@@ -27,7 +27,7 @@ interface SwitchBlockProps {
   style?: CSSProperties;
 }
 
-export const SwitchBlock: React.FC<SwitchBlockProps> = ({
+const Switches: React.FC<SwitchesProps> = ({
   data = [],
   onSwitchChange,
   heading,
@@ -98,3 +98,5 @@ export const SwitchBlock: React.FC<SwitchBlockProps> = ({
     </Card>
   );
 };
+
+export default Switches;

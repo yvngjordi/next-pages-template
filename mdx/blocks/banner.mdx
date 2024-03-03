@@ -1,37 +1,19 @@
 ```typescript
 import { Block } from '@sparkblock/core';
+import { IconCube } from '@tabler/icons-react';
 
-const links = [
-  { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
-  {
-    link: '#1',
-    label: 'Resources',
-    links: [
-      { link: '/resource-1', label: 'Resource 1' },
-      { link: '/resource-2', label: 'Resource 2' },
-    ],
-  },
-  { link: '/contact', label: 'Contact' },
-];
-
-const Docs() {
+const Component() {
   return (
+  <>
     <Block
-      type={name}
-      data={data}
-      heading={`Footer title`}
-      paragraph="This is some example paragraph text for this block type. Copy the code in the tab above!"
-      image="logo.PNG"
-      linkTwitter="#"
-      linkInstagram="#"
-      linkFacebook="#"
-      linkLinkedin="#"
-      linkX="#"
-      linkGithub="#"
-      linkMeta="#"
-      linkYoutube="#"
+      type="banner"
+      heading="Banner Title"
+      leftIcon={<IconCube />}
+      color="white"
+      background="black"
+      onClick={() => console.log('Banner clicked')}
     />
+  </>
   );
 }
 ```

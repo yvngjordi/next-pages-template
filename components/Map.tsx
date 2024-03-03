@@ -10,7 +10,7 @@ type MapProps = {
   borderRadius?: number | string;
 };
 
-const Map: React.FC<MapProps> = ({ address = "old Toronto, Canada", title = "Map example", height, width, frame, borderRadius, style }) => {
+const Map: React.FC<MapProps> = ({ address = "old Toronto, Canada", title = "Map Title", height, width, frame, borderRadius, style }) => {
   const query = encodeURIComponent(`${address} (${title})`);
 
   const containerStyle: CSSProperties = {

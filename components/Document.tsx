@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react';
 
-interface EmbedProps {
-  src: string;
-  type: 'pdf' | 'docx' | 'pptx' | 'other';
+interface DocumentProps {
+  file: string;
+  fileType: 'pdf' | 'docx' | 'pptx' | 'other';
   margin?: string;
   style?: CSSProperties;
   padding?: string;
@@ -11,15 +11,15 @@ interface EmbedProps {
   height?: string;
 }
 
-const Embed: React.FC<EmbedProps> = ({
-  src,
-  type,
+const Document: React.FC<DocumentProps> = ({
+  file,
+  fileType,
   style,
   margin = '0',
   padding = '0',
   controls = true,
   width = '100%',
-  height = '80vh',
+  height = '400px',
 }) => {
   const getEmbedUrl = (fileSrc: string, fileType: string): string => {
     switch (fileType) {
@@ -35,7 +35,7 @@ const Embed: React.FC<EmbedProps> = ({
     }
   };
 
-  const embedUrl = getEmbedUrl(src, type);
+  const embedUrl = getEmbedUrl(file, fileType);
 
   const containerStyle: CSSProperties = {
     margin,
@@ -58,4 +58,4 @@ const Embed: React.FC<EmbedProps> = ({
   );
 };
 
-export default Embed;
+export default Document;

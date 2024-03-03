@@ -4,7 +4,7 @@ export { default as Banner } from './Banner';
 export { default as Block } from './Block';
 export { default as Wrapper } from './Wrapper';
 export { default as Contact } from './Contact';
-export { default as Embed } from './Embed';
+export { default as Document } from './Document';
 export { default as Footer } from './Footer';
 export { default as Markdown } from './Markdown';
 export { default as Navbar } from './Navbar';

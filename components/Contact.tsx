@@ -5,7 +5,7 @@ import { TextInput, Textarea, Select, Button, Paper, Box, Title, Divider, Text, 
 import ReCAPTCHA from "react-google-recaptcha";
 import Transition from './wrappers/Transition';
 
-interface ContactFormProps {
+interface ContactProps {
     dropdown: { value: string; label: string }[];
     image: string;
     fetchLink: string;
@@ -13,13 +13,13 @@ interface ContactFormProps {
     siteKey: string;
     heading?: string;
     subheading?: string;
-    paragraphs?: string[];
+    paragraph?: string[];
     buttonLabel?: string;
     button?: React.CSSProperties;
     style?: CSSProperties;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({
+const Contact: React.FC<ContactProps> = ({
     dropdown,
     image,
     fetchLink,
@@ -28,7 +28,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     heading,
     style,
     subheading,
-    paragraphs,
+    paragraph,
     buttonLabel,
     button,
 }) => {
@@ -73,7 +73,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 <Paper p="md">
                     {heading && <Title mb="sm">{heading}</Title>}
                     {subheading && <Text mt={4} color="dimmed">{subheading}</Text>}
-                    {paragraphs && paragraphs.map((paragraph, index) => <Text key={index}>{paragraph}</Text>)}
+                    <Box p="xs">
+                      {typeof paragraph === 'string' ? (
+                        <Text >{paragraph}</Text>
+                      ) : (
+                        paragraph?.map((p, index) => <Text key={index} >{p}</Text>)
+                      )}
+                    </Box>
                     <Divider my={12} />
                     <Flex direction={isMobile ? 'column-reverse' : 'row'}>
                         <form onSubmit={form.onSubmit(handleSubmit)} style={{ width: isMobile ? '100%' : '50%', marginTop: isMobile ? '4vh' : '0' }}>
@@ -102,4 +108,4 @@ const ContactForm: React.FC<ContactFormProps> = ({
     );
 };
 
-export default ContactForm;
+export default Contact;
