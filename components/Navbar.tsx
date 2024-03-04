@@ -32,6 +32,9 @@ type HeaderMenuProps = {
   linkMeta?: string;
   linkX?: string;
   imageDarkMode?: string;
+  mobileMenu?: ReactNode; // Prop for custom mobile menu content
+  onClose?: () => void; // Function to handle closing the mobile drawer
+  onOpen?: () => void; // Function to handle opening the mobile drawer
 };
 
 export default function Navbar({
@@ -49,7 +52,10 @@ export default function Navbar({
   linkGithub,
   linkFacebook,
   linkMeta,
-  linkX
+  linkX,
+  mobileMenu,
+  onClose,
+  onOpen,
  }: HeaderMenuProps) {
   const [opened, { toggle }] = useDisclosure(false);
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -82,8 +88,8 @@ export default function Navbar({
     );
   }) || [];
 
-  const mobileMenu = (
-    <Drawer opened={opened} onClose={toggle} title={heading} padding="md" size="sm" position="right" style={{zIndex:99999}}>
+  const defaultMobileMenu = (
+    <>
       {links?.map((link) => (
         <a key={link.label} href={link.link} className={classes.link} onClick={(event) => {
           event.preventDefault();
@@ -139,7 +145,7 @@ export default function Navbar({
       </Flex>
       </Box>
     )}
-    </Drawer>
+    </>
   );
 
   const headerStyle: React.CSSProperties = sticky
@@ -220,7 +226,25 @@ export default function Navbar({
         </div>
       </Container>
       <div style={{zIndex:999999}}>
-      {mobileMenu}
+      <Drawer
+        opened={opened}
+        onClose={toggle}
+        title={heading}
+        padding="md"
+        size="sm"
+        position="right"
+        style={{zIndex:99999}}
+      >
+      {mobileMenu ? (
+        <Box onClick={toggle} >
+          {mobileMenu}
+        </Box>
+      ) : (
+        <>
+          {defaultMobileMenu}
+        </>
+      )}
+      </Drawer>
       </div>
     </header>
   );

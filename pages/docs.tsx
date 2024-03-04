@@ -138,6 +138,58 @@ export default function Docs() {
               heading="Sparkblock UI"
               sticky
               theme
+              mobileMenu={
+                <>
+                <Wrapper
+                  type="scroll"
+                  height="85vh"
+                  scrollbarSize={0}
+                  width="100%"
+                  py={20}
+                  px={20}
+                >
+                <Box style={{border:'1px solid rgba(160,160,160,0.2)'}}>
+                  <Flex w="100%" p="xs" style={{background: 'rgba(160,160,160,0.2)'}}>
+                    <Text size="sm" c="dimmed" style={{transform:'translateY(1.6px)'}}><IconPlayerPlay size={17} /></Text>
+                    <Text size="sm" c="dimmed" ml="5px">Quick Start</Text>
+                  </Flex>
+                  <Box p="xs">
+                    {categories.quickStart.map((item) => (
+                      <Box key={item.id} onClick={() => { setActiveCategory(item.id); setSelectedDoc(null)}} style={{ cursor: 'pointer' }}>
+                        <Text c={activeCategory === item.id ? `` : 'dimmed'}>{activeCategory === item.id ? `•- ${item.label}` : `${item.label}`}</Text>
+                      </Box>
+                    ))}
+                  </Box>
+                </Box>
+                <Box style={{border:'1px solid rgba(160,160,160,0.2)'}} mt="sm">
+                <Flex w="100%" p="xs" style={{background: 'rgba(160,160,160,0.2)'}}>
+                  <Text size="sm" c="dimmed" style={{transform:'translateY(1.6px)'}}><IconCube size={17} /></Text>
+                  <Text size="sm" c="dimmed" ml="5px" >Blocks</Text>
+                </Flex>
+                <Box p="xs">
+                  {blocksArray?.map(({ name }, index) => (
+                    <Box key={index} onClick={() => selectDocument(name, 'blocks')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
+                      <Text c={selectedDoc === name ? `` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
+                    </Box>
+                  ))}
+                  </Box>
+                  </Box>
+                  <Box style={{border:'1px solid rgba(160,160,160,0.2)'}} mt="sm">
+                  <Flex w="100%" p="xs" style={{background: 'rgba(160,160,160,0.2)'}}>
+                    <Text size="sm" c="dimmed" style={{transform:'translateY(1.6px)'}}><IconStack2 size={17} /></Text>
+                    <Text size="sm" c="dimmed" ml="5px">Wrappers</Text>
+                  </Flex>
+                  <Box p="xs">
+                  {wrappersArray?.map(({ name }, index) => (
+                    <Box key={index} onClick={() => selectDocument(name, 'wrappers')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
+                      <Text c={selectedDoc === name ? `` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
+                    </Box>
+                  ))}
+                  </Box>
+                  </Box>
+                </Wrapper>
+                </>
+              }
             />
       </AppShell.Header>
       <AppShell.Navbar p="0" w={210}>
