@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import { Menu, Group, Center, Burger, Container, Drawer, Title, Flex, ActionIcon, Divider, Box, useMantineColorScheme  } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { IconChevronDown, IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandFacebook, IconBrandMeta, IconBrandX } from '@tabler/icons-react';
