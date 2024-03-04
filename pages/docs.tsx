@@ -5,7 +5,7 @@ import { IconStethoscope, IconNotebook, IconCode, IconPlayerPlay, IconStack2, Ic
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { blocksArray as importedBlocksArray } from '../data/blocksArray';
 import { wrappersArray as importedWrappersArray } from '../data/wrappersArray';
-import { gettingStartedMarkdown, usingBlocksMarkdown, usingWrappersMarkdown } from '../data/baseArray';
+import { gettingStartedMarkdown, usingBlocksMarkdown, usingWrappersMarkdown, usingMantineMarkdown, communityMarkdown } from '../data/baseArray';
 import React, { useState } from 'react';
 
 interface BlockItem {
@@ -89,7 +89,6 @@ const categories = {
     { id: 'using-blocks', label: 'Using Blocks' },
     { id: 'using-wrappers', label: 'Using Wrappers' },
     { id: 'using-mantine', label: 'Using Mantine' },
-    { id: 'supported-stacks', label: 'Supported stacks' },
     { id: 'community', label: 'Community' },
   ],
 };
@@ -229,17 +228,20 @@ export default function Docs() {
             )}
             {activeCategory === 'using-mantine' && selectedDoc === null && (
               <>
-
+              <Block
+                type="markdown"
+                markdown={usingMantineMarkdown}
+                syntaxTheme={currentSyntaxTheme}
+              />
               </>
             )}
             {activeCategory === 'community' && selectedDoc === null && (
               <>
-
-              </>
-            )}
-            {activeCategory === 'supported-stacks' && selectedDoc === null && (
-              <>
-                bruh
+              <Block
+                type="markdown"
+                markdown={communityMarkdown}
+                syntaxTheme={currentSyntaxTheme}
+              />
               </>
             )}
           {selectedArray
@@ -297,7 +299,7 @@ export default function Docs() {
                   button2={{ text: "Contact Us", onClick: () => console.log("Contact Clicked!"), color: "blue", backgroundColor: "transparent", border: "1px solid blue" }}
                 />
                 </Wrapper>
-                                <Box w={isMobile ? '85vw' : '77vw'}>
+              <Box w={isMobile ? '85vw' : '77vw'}>
                 <Wrapper
                   type="scroll"
                   scrollbarSize={0}
@@ -310,9 +312,8 @@ export default function Docs() {
                   syntaxTheme={currentSyntaxTheme}
                   markdown={content}
                 />
-
                 </Wrapper>
-                                </Box>
+              </Box>
                 <Block
                   type="table"
                   data={props}

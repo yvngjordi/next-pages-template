@@ -143,3 +143,76 @@ The use of the \`Wrapper\` component in this way allows for a modular approach t
 
 Wrappers are versatile components in the Sparkblocks UI Kit that can be used to enhance the layout and presentation of your application. By understanding and utilizing wrappers, you can create more engaging and cohesive user interfaces.
 `;
+
+export const usingMantineMarkdown = `
+# Leveraging Mantine in Sparkblocks UI Kit
+
+The Sparkblocks UI Kit is built on top of Mantine, a powerful and modern React component library. This foundational choice means that all the components and hooks available in Mantine can be seamlessly utilized within Sparkblocks. This integration enriches Sparkblocks with Mantine's comprehensive suite of UI components and utilities, allowing developers to craft highly interactive and accessible applications with ease. Let's delve into how you can leverage Mantine's components within the Sparkblocks ecosystem.
+
+## Example: Incorporating Mantine Components
+
+To demonstrate the seamless integration between Sparkblocks and Mantine, let's create a user profile card using Mantine's \`Card\`, \`Avatar\`, and \`Text\` components within a Sparkblocks application.
+
+\`\`\`jsx
+// Instead of import { Card, Avatar, Text, Group } from '@mantine/core';
+// We can use
+import { Wrapper, Card, Avatar, Text, Group } from '@sparkblocks/core';
+
+const UserProfileCard = () => {
+  return (
+    <Wrapper
+      type="section"
+      py={50}
+      px={20}
+      background="linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)"
+      fill={true}
+    >
+      <Card shadow="sm" padding="lg">
+        <Group position="apart" style={{ marginBottom: 20, alignItems: 'center' }}>
+          <Avatar src="https://avatars.githubusercontent.com/u/username" radius="xl" />
+          <Text weight={500}>John Doe</Text>
+        </Group>
+        <Text size="sm" color="dimmed">
+          John is a software engineer with a passion for building scalable web applications and engaging user experiences.
+        </Text>
+      </Card>
+    </Wrapper>
+  );
+};
+\`\`\`
+
+In this example, we wrap the Mantine \`Card\` component within a Sparkblocks \`Wrapper\` to ensure consistent spacing and background styling across the application. The \`Card\` itself contains an \`Avatar\` and two \`Text\` components to display the user's profile picture and information. This not only showcases the ease of integrating Mantine components within Sparkblocks but also highlights the flexibility and composability of using both libraries together.
+
+## Benefits of Integration
+
+By building Sparkblocks on top of Mantine, we provide developers with several key benefits:
+
+- **Comprehensive Component Library:** Access to a wide range of pre-designed components that can be customized and extended to fit your application's needs.
+- **Consistent Design System:** Leverage Mantine's design system within Sparkblocks to maintain consistency in appearance and behavior across your application.
+- **Enhanced Productivity:** Utilize Mantine's hooks and utilities to accelerate development, focusing on building unique features rather than reinventing common UI patterns.
+- **Accessibility and Responsiveness:** Mantine components are designed with accessibility and responsiveness in mind, ensuring that applications are accessible and adaptable to various devices.
+
+In conclusion, the integration of Mantine within Sparkblocks opens up a vast array of possibilities for building rich, interactive, and accessible web applications. By leveraging the strengths of Mantine, developers can enjoy a streamlined development process, enabling them to deliver high-quality applications faster and more efficiently.
+`;
+
+export const communityMarkdown = `
+# Join Our Community at Spark Engine
+
+Join the vibrant community behind Sparkblocks, Spark Engine, the innovative force propelling our cutting-edge AI technology company. Our journey began with a vision to harness the power of AI in transforming how web applications are developed, making the process faster, more efficient, and accessible to a wider audience. This vision is embodied in our products, including the intuitive Sparkblocks UI Kit and Spark Study, our specialized AI for higher education.
+
+## Spark Engine: Innovating AI Technology
+
+At the heart of our endeavors is [Spark Engine AI](https://sparkengine.ai), a platform where our passion for AI technology translates into real-world applications that simplify and enhance web development. The development of the Sparkblocks UI Kit is a testament to our commitment to innovation, offering developers a powerful toolset to create stunning and functional web applications with ease.
+
+## Spark Study: Empowering Higher Education
+
+Our commitment to leveraging AI for the betterment of society is further showcased in [Spark Study](https://spark.study), an AI-driven platform dedicated to higher education. By utilizing some aspects of our UI kit, Spark Study stands as a prime example of how our technologies can be applied to specific industries to foster growth, learning, and accessibility.
+
+## Become a Part of Our Growing Community
+
+We invite you to join our journey and become a vital part of our growing community. Whether you're a developer, student, educator, or tech enthusiast, there's a place for you here. By joining our Discord server, you'll connect with like-minded individuals, gain insights into our latest projects, and have the opportunity to contribute to our mission. Your support and contributions are what fuel our continuous innovation and drive towards making a significant impact in the world of AI and web development.
+
+[Join our Discord server](https://discord.gg/sparkengine) today and stay updated as we embark on exciting projects, including using our UI kit to build an AI capable of generating web applications in a flash. As a member of our community, you'll be at the forefront of technological advancements and have the chance to contribute to shaping the future of AI-driven development.
+
+We're more than just a technology company; we're a community of innovators, dreamers, and builders. Join us, and let's create something amazing together.
+`;
