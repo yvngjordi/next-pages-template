@@ -27,16 +27,15 @@ const tabs = [
 
 const links = [
   { link: '#', label: 'Home' },
-  { link: '#', label: 'About' },
+  { link: '#', label: 'Documentation' },
   {
     link: '#1',
-    label: 'Services',
+    label: 'Partners',
     links: [
-      { link: '#', label: 'Marketing' },
-      { link: '#', label: 'Graphic design' },
+      { link: 'https://sparkengine.ai', label: 'Spark Engine' },
+      { link: 'https://spark.study', label: 'Spark Study' },
     ],
   },
-  { link: '#', label: 'Contact' },
 ];
 
 const switches = [
@@ -347,8 +346,8 @@ export default function Docs() {
                   autoplay={false}
                   loop={true}
                   muted={false}
-                  button={{ text: "Learn More", onClick: () => console.log("Clicked!"), color: "white", backgroundColor: "blue" }}
-                  button2={{ text: "Contact Us", onClick: () => console.log("Contact Clicked!"), color: "blue", backgroundColor: "transparent", border: "1px solid blue" }}
+                  button={name === 'feature' ? undefined : ({ text: "Learn More", onClick: () => console.log("Clicked!"), color: "white", backgroundColor: "blue" }) }
+                  button2={name === 'feature' ? undefined : ({ text: "Contact Us", onClick: () => console.log("Contact Clicked!"), color: "blue", backgroundColor: "transparent", border: "1px solid blue" })}
                 />
                 </Wrapper>
               <Box w={isMobile ? '85vw' : '77vw'}>
