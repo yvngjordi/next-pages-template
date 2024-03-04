@@ -103,3 +103,43 @@ const Component = () => {
 
 In this little more advanced example, we've added a button to our \`Block\`. The \`button\` prop accepts an array of objects including stylings like \`text\`, \`onClick\` handler, \`color\`, \`backgroundColor\`, and \`border\`. This structure allows for flexibility and block control. Please see the Feature block doc for a preview and more defined example.
 `;
+
+export const usingWrappersMarkdown = `
+# Using Wrappers in Sparkblocks UI Kit
+
+Wrappers in the Sparkblocks UI Kit play a crucial role in structuring and organizing the layout of your application. They provide a consistent way to manage spacing, alignment, and background settings across different sections of your UI. Let's explore how to utilize wrappers effectively with an example that demonstrates their capability to enhance the structure and appearance of a UI section.
+
+## Example: Section with Background and Padding
+
+Imagine you want to create a section on your webpage that stands out by having a distinct background and is nicely padded from the rest of your content. Here's how you could use a \`Wrapper\` component from Sparkblocks UI Kit to achieve this:
+
+\`\`\`jsx
+import { Wrapper, Block } from '@sparkblocks/core';
+
+const Component = () => {
+  return (
+    <Wrapper
+      type="section"
+      py={120} // Padding top and bottom
+      px={200} // Padding left and right
+      background="url('bg-image.jpg')" // Background image
+      fill={true} // Option to fill the available space
+    >
+      <Block
+        type="section"
+        heading="Enhance Your Application"
+        subheading="With Structured Layouts"
+        paragraph="Use Wrappers to easily manage spacing, alignment, and backgrounds. They help create visually appealing sections that enhance user experience."
+        textCenter
+      />
+    </Wrapper>
+  );
+};
+\`\`\`
+
+In this example, the \`Wrapper\` component is used to create a container for a section of content. We've applied a background image using the \`background\` prop and set the padding on all sides with \`py\` and \`px\` props for vertical and horizontal padding, respectively. Inside the wrapper, a \`Block\` component is used to display the section's content, including a heading, subheading, and paragraph. The \`textCenter\` prop aligns the text to the center of the block.
+
+The use of the \`Wrapper\` component in this way allows for a modular approach to designing your UI. By encapsulating sections of your application within wrappers, you can easily apply consistent styling and spacing rules. This not only makes your UI more structured and visually appealing but also simplifies maintenance and updates.
+
+Wrappers are versatile components in the Sparkblocks UI Kit that can be used to enhance the layout and presentation of your application. By understanding and utilizing wrappers, you can create more engaging and cohesive user interfaces.
+`;
