@@ -1,29 +1,29 @@
 export const gettingStartedMarkdown = `
-# Getting Started with Sparkblocks UI Kit
+# Getting Started with Sparkblock UI Kit
 
-Welcome to Sparkblocks UI Kit, a powerful and flexible UI library for building beautiful and responsive React applications with ease. Sparkblocks UI Kit is designed to work seamlessly with Mantine UI v7.5, extending its capabilities with pre-defined blocks and wrappers that help developers create interfaces quickly without sacrificing quality or design.
+Welcome to Sparkblock UI Kit, a powerful and flexible UI library for building beautiful and responsive React applications with ease. Sparkblock UI Kit is designed to work seamlessly with Mantine UI v7.5, extending its capabilities with pre-defined blocks and wrappers that help developers create interfaces quickly without sacrificing quality or design.
 
 ## Installation
 
-Before you can use Sparkblocks UI Kit in your project, you need to ensure that you have React and Mantine UI v7.5 set up in your project. If you haven't installed Mantine, follow the Mantine documentation to get started. Once Mantine is set up, you can proceed to install Sparkblocks UI Kit.
+Before you can use Sparkblock UI Kit in your project, you need to ensure that you have React and Mantine UI v7.5 set up in your project. If you haven't installed Mantine, follow the Mantine documentation to get started. Once Mantine is set up, you can proceed to install Sparkblock UI Kit.
 
-To install Sparkblocks UI Kit, open your terminal and run the following command:
+To install Sparkblock UI Kit, open your terminal and run the following command:
 
 \`\`\`bash
-npm install @sparkblocks/core
+npm install @sparkblock/core
 \`\`\`
 
 or if you prefer using Yarn:
 
 \`\`\`bash
-yarn add @sparkblocks/core
+yarn add @sparkblock/core
 \`\`\`
 
-This command installs the core package of Sparkblocks UI Kit, which includes all the necessary blocks and wrappers you need to start building your UI.
+This command installs the core package of Sparkblock UI Kit, which includes all the necessary blocks and wrappers you need to start building your UI.
 
-## Understanding Sparkblocks UI Kit
+## Understanding Sparkblock UI Kit
 
-Sparkblocks UI Kit is built around the concept of "Blocks" and "Wrappers." Blocks are reusable UI components such as navigation bars, feature sections, footers, etc., that come with predefined styles and functionalities. Wrappers are used to structure and layout these blocks within your application, allowing for consistent spacing, alignment, and theming across different sections of your interface.
+Sparkblock UI Kit is built around the concept of "Blocks" and "Wrappers." Blocks are reusable UI components such as navigation bars, feature sections, footers, etc., that come with predefined styles and functionalities. Wrappers are used to structure and layout these blocks within your application, allowing for consistent spacing, alignment, and theming across different sections of your interface.
 
 ### Blocks
 
@@ -45,32 +45,32 @@ Wrappers are used to encapsulate blocks and provide consistent spacing, backgrou
 
 ## Implications and Best Practices
 
-When using Sparkblocks UI Kit, keep the following in mind:
+When using Sparkblock UI Kit, keep the following in mind:
 
-- **Consistency**: Sparkblocks promotes UI consistency through reusable blocks and wrappers. Stick to the predefined blocks as much as possible to maintain a consistent look and feel across your application.
+- **Consistency**: Sparkblock promotes UI consistency through reusable blocks and wrappers. Stick to the predefined blocks as much as possible to maintain a consistent look and feel across your application.
 - **Customization**: While blocks come with predefined styles, they are highly customizable. Use the props to adjust the appearance of your blocks to fit your application's theme.
-- **Mantine Integration**: Sparkblocks is an extension of Mantine UI v7.5. Take advantage of Mantine's features and components to complement your Sparkblocks UI, ensuring a seamless integration between custom blocks and standard Mantine components.
+- **Mantine Integration**: Sparkblock is an extension of Mantine UI v7.5. Take advantage of Mantine's features and components to complement your Sparkblock UI, ensuring a seamless integration between custom blocks and standard Mantine components.
 
-With Sparkblocks UI Kit, you're equipped to build beautiful, responsive, and consistent user interfaces for your React applications with minimal effort. Explore the components, experiment with the blocks and wrappers, and create something amazing!
+With Sparkblock UI Kit, you're equipped to build beautiful, responsive, and consistent user interfaces for your React applications with minimal effort. Explore the components, experiment with the blocks and wrappers, and create something amazing!
 `;
 
 export const usingBlocksMarkdown = `
-# Using Blocks in Sparkblocks UI Kit
+# Using Blocks in Sparkblock UI Kit
 
-The Sparkblocks UI Kit provides a variety of blocks to build your UI in a modular and efficient way. Each block can be customized with different props to suit your specific needs. Let's start with a basic example and then move to a more complex one that includes interactive elements like buttons.
+The Sparkblock UI Kit provides a variety of blocks to build your UI in a modular and efficient way. Each block can be customized with different props to suit your specific needs. Let's start with a basic example and then move to a more complex one that includes interactive elements like buttons.
 
 ## Basic Example: Section Block
 
 First, we'll create a simple block that displays a heading and a paragraph. This example demonstrates how to use a block without interactive elements, focusing on static content.
 
 \`\`\`jsx
-import { Block } from '@sparkblocks/core';
+import { Block } from '@sparkblock/core';
 
 const Component = () => {
   return (
     <Block
-      heading="Welcome to Sparkblocks"
-      paragraph="Sparkblocks UI Kit makes it easy to build beautiful, responsive React applications."
+      heading="Welcome to Sparkblock"
+      paragraph="Sparkblock UI Kit makes it easy to build beautiful, responsive React applications."
       textCenter
     />
   );
@@ -84,7 +84,7 @@ In this example, the \`Block\` component is used to create a text block with a h
 Next, let's add some visual content and interactivity to our block by including a button and an icon. This example will demonstrate how to use the \`button\` prop to add actionable items to the block and how to use an icon library (we recommend Tabler) to add an icon to the block.
 
 \`\`\`jsx
-import { Block } from '@sparkblocks/core';
+import { Block } from '@sparkblock/core';
 import { IconCube } from '@tabler/icons-react';
 
 const Component = () => {
@@ -92,8 +92,8 @@ const Component = () => {
     <Block
       type="feature"
       icon={<IconCube size={28} />}
-      heading="Explore Sparkblocks"
-      paragraph="Discover how Sparkblocks can accelerate your UI development."
+      heading="Explore Sparkblock"
+      paragraph="Discover how Sparkblock can accelerate your UI development."
       button={ text: "Get Started", onClick: () => console.log("Get Started Clicked!"), color: "white", backgroundColor: "blue" }
       textCenter
     />
@@ -105,16 +105,16 @@ In this little more advanced example, we've added a button to our \`Block\`. The
 `;
 
 export const usingWrappersMarkdown = `
-# Using Wrappers in Sparkblocks UI Kit
+# Using Wrappers in Sparkblock UI Kit
 
-Wrappers in the Sparkblocks UI Kit play a crucial role in structuring and organizing the layout of your application. They provide a consistent way to manage spacing, alignment, and background settings across different sections of your UI. Let's explore how to utilize wrappers effectively with an example that demonstrates their capability to enhance the structure and appearance of a UI section.
+Wrappers in the Sparkblock UI Kit play a crucial role in structuring and organizing the layout of your application. They provide a consistent way to manage spacing, alignment, and background settings across different sections of your UI. Let's explore how to utilize wrappers effectively with an example that demonstrates their capability to enhance the structure and appearance of a UI section.
 
 ## Example: Section with Background and Padding
 
-Imagine you want to create a section on your webpage that stands out by having a distinct background and is nicely padded from the rest of your content. Here's how you could use a \`Wrapper\` component from Sparkblocks UI Kit to achieve this:
+Imagine you want to create a section on your webpage that stands out by having a distinct background and is nicely padded from the rest of your content. Here's how you could use a \`Wrapper\` component from Sparkblock UI Kit to achieve this:
 
 \`\`\`jsx
-import { Wrapper, Block } from '@sparkblocks/core';
+import { Wrapper, Block } from '@sparkblock/core';
 
 const Component = () => {
   return (
@@ -141,22 +141,22 @@ In this example, the \`Wrapper\` component is used to create a container for a s
 
 The use of the \`Wrapper\` component in this way allows for a modular approach to designing your UI. By encapsulating sections of your application within wrappers, you can easily apply consistent styling and spacing rules. This not only makes your UI more structured and visually appealing but also simplifies maintenance and updates.
 
-Wrappers are versatile components in the Sparkblocks UI Kit that can be used to enhance the layout and presentation of your application. By understanding and utilizing wrappers, you can create more engaging and cohesive user interfaces.
+Wrappers are versatile components in the Sparkblock UI Kit that can be used to enhance the layout and presentation of your application. By understanding and utilizing wrappers, you can create more engaging and cohesive user interfaces.
 `;
 
 export const usingMantineMarkdown = `
-# Leveraging Mantine in Sparkblocks UI Kit
+# Leveraging Mantine in Sparkblock UI Kit
 
-The Sparkblocks UI Kit is built on top of Mantine, a powerful and modern React component library. This foundational choice means that all the components and hooks available in Mantine can be seamlessly utilized within Sparkblocks. This integration enriches Sparkblocks with Mantine's comprehensive suite of UI components and utilities, allowing developers to craft highly interactive and accessible applications with ease. Let's delve into how you can leverage Mantine's components within the Sparkblocks ecosystem.
+The Sparkblock UI Kit is built on top of Mantine, a powerful and modern React component library. This foundational choice means that all the components and hooks available in Mantine can be seamlessly utilized within Sparkblock. This integration enriches Sparkblock with Mantine's comprehensive suite of UI components and utilities, allowing developers to craft highly interactive and accessible applications with ease. Let's delve into how you can leverage Mantine's components within the Sparkblock ecosystem.
 
 ## Example: Incorporating Mantine Components
 
-To demonstrate the seamless integration between Sparkblocks and Mantine, let's create a user profile card using Mantine's \`Card\`, \`Avatar\`, and \`Text\` components within a Sparkblocks application.
+To demonstrate the seamless integration between Sparkblock and Mantine, let's create a user profile card using Mantine's \`Card\`, \`Avatar\`, and \`Text\` components within a Sparkblock application.
 
 \`\`\`jsx
 // Instead of import { Card, Avatar, Text, Group } from '@mantine/core';
 // We can use
-import { Wrapper, Card, Avatar, Text, Group } from '@sparkblocks/core';
+import { Wrapper, Card, Avatar, Text, Group } from '@sparkblock/core';
 
 const UserProfileCard = () => {
   return (
@@ -181,28 +181,28 @@ const UserProfileCard = () => {
 };
 \`\`\`
 
-In this example, we wrap the Mantine \`Card\` component within a Sparkblocks \`Wrapper\` to ensure consistent spacing and background styling across the application. The \`Card\` itself contains an \`Avatar\` and two \`Text\` components to display the user's profile picture and information. This not only showcases the ease of integrating Mantine components within Sparkblocks but also highlights the flexibility and composability of using both libraries together.
+In this example, we wrap the Mantine \`Card\` component within a Sparkblock \`Wrapper\` to ensure consistent spacing and background styling across the application. The \`Card\` itself contains an \`Avatar\` and two \`Text\` components to display the user's profile picture and information. This not only showcases the ease of integrating Mantine components within Sparkblock but also highlights the flexibility and composability of using both libraries together.
 
 ## Benefits of Integration
 
-By building Sparkblocks on top of Mantine, we provide developers with several key benefits:
+By building Sparkblock on top of Mantine, we provide developers with several key benefits:
 
 - **Comprehensive Component Library:** Access to a wide range of pre-designed components that can be customized and extended to fit your application's needs.
-- **Consistent Design System:** Leverage Mantine's design system within Sparkblocks to maintain consistency in appearance and behavior across your application.
+- **Consistent Design System:** Leverage Mantine's design system within Sparkblock to maintain consistency in appearance and behavior across your application.
 - **Enhanced Productivity:** Utilize Mantine's hooks and utilities to accelerate development, focusing on building unique features rather than reinventing common UI patterns.
 - **Accessibility and Responsiveness:** Mantine components are designed with accessibility and responsiveness in mind, ensuring that applications are accessible and adaptable to various devices.
 
-In conclusion, the integration of Mantine within Sparkblocks opens up a vast array of possibilities for building rich, interactive, and accessible web applications. By leveraging the strengths of Mantine, developers can enjoy a streamlined development process, enabling them to deliver high-quality applications faster and more efficiently.
+In conclusion, the integration of Mantine within Sparkblock opens up a vast array of possibilities for building rich, interactive, and accessible web applications. By leveraging the strengths of Mantine, developers can enjoy a streamlined development process, enabling them to deliver high-quality applications faster and more efficiently.
 `;
 
 export const communityMarkdown = `
 # Join Our Community at Spark Engine
 
-Join the vibrant community behind Sparkblocks, Spark Engine, the innovative force propelling our cutting-edge AI technology company. Our journey began with a vision to harness the power of AI in transforming how web applications are developed, making the process faster, more efficient, and accessible to a wider audience. This vision is embodied in our products, including the intuitive Sparkblocks UI Kit and Spark Study, our specialized AI for higher education.
+Join the vibrant community behind Sparkblock, Spark Engine, the innovative force propelling our cutting-edge AI technology company. Our journey began with a vision to harness the power of AI in transforming how web applications are developed, making the process faster, more efficient, and accessible to a wider audience. This vision is embodied in our products, including the intuitive Sparkblock UI Kit and Spark Study, our specialized AI for higher education.
 
 ## Spark Engine: Innovating AI Technology
 
-At the heart of our endeavors is [Spark Engine AI](https://sparkengine.ai), a platform where our passion for AI technology translates into real-world applications that simplify and enhance web development. The development of the Sparkblocks UI Kit is a testament to our commitment to innovation, offering developers a powerful toolset to create stunning and functional web applications with ease.
+At the heart of our endeavors is [Spark Engine AI](https://sparkengine.ai), a platform where our passion for AI technology translates into real-world applications that simplify and enhance web development. The development of the Sparkblock UI Kit is a testament to our commitment to innovation, offering developers a powerful toolset to create stunning and functional web applications with ease.
 
 ## Spark Study: Empowering Higher Education
 
