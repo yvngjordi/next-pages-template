@@ -102,7 +102,7 @@ const defaultWrapperName = safeWrappersArray.length > 0 ? safeWrappersArray[0].n
 export default function Docs() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [opened, { toggle }] = useDisclosure();
-  const [selectedDoc, setSelectedDoc] = useState(null);
+  const [selectedDoc, setSelectedDoc] = useState('');
   const [selectedType, setSelectedType] = useState('blocks');
   const { colorScheme } = useMantineColorScheme();
 
@@ -208,7 +208,7 @@ export default function Docs() {
         </Flex>
         <Box p="xs">
           {categories.quickStart.map((item) => (
-            <Box key={item.id} onClick={() => { setActiveCategory(item.id); setSelectedDoc(null); }} style={{ cursor: 'pointer' }}>
+            <Box key={item.id} onClick={() => { setActiveCategory(item.id); setSelectedDoc(''); }} style={{ cursor: 'pointer' }}>
               <Text c={activeCategory === item.id ? `` : 'dimmed'}>{activeCategory === item.id ? `•- ${item.label}` : `${item.label}`}</Text>
             </Box>
           ))}
@@ -221,7 +221,7 @@ export default function Docs() {
       </Flex>
       <Box p="xs">
         {blocksArray?.map(({ name }, index) => (
-          <Box key={index} onClick={() => selectDocument(name, 'blocks')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
+          <Box key={index} onClick={() => { selectDocument(name, 'blocks'); setActiveCategory('')}} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
             <Text c={selectedDoc === name ? `` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
           </Box>
         ))}
@@ -251,7 +251,7 @@ export default function Docs() {
               px={isMobile ? 10 : 20}
               fill
             >
-            {activeCategory === 'getting-started' && selectedDoc === null && (
+            {activeCategory === 'getting-started' && selectedDoc === '' && (
               <>
               <Block
                 type="markdown"
@@ -260,7 +260,7 @@ export default function Docs() {
               />
               </>
             )}
-            {activeCategory === 'using-blocks' && selectedDoc === null && (
+            {activeCategory === 'using-blocks' && selectedDoc === '' && (
               <>
               <Block
                 type="markdown"
@@ -269,7 +269,7 @@ export default function Docs() {
               />
               </>
             )}
-            {activeCategory === 'using-wrappers' && selectedDoc === null && (
+            {activeCategory === 'using-wrappers' && selectedDoc === '' && (
               <>
               <Block
                 type="markdown"
@@ -278,7 +278,7 @@ export default function Docs() {
               />
               </>
             )}
-            {activeCategory === 'using-mantine' && selectedDoc === null && (
+            {activeCategory === 'using-mantine' && selectedDoc === '' && (
               <>
               <Block
                 type="markdown"
@@ -287,7 +287,7 @@ export default function Docs() {
               />
               </>
             )}
-            {activeCategory === 'community' && selectedDoc === null && (
+            {activeCategory === 'community' && selectedDoc === '' && (
               <>
               <Block
                 type="markdown"
