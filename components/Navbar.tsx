@@ -1,7 +1,7 @@
 import React, { CSSProperties, ReactNode } from 'react';
 import { Menu, Group, Center, Burger, Container, Drawer, Title, Flex, ActionIcon, Divider, Box, useMantineColorScheme  } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { IconChevronDown, IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandFacebook, IconBrandMeta, IconBrandX } from '@tabler/icons-react';
+import { IconChevronDown, IconBrandTwitter, IconBrandYoutube, IconBrandDiscord, IconBrandMedium, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandFacebook, IconBrandMeta, IconBrandX } from '@tabler/icons-react';
 import classes from './navbar.module.css';
 import ThemeSwitcher from './ThemeSwitcher';
 import dynamic from 'next/dynamic';
@@ -30,6 +30,8 @@ type HeaderMenuProps = {
   linkGithub?: string;
   linkFacebook?: string;
   linkMeta?: string;
+  linkDiscord?: string;
+  linkMedium?: string;
   linkX?: string;
   imageDarkMode?: string;
   mobileMenu?: ReactNode; // Prop for custom mobile menu content
@@ -50,6 +52,8 @@ export default function Navbar({
   linkInstagram,
   linkLinkedin,
   linkGithub,
+  linkDiscord,
+  linkMedium,
   linkFacebook,
   linkMeta,
   linkX,
@@ -98,13 +102,23 @@ export default function Navbar({
           {link.label}
         </a>
       ))}
-      {(linkTwitter || linkYoutube || linkX || linkMeta || linkTwitter || linkGithub || linkLinkedin || linkFacebook) && (
+      {(linkTwitter || linkDiscord || linkMedium || linkYoutube || linkX || linkMeta || linkTwitter || linkGithub || linkLinkedin || linkFacebook) && (
       <Box h="100%">
       <Divider my={16} />
       <Flex justify="center" align="flex-end" h="100%" style={{bottom:0}}>
       {linkTwitter && (
         <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkTwitter} target="_blank">
           <IconBrandTwitter style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkDiscord && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkDiscord} target="_blank">
+          <IconBrandDiscord style={{ width: 18, height: 18 }} stroke={1.5} />
+        </ActionIcon>
+      )}
+      {linkMedium && (
+        <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkMedium} target="_blank">
+          <IconBrandMedium style={{ width: 18, height: 18 }} stroke={1.5} />
         </ActionIcon>
       )}
       {linkYoutube && (
@@ -175,6 +189,16 @@ export default function Navbar({
               {linkTwitter && (
                 <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkTwitter} target="_blank">
                   <IconBrandTwitter style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkDiscord && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkDiscord} target="_blank">
+                  <IconBrandDiscord style={{ width: 18, height: 18 }} stroke={1.5} />
+                </ActionIcon>
+              )}
+              {linkMedium && (
+                <ActionIcon size="lg" color="gray" variant="subtle" component="a" href={linkMedium} target="_blank">
+                  <IconBrandMedium style={{ width: 18, height: 18 }} stroke={1.5} />
                 </ActionIcon>
               )}
               {linkYoutube && (

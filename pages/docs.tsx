@@ -137,6 +137,8 @@ export default function Docs() {
               heading="Sparkblock UI"
               sticky
               theme
+              linkDiscord="#"
+              linkGithub="#"
               mobileMenu={
                 <>
                 <Wrapper
@@ -324,8 +326,8 @@ export default function Docs() {
                   links={links}
                   headers={tableHeaders}
                   data={name === 'switches' ? switches : name === 'table' ? tableData : data}
-                  heading={`${name.charAt(0).toUpperCase() + name.slice(1)} Title`}
-                  paragraph="This is some example paragraph text for this block type. Copy the code in the tab above!"
+                  heading={name === 'markdown' ? undefined : `${name.charAt(0).toUpperCase() + name.slice(1)} Title`}
+                  paragraph={name === 'markdown' ? undefined : "This is some example paragraph text for this block type. Copy the code in the tab above!"}
                   image={name === 'navbar' || name === 'footer' ? "logo-sb.png" : name !== 'markdown' ? "https://via.placeholder.com/1024" : undefined}
                   linkLinkedin="x"
                   linkX="x"
