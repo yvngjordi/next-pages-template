@@ -155,7 +155,7 @@ export default function Docs() {
                   </Flex>
                   <Box p="xs">
                     {categories.quickStart.map((item) => (
-                      <Box key={item.id} onClick={() => { setActiveCategory(item.id); setSelectedDoc(null)}} style={{ cursor: 'pointer' }}>
+                      <Box key={item.id} onClick={() => { setActiveCategory(item.id); setSelectedDoc('')}} style={{ cursor: 'pointer' }}>
                         <Text c={activeCategory === item.id ? `` : 'dimmed'}>{activeCategory === item.id ? `•- ${item.label}` : `${item.label}`}</Text>
                       </Box>
                     ))}
