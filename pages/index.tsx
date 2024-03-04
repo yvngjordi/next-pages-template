@@ -1,14 +1,8 @@
-import Section from '../components/Section';
-import Banner from '../components/Banner';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
-import Contact from '../components/Contact';
 import { Box, Flex, Divider } from '@mantine/core';
 import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
-import Map from '../components/Map';
 
 const links = [
   { link: '/', label: 'Home' },

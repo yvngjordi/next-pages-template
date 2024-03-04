@@ -58,7 +58,7 @@ export default function Footer({
   const effectiveImage = colorScheme === 'dark' && imageDarkMode ? imageDarkMode : image;
 
   const groups = data.length > 0 ? data.map((group) => {
-    const links = group.links.map((link, index) => (
+    const links = group.links?.map((link, index) => (
       <Text<'a'>
         key={index}
         className={classes.link}

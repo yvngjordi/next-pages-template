@@ -36,7 +36,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   };
 
   const content = fill ? (
-    <Paper withBorder style={{ maxWidth: '100%', height: '100%', overflow: 'auto' }} p="md">
+    <Paper withBorder style={{ maxWidth: '100%', height: '100%', overflow: 'auto' }} p="sm">
       {children}
     </Paper>
   ) : (

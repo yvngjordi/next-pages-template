@@ -21,8 +21,8 @@ const Scroll: React.FC<ScrollProps> = ({
   const paddingX = typeof px === 'number' ? `${px}px` : px;
 
   return (
-    <Paper withBorder>
-    <ScrollArea scrollbarSize={6} scrollHideDelay={500} {...scrollAreaProps} style={{ width, height, padding: `${paddingY} ${paddingX}` }}>
+    <Paper>
+    <ScrollArea scrollbarSize={6} scrollHideDelay={500} {...scrollAreaProps} style={{ width, height, padding: `${paddingY} ${paddingX}`, border: '0px solid' }}>
       {children}
     </ScrollArea>
     </Paper>

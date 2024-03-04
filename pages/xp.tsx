@@ -6,7 +6,7 @@ import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
 import Contact from '../components/Contact';
 import { Box, Flex, Divider } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple, IconHome } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple, IconHome, IconBuildingSkyscraper } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import Map from '../components/Map';
 
@@ -137,9 +137,10 @@ export default function HomePage() {
             >
               <Block
                 type="feature"
-                icon={<IconStethoscope size={44} />}
+                icon={<IconBuildingSkyscraper size={44} />}
                 textCenter
-                heading="General Pediatrics"
+                stack
+                heading="Downtown Blessings"
                 subheading="Comprehensive Care"
                 paragraph="We provide a wide range of pediatric care services, from routine checkups to immunizations."
               />
@@ -147,6 +148,7 @@ export default function HomePage() {
                 type="feature"
                 icon={<IconVaccine size={44} />}
                 textCenter
+                stack
                 heading="Immunizations"
                 subheading="Protecting Health"
                 paragraph="Our clinic offers all recommended childhood vaccines to protect against various diseases."
@@ -155,6 +157,7 @@ export default function HomePage() {
                 type="feature"
                 icon={<IconApple size={44} />}
                 textCenter
+                stack
                 heading="Nutrition Advice"
                 subheading="Healthy Eating"
                 paragraph="Guidance on best nutrition practices to ensure the healthy growth and development of your child."
@@ -163,6 +166,7 @@ export default function HomePage() {
                 type="feature"
                 icon={<IconNotebook size={44} />}
                 textCenter
+                stack
                 heading="Screening"
                 subheading="Monitoring Growth"
                 paragraph="Early detection and intervention for developmental disorders to keep your child happy and healthy."

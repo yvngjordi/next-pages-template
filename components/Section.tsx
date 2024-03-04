@@ -63,7 +63,7 @@ const Section: React.FC<SectionProps> = ({
    gap: theme.spacing.md,
     ...style,
   };
-  
+
   switch (variant) {
     case 'A' || 'a':
       return (
@@ -199,7 +199,7 @@ case ('B' || 'b'):
 
 case 'C' || 'c':
   return (
-    <Box style={style}>
+    <Box style={style} w="100%">
     <Transition transitionFrom="left">
     {(isMobile && image) || (image && stack) && (
       <Box p="xl">

@@ -1,10 +1,11 @@
 import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
 import { Box, Flex, Divider, Paper, Text, AppShell, Burger, Group, Skeleton, useMantineColorScheme } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconCode, IconVaccine, IconMap, IconApple, IconIcons, IconCube } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconCode, IconPlayerPlay, IconStack2, IconVaccine, IconMap, IconApple, IconIcons, IconCube } from '@tabler/icons-react';
 import { useMediaQuery, useDisclosure } from '@mantine/hooks';
 import { blocksArray as importedBlocksArray } from '../data/blocksArray';
 import { wrappersArray as importedWrappersArray } from '../data/wrappersArray';
+import { gettingStartedMarkdown, usingBlocksMarkdown, usingWrappersMarkdown } from '../data/baseArray';
 import React, { useState } from 'react';
 
 interface BlockItem {
@@ -82,6 +83,17 @@ const tableHeaders = [
   { key: 'role', label: 'Role' }
 ];
 
+const categories = {
+  quickStart: [
+    { id: 'getting-started', label: 'Getting started' },
+    { id: 'using-blocks', label: 'Using Blocks' },
+    { id: 'using-wrappers', label: 'Using Wrappers' },
+    { id: 'using-mantine', label: 'Using Mantine' },
+    { id: 'supported-stacks', label: 'Supported stacks' },
+    { id: 'community', label: 'Community' },
+  ],
+};
+
 const safeBlocksArray = blocksArray || [];
 const safeWrappersArray = wrappersArray || [];
 
@@ -91,7 +103,7 @@ const defaultWrapperName = safeWrappersArray.length > 0 ? safeWrappersArray[0].n
 export default function Docs() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [opened, { toggle }] = useDisclosure();
-  const [selectedDoc, setSelectedDoc] = useState(defaultBlockName);
+  const [selectedDoc, setSelectedDoc] = useState(null);
   const [selectedType, setSelectedType] = useState('blocks');
   const { colorScheme } = useMantineColorScheme();
 
@@ -103,6 +115,7 @@ export default function Docs() {
   };
 
   const selectedArray = selectedType === 'blocks' ? safeBlocksArray : safeWrappersArray;
+  const [activeCategory, setActiveCategory] = useState('getting-started');
 
   const markdownData = "## Welcome to Our Platform\nHere's some **Markdown** content with `code` snippets and more.\n```js\nconsole.log('Hello, world!');\n```"
   return (
@@ -128,21 +141,55 @@ export default function Docs() {
               theme
             />
       </AppShell.Header>
-      <AppShell.Navbar p="md" w={200}>
-        <Text size="lg" style={{fontWeight:'bold'}}>Blocks</Text>
-        <Divider my={8} />
+      <AppShell.Navbar p="0" w={210}>
+      <Wrapper
+        type="scroll"
+        height="85vh"
+        scrollbarSize={0}
+        width={210}
+        py={20}
+        px={20}
+      >
+      <Box style={{border:'1px solid rgba(160,160,160,0.2)'}}>
+        <Flex w="100%" p="xs" style={{background: 'rgba(160,160,160,0.2)'}}>
+          <Text size="sm" c="dimmed" style={{transform:'translateY(1.6px)'}}><IconPlayerPlay size={17} /></Text>
+          <Text size="sm" c="dimmed" ml="5px">Quick Start</Text>
+        </Flex>
+        <Box p="xs">
+          {categories.quickStart.map((item) => (
+            <Box key={item.id} onClick={() => { setActiveCategory(item.id); setSelectedDoc(null); }} style={{ cursor: 'pointer' }}>
+              <Text c={activeCategory === item.id ? `` : 'dimmed'}>{activeCategory === item.id ? `•- ${item.label}` : `${item.label}`}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+      <Box style={{border:'1px solid rgba(160,160,160,0.2)'}} mt="sm">
+      <Flex w="100%" p="xs" style={{background: 'rgba(160,160,160,0.2)'}}>
+        <Text size="sm" c="dimmed" style={{transform:'translateY(1.6px)'}}><IconCube size={17} /></Text>
+        <Text size="sm" c="dimmed" ml="5px" >Blocks</Text>
+      </Flex>
+      <Box p="xs">
         {blocksArray?.map(({ name }, index) => (
           <Box key={index} onClick={() => selectDocument(name, 'blocks')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
-            <Text c={selectedDoc === name ? `black` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
+            <Text c={selectedDoc === name ? `` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
           </Box>
         ))}
-        <Text mt="sm" size="lg" style={{fontWeight:'bold'}}>Wrappers</Text>
-        <Divider my={8} />
+        </Box>
+        </Box>
+        <Box style={{border:'1px solid rgba(160,160,160,0.2)'}} mt="sm">
+        <Flex w="100%" p="xs" style={{background: 'rgba(160,160,160,0.2)'}}>
+          <Text size="sm" c="dimmed" style={{transform:'translateY(1.6px)'}}><IconStack2 size={17} /></Text>
+          <Text size="sm" c="dimmed" ml="5px">Wrappers</Text>
+        </Flex>
+        <Box p="xs">
         {wrappersArray?.map(({ name }, index) => (
           <Box key={index} onClick={() => selectDocument(name, 'wrappers')} style={{ cursor: 'pointer', textTransform: 'capitalize' }}>
-            <Text c={selectedDoc === name ? `black` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
+            <Text c={selectedDoc === name ? `` : 'dimmed'}>{selectedDoc === name ? `•- ${name}` : name}</Text>
           </Box>
         ))}
+        </Box>
+        </Box>
+      </Wrapper>
       </AppShell.Navbar>
       <AppShell.Main>
         <Box mt="-4.5vh" ml={isMobile ? '0px' : '-100'}>
@@ -153,10 +200,52 @@ export default function Docs() {
               px={isMobile ? 10 : 20}
               fill
             >
+            {activeCategory === 'getting-started' && selectedDoc === null && (
+              <>
+              <Block
+                type="markdown"
+                markdown={gettingStartedMarkdown}
+                syntaxTheme={currentSyntaxTheme}
+              />
+              </>
+            )}
+            {activeCategory === 'using-blocks' && selectedDoc === null && (
+              <>
+              <Block
+                type="markdown"
+                markdown={usingBlocksMarkdown}
+                syntaxTheme={currentSyntaxTheme}
+              />
+              </>
+            )}
+            {activeCategory === 'using-wrappers' && selectedDoc === null && (
+              <>
+              <Block
+                type="markdown"
+                markdown={usingWrappersMarkdown}
+                syntaxTheme={currentSyntaxTheme}
+              />
+              </>
+            )}
+            {activeCategory === 'using-mantine' && selectedDoc === null && (
+              <>
+
+              </>
+            )}
+            {activeCategory === 'community' && selectedDoc === null && (
+              <>
+
+              </>
+            )}
+            {activeCategory === 'supported-stacks' && selectedDoc === null && (
+              <>
+                bruh
+              </>
+            )}
           {selectedArray
             .filter(({ name }) => name === selectedDoc)
             .map(({ name, description, content, content2, props }, index) => (
-              <Flex key={index} direction="column" w={isMobile ? '75vw' : '78vw'}>
+              <Flex key={index} direction="column" w={isMobile ? '85vw' : '77vw'}>
                 <Block
                   type="section"
                   variant="C"
@@ -208,29 +297,28 @@ export default function Docs() {
                   button2={{ text: "Contact Us", onClick: () => console.log("Contact Clicked!"), color: "blue", backgroundColor: "transparent", border: "1px solid blue" }}
                 />
                 </Wrapper>
+                                <Box w={isMobile ? '85vw' : '77vw'}>
                 <Wrapper
                   type="scroll"
+                  scrollbarSize={0}
                   height={500}
-                  py={20}
-                  px={20}
+                  py={0}
+                  px={0}
                 >
                 <Block
                   type="markdown"
                   syntaxTheme={currentSyntaxTheme}
                   markdown={content}
                 />
+
                 </Wrapper>
+                                </Box>
                 <Block
                   type="table"
                   data={props}
                   headers={headers}
                 />
                 </Wrapper>
-                <Block
-                  type="markdown"
-                  markdown={content2}
-                  syntaxTheme={currentSyntaxTheme}
-                />
               </Flex>
             ))}
           </Wrapper>
