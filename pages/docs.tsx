@@ -143,7 +143,7 @@ export default function Docs() {
                 <>
                 <Wrapper
                   type="scroll"
-                  height="85vh"
+                  height="82vh"
                   scrollbarSize={0}
                   width="100%"
                   py={20}
