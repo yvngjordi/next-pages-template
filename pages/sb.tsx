@@ -99,7 +99,10 @@ import { Block } from '@sparkblock/core';
 const Component = () => {
   return (
     <Block
-      heading="Welcome to Sparkblock"
+      type="feature"
+      heading="Welcome to Sparkblock!"
+      paragraph="A powerful and flexible UI library."
+      textCenter
     />
   );
 };
@@ -112,8 +115,11 @@ import { Block } from '@sparkblock/core';
 const Component = () => {
   return (
     <Block
-      heading="Welcome to Sparkblock"
-      paragraph="Sparkblock UI Kit makes it easy to build beautiful, responsive React applications."
+      type="feature"
+      heading="Welcome to Sparkblock!"
+      paragraph="A powerful and flexible UI library."
+      textCenter
+      icon={<IconStar />}
     />
   );
 };
@@ -126,9 +132,12 @@ import { Block } from '@sparkblock/core';
 const Component = () => {
   return (
     <Block
-      heading="Welcome to Sparkblock"
-      paragraph="Sparkblock UI Kit makes it easy to build beautiful, responsive React applications."
+      type="feature"
+      heading="Welcome to Sparkblock!"
+      paragraph="A powerful and flexible UI library."
       textCenter
+      icon={<IconStar />}
+      button={{ text: "Learn More" }}
     />
   );
 };
@@ -168,31 +177,48 @@ export default function Docs() {
 
   const currentSyntaxTheme = colorScheme === 'dark' ? 'vscdarkplus' : 'vs';
   const component1 = () => (
+    <Wrapper
+      type="transition"
+      transitionFrom="top"
+      >
     <Block
       type="feature"
       heading="Welcome to Sparkblock!"
-      paragraph="A powerful and flexible UI library for building beautiful and responsive React applications with ease."
+      paragraph="A powerful and flexible UI library."
+      textCenter
     />
+    </Wrapper>
   );
 
   const component2 = () => (
+    <Wrapper
+      type="transition"
+      transitionFrom="top"
+      >
     <Block
       type="feature"
       heading="Welcome to Sparkblock!"
-      paragraph="A powerful and flexible UI library for building beautiful and responsive React applications with ease."
+      paragraph="A powerful and flexible UI library."
       icon={<IconStar />}
+      textCenter
     />
+    </Wrapper>
   );
 
   const component3 = () => (
+    <Wrapper
+      type="transition"
+      transitionFrom="top"
+      >
     <Block
       type="feature"
       heading="Welcome to Sparkblock!"
-      paragraph="A powerful and flexible UI library for building beautiful and responsive React applications with ease."
-      icon={<IconStars />}
-      list={["Experienced Pediatricians", "Friendly Staff", "Modern Facilities"]}
-      button={{ text: "Learn More", backgroundColor: 'black', onClick: () => console.log("Clicked!")}}
+      paragraph="A powerful and flexible UI library."
+      icon={<IconStar />}
+      button={{ text: "Learn More" }}
+      textCenter
     />
+    </Wrapper>
   );
   const contentArray2 = [
     {
@@ -210,7 +236,14 @@ export default function Docs() {
   ];
   return (
     <>
-    <div style={{height:'250vh'}}>
+    <div style={{height:'280vh'}}>
+    <Block
+      type="banner"
+      heading="We just released version 1.0!"
+      background="#0379EA"
+      color="white"
+      icon={<IconCode size={18}/>}
+    />
             <Block
               type="navbar"
               links={links}
@@ -221,34 +254,36 @@ export default function Docs() {
               linkDiscord="#"
               linkGithub="#"
             />
-            <div style={{height:'180vh'}}>
+            <div style={{height:'200vh'}}>
 <div style={{position:'sticky', height:'40vh', top:0, zIndex:1, width:'100%', marginTop:'-30vh', transform:'translateY(-2vh)'}}>
-    <div style={{height:'40vh'}}>
-          <Block
-            type="sticky"
-            contentArray={contentArray}
-            changeInterval={400}
-          />
-        </div>
-        <div style={{marginTop:'10vh'}}>
+    <Wrapper
+      type="section"
+      py={60}
+      width="100%"
+      px={isMobile ? 20 : 400}
+      >
+      <div style={{marginTop:'11vh'}}>
 
-        <Wrapper
-          type="transition"
-          transitionFrom="left"
-          >
-          <Wrapper
-            type="section"
-            fill
-            py={0}
-            width="100%"
-            px={200}
-            >
           <Block
             type="sticky"
             contentArray={contentArray2}
             changeInterval={400}
           />
-          </Wrapper>
+                  </div>
+        </Wrapper>
+
+        <div style={{marginTop:'3vh'}}>
+          <Wrapper
+            type="section"
+            py={60}
+            width="100%"
+            px={isMobile ? 20 : 200}
+            >
+          <Block
+            type="sticky"
+            contentArray={contentArray}
+            changeInterval={400}
+          />
         </Wrapper>
         </div>
 
