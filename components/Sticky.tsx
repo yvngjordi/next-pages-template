@@ -1,7 +1,9 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import Block from './Block';
 
-type ContentType = 'markdown' | 'text' | 'component';
+type ContentItem =
+  | { type: 'markdown' | 'text', value: string }
+  | { type: 'component', value: React.ComponentType };
 
 interface ContentItem {
   type: ContentType;
@@ -29,18 +31,19 @@ const Sticky: React.FC<StickyProps> = ({ contentArray, changeInterval }) => {
 
   const renderContent = () => {
     const currentItem = contentArray[currentIndex];
-    switch (currentItem.type) {
-      case 'markdown':
-        return <Block type="markdown" markdown={String(currentItem.value)} />;
-      case 'text':
-        return <div>{currentItem.value}</div>;
-      case 'component':
-        const Component = currentItem.value as () => JSX.Element;
-        return <Component />;
-      default:
-        return null;
+
+    if (currentItem.type === 'markdown') {
+      return <Block type="markdown" markdown={currentItem.value} />;
+    } else if (currentItem.type === 'text') {
+      return <div>{currentItem.value}</div>;
+    } else if (currentItem.type === 'component') {
+      const Component = currentItem.value;
+      return <Component />;
     }
+
+    return null;
   };
+
 
   return (
     <div style={{ position: 'sticky', top: '20vh', zIndex:1 }}>
