@@ -114,7 +114,7 @@ const Markdown: React.FC<MarkdownProps> = ({
   };
 
   return (
-    <Box style={style} p="sm" w="100%">
+    <Box style={style} p="sm" w="100%" h="100%">
       <Transition transitionFrom="left">
         {!isMobile && image && (
           <Box p="lg">
