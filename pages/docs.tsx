@@ -244,12 +244,12 @@ export default function Docs() {
       </Wrapper>
       </AppShell.Navbar>
       <AppShell.Main>
-        <Box mt="-4.5vh" ml={isMobile ? '0px' : '-100'}>
+        <Box mt="-2.5vh" ml={isMobile ? '0px' : '-100'}>
         <Box p="sm">
             <Wrapper
               type="section"
-              py={40}
-              px={isMobile ? 10 : 20}
+              py={20}
+              px={isMobile ? 2 : 20}
               fill
             >
             {activeCategory === 'getting-started' && selectedDoc === '' && (
