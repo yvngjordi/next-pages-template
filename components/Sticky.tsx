@@ -17,7 +17,9 @@ const Sticky: React.FC<StickyProps> = ({ contentArray, changeInterval }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleScroll = () => {
-    const newIndex = Math.min(Math.floor(window.scrollY / changeInterval), contentArray.length - 1);
+    const rawIndex = Math.floor(window.scrollY / changeInterval);
+    const maxIndex = contentArray.length - 1;
+    const newIndex = Math.max(0, Math.min(rawIndex, maxIndex));
     setCurrentIndex(newIndex);
   };
 
