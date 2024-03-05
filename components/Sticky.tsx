@@ -1,18 +1,16 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect } from 'react';
 import Block from './Block';
+
+// Simplified and consolidated ContentItem type definition
+type ContentType = 'markdown' | 'text' | 'component';
 
 type ContentItem =
   | { type: 'markdown' | 'text', value: string }
-  | { type: 'component', value: React.ComponentType };
-
-interface ContentItem {
-  type: ContentType;
-  value: string | ReactNode;
-}
+  | { type: 'component', value: React.ComponentType<any> }; // Note: <any> can be replaced with more specific props types if known
 
 interface StickyProps {
   contentArray: ContentItem[];
-  changeInterval: number
+  changeInterval: number;
 }
 
 const Sticky: React.FC<StickyProps> = ({ contentArray, changeInterval }) => {
@@ -25,28 +23,26 @@ const Sticky: React.FC<StickyProps> = ({ contentArray, changeInterval }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, [changeInterval, contentArray.length]);
 
   const renderContent = () => {
     const currentItem = contentArray[currentIndex];
-
-    if (currentItem.type === 'markdown') {
-      return <Block type="markdown" markdown={currentItem.value} />;
-    } else if (currentItem.type === 'text') {
-      return <div>{currentItem.value}</div>;
-    } else if (currentItem.type === 'component') {
-      const Component = currentItem.value;
-      return <Component />;
+    switch (currentItem.type) {
+      case 'markdown':
+        return <Block type="markdown" markdown={currentItem.value} />;
+      case 'text':
+        return <div>{currentItem.value}</div>;
+      case 'component':
+        const Component = currentItem.value;
+        return <Component />;
+      default:
+        return null;
     }
-
-    return null;
   };
 
-
   return (
-    <div style={{ position: 'sticky', top: '20vh', zIndex:1 }}>
+    <div style={{ position: 'sticky', top: '20vh', zIndex: 1 }}>
       {renderContent()}
     </div>
   );
