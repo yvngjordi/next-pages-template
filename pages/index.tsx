@@ -1,31 +1,32 @@
 import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
 import { Box, Flex, Divider } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconMap, IconHeart, IconVaccine, IconApple } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 
 const links = [
   { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
+  { link: '#about', label: 'About' },
   {
-    link: '#1',
-    label: 'Resources',
+    link: '#services',
+    label: 'Services',
     links: [
-      { link: '/resource-1', label: 'Resource 1' },
-      { link: '/resource-2', label: 'Resource 2' },
+      { link: '/pediatric-cardiology', label: 'Pediatric Cardiology' },
+      { link: '/general-pediatrics', label: 'General Pediatrics' },
     ],
   },
-  { link: '/contact', label: 'Contact' },
+  { link: '#team', label: 'Our Team' },
+  { link: '#contact', label: 'Contact' },
 ];
 
 const data = [
   {
-    title: 'Sitemap',
+    title: 'Ancaster Central',
     links: [
-      { label: 'About', link: '#' },
-      { label: 'Contact', link: '#' },
-      { label: 'Resource 1', link: '#' },
-      { label: 'Resource 2', link: '#' },
+      { label: 'About Us', link: '#about' },
+      { label: 'Our Services', link: '#services' },
+      { label: 'Meet Our Team', link: '#team' },
+      { label: 'Contact', link: '#contact' },
     ],
   },
 ];
@@ -69,36 +70,36 @@ export default function HomePage() {
             background="url('bg4.jpg')"
             fill={true}
           >
-            <Block
-              type="section"
-              heading="Trusted Care"
-              subheading="And happy smiles"
-              paragraph="At Ancaster Central Children's Clinic, we offer comprehensive pediatric care tailored to the unique needs of children. Our experienced team is here to support your child's health and development."
-              button={{ color: 'white', backgroundColor: 'navy', text: 'Learn More', onClick: () => console.log('Learn More Clicked!') }}
-              textCenter
-              variant="A"
-            />
+          <Block
+            type="section"
+            heading="Dedicated to Your Child's Health"
+            subheading="Expert Care for Every Child"
+            paragraph="At Ancaster Central Children's Clinic, we offer a wide range of pediatric services tailored to meet the unique needs of your child. From routine checkups to specialized cardiac care, our experienced team is here to support your family."
+            button={{ color: 'white', backgroundColor: 'navy', text: 'Discover Our Services', onClick: () => console.log('Discover Services Clicked!') }}
+            textCenter
+            variant="A"
+          />
           </Wrapper>
           <Wrapper
             type="section"
             py={20}
             px={isMobile ? 20 : 200}
           >
-            <Block
-              type="section"
-              variant="C"
-              heading="About Our Clinic"
-              subheading="Committed to Excellence"
-              paragraph={["Ancaster Central Children's Clinic has been providing quality pediatric care in Ancaster, Ontario. Our mission is to support your child's health through all stages of development."]}
-              list={
-                [
-                  "Experienced Pediatricians", "Friendly Staff", "Modern Facilities"
-                ]
-              }
-              image="logo-full.png"
-              button={{ color: 'white', backgroundColor: 'navy', text: 'Read More', onClick: () => console.log('Read More Clicked!'), border: 'none' }}
-              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
-            />
+          <Block
+            type="section"
+            variant="C"
+            heading="Why Choose Us"
+            subheading="A Commitment to Excellence"
+            paragraph={["Ancaster Central Children's Clinic is led by Dr. Rubeena Khan, a pediatrician with a specialty in pediatric cardiology. Our clinic provides a comprehensive approach to pediatric care, ensuring that every child receives the highest standard of medical attention."]}
+            list={
+              [
+                "Specialized Pediatric Cardiology Care", "Experienced Pediatricians", "Family-Friendly Environment"
+              ]
+            }
+            image="logo-full.png"
+            button={{ color: 'white', backgroundColor: 'navy', text: 'Learn More About Us', onClick: () => console.log('Learn More Clicked!'), border: 'none' }}
+            button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+          />
           </Wrapper>
           <Wrapper
             type="section"
@@ -128,42 +129,42 @@ export default function HomePage() {
               spacing="md"
               verticalSpacing={{ base: 'sm', lg: 'md' }}
             >
-              <Block
-                type="feature"
-                icon={<IconStethoscope size={44} />}
-                textCenter
-                stack
-                heading="Pediatrics"
-                subheading="Comprehensive Care"
-                paragraph="We provide a wide range of pediatric care services, from routine checkups to immunizations."
-              />
-              <Block
-                type="feature"
-                icon={<IconVaccine size={44} />}
-                textCenter
-                stack
-                heading="Immunizations"
-                subheading="Protecting Health"
-                paragraph="Our clinic offers all recommended childhood vaccines to protect against various diseases."
-              />
-              <Block
-                type="feature"
-                icon={<IconApple size={44} />}
-                textCenter
-                stack
-                heading="Nutrition"
-                subheading="Healthy Eating"
-                paragraph="Guidance on best nutrition practices to ensure the healthy growth and development of your child."
-              />
-              <Block
-                type="feature"
-                icon={<IconNotebook size={44} />}
-                textCenter
-                stack
-                heading="Screening"
-                subheading="Monitoring Growth"
-                paragraph="Early detection and intervention for developmental disorders to keep your child happy and healthy."
-              />
+            <Block
+              type="feature"
+              icon={<IconHeart size={44} />}
+              textCenter
+              stack
+              heading="Pediatrics"
+              subheading="Expert Heart Care"
+              paragraph="Cardiology consultations, ECGs, and echocardiograms for your children."
+            />
+            <Block
+              type="feature"
+              icon={<IconVaccine size={44} />}
+              textCenter
+              stack
+              heading="Immunizations"
+              subheading="Protect Your Child"
+              paragraph="Complete vaccination services to protect against childhood diseases."
+            />
+            <Block
+              type="feature"
+              icon={<IconApple size={44} />}
+              textCenter
+              stack
+              heading="Nutrition"
+              subheading="Healthy Development"
+              paragraph="Guidance on nutrition and growth to ensure your child's healthy development."
+            />
+            <Block
+              type="feature"
+              icon={<IconNotebook size={44} />}
+              textCenter
+              stack
+              heading="Screening"
+              subheading="Early Detection"
+              paragraph="Screenings to identify developmental delays early and provide timely interventions."
+            />
             </Wrapper>
           </Wrapper>
           <Wrapper
@@ -171,56 +172,58 @@ export default function HomePage() {
             py={60}
             px={isMobile ? 20 : 200}
           >
-          <Flex direction="column">
-            <Block
-              type="section"
-              heading="Meet Our Team"
-              paragraph="Our clinic is staffed by dedicated pediatricians and healthcare professionals who are passionate about children's health. Get to know the faces who will be caring for your child."
-              textCenter
-            />
-            <Wrapper
-              type="carousel"
-              seconds={10}
-              fill
-              transitionEffect="opacity"
-              >
-              <Flex direction="column">
-                <Block
-                  type="section"
-                  variant="B"
-                  imageCircle
-                  heading="Dr. Smith"
-                  subheading="Lead Pediatrician"
-                  paragraph={["With years of experience, Dr. Smith leads our team with passion and dedication to pediatric care."]}
-                  image="https://via.placeholder.com/150"
-                />
-              </Flex>
-              <Flex direction="column">
-                <Block
-                  type="section"
-                  variant="B"
-                  imageCircle
-                  heading="Dr. Jones"
-                  subheading="Pediatric Nurse Practitioner"
-                  paragraph={["Dr. Jones specializes in pediatric nursing, providing compassionate care and support to our patients."]}
-                  image="https://via.placeholder.com/150"
-                />
-              </Flex>
-              <Flex direction="column">
-                <Block
-                  type="section"
-                  variant="B"
-                  imageCircle
-                  heading="Dr. Lee"
-                  subheading="Child Development Specialist"
-                  paragraph={["Dr. Lee offers specialized care in child development, helping children reach their full potential."]}
-                  image="https://via.placeholder.com/150"
-                />
-              </Flex>
-            </Wrapper>
+          <div id="about"></div>
+          <Flex direction="column" >
+          <Block
+
+            type="section"
+            heading="Meet Our Dedicated Team"
+            paragraph="Our clinic is home to a team of experienced pediatricians and healthcare professionals who are passionate about providing the best care for your child."
+            textCenter
+          />
+          <Wrapper
+            type="carousel"
+            seconds={10}
+            fill
+            transitionEffect="opacity"
+            >
+            <Flex direction="column">
+              <Block
+                type="section"
+                variant="B"
+                imageCircle
+                heading="Dr. Rubeena Khan"
+                subheading="Pediatric Cardiologist"
+                paragraph={["Leading our clinic, Dr. Khan brings extensive experience in pediatric cardiology to provide specialized care."]}
+                image="https://via.placeholder.com/150"
+              />
+            </Flex>
+            <Flex direction="column">
+              <Block
+                type="section"
+                variant="B"
+                imageCircle
+                heading="Dinisha Patel"
+                subheading="Nurse Practitioner"
+                paragraph={["Dinisha Patel offers expert care and advice for children and their families, focusing on general pediatrics and developmental concerns."]}
+                image="https://via.placeholder.com/150"
+              />
+            </Flex>
+            <Flex direction="column">
+              <Block
+                type="section"
+                variant="B"
+                imageCircle
+                heading="Dr. Juliana Giraldo Salazar"
+                subheading="Pediatric Respirologist"
+                paragraph={["Dr. Giraldo Salazar specializes in treating asthma, allergies, and respiratory diseases in children."]}
+                image="https://via.placeholder.com/150"
+              />
             </Flex>
           </Wrapper>
-        </Box>
+          </Flex>
+        </Wrapper>
+      </Box>
         <Wrapper
           type="section"
           py={20}
