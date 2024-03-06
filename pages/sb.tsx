@@ -220,6 +220,101 @@ export default function Docs() {
     />
     </Wrapper>
   );
+
+  const component4 = () => (
+    <Block
+      type="card"
+      heading="We use Blocks"
+      image="https://via.placeholder.com/1024"
+    />
+  );
+
+  const component5 = () => (
+      <Block
+        type="card"
+        heading="We use Blocks"
+        image="https://via.placeholder.com/1024"
+      />
+  );
+
+  const component6 = () => (
+      <Block
+        type="card"
+        heading="We use Blocks"
+        image="https://via.placeholder.com/1024"
+      />
+  );
+
+  const component7 = () => (
+
+      <Block
+        type="card"
+        heading="We use Blocks"
+        paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+        image="https://via.placeholder.com/1024"
+      />
+
+  );
+
+  const component8 = () => (
+
+      <Block
+        type="card"
+        heading="We use Blocks"
+        tags={["speed"]}
+        paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+        image="https://via.placeholder.com/1024"
+      />
+
+  );
+
+  const component9 = () => (
+
+      <Block
+        type="card"
+        heading="We use Blocks"
+        tags={["speed", "modularity"]}
+        paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+        image="https://via.placeholder.com/1024"
+      />
+
+  );
+
+  const component10 = () => (
+
+      <Block
+        type="card"
+        heading="We use Blocks"
+        tags={["speed", "modularity", "ease"]}
+        paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+        image="https://via.placeholder.com/1024"
+      />
+
+  );
+
+  const component11 = () => (
+
+      <Block
+        type="card"
+        heading="We use Blocks"
+        tags={["speed", "modularity", "ease", "simplicity"]}
+        paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+        image="https://via.placeholder.com/1024"
+      />
+
+  );
+  const component12 = () => (
+
+      <Block
+        type="card"
+        heading="We use Blocks"
+        tags={["speed", "modularity", "ease", "simplicity", "focus"]}
+        paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+        image="https://via.placeholder.com/1024"
+      />
+
+  );
+
   const contentArray2 = [
     {
       type: 'component',
@@ -234,9 +329,49 @@ export default function Docs() {
       value: component3,
     },
   ];
+
+  const contentArray3 = [
+    {
+      type: 'component',
+      value: component4,
+  },
+    {
+      type: 'component',
+      value: component5,
+    },
+    {
+      type: 'component',
+      value: component6,
+    },
+    {
+      type: 'component',
+      value: component7,
+    },
+    {
+      type: 'component',
+      value: component8,
+    },
+    {
+      type: 'component',
+      value: component9,
+    },
+    {
+      type: 'component',
+      value: component10,
+    },
+    {
+      type: 'component',
+      value: component11,
+    },
+    {
+      type: 'component',
+      value: component12,
+    },
+  ];
+
   return (
     <>
-    <div style={{height:'280vh'}}>
+    <div style={{height:'550vh'}}>
     <Block
       type="banner"
       heading="We just released version 1.0!"
@@ -254,25 +389,24 @@ export default function Docs() {
               linkDiscord="#"
               linkGithub="#"
             />
-            <div style={{height:'200vh'}}>
-<div style={{position:'sticky', height:'40vh', top:0, zIndex:1, width:'100%', marginTop:'-30vh', transform:'translateY(-2vh)'}}>
+  <div style={{height:'300vh'}}>
+    <div style={{position:'sticky', height:'40vh', top:0, zIndex:1, width:'100%', marginTop:'-30vh', transform:'translateY(-2vh)'}}>
     <Wrapper
       type="section"
       py={60}
       width="100%"
       px={isMobile ? 20 : 400}
       >
-      <div style={{marginTop:'11vh'}}>
+      <div style={{marginTop:'7vh'}}>
 
           <Block
             type="sticky"
             contentArray={contentArray2}
             changeInterval={400}
           />
-                  </div>
+      </div>
         </Wrapper>
-
-        <div style={{marginTop:'3vh'}}>
+        <div style={{marginTop:'-4vh'}}>
           <Wrapper
             type="section"
             py={60}
@@ -286,10 +420,29 @@ export default function Docs() {
           />
         </Wrapper>
         </div>
+      </div>
+    </div>
+    <div style={{height:'200vh', marginTop:'0vh'}}>
+      <div style={{position:'sticky', height:'40vh', top:0, zIndex:1, width:'100%', marginTop:'-100vh', transform:'translateY(-2vh)'}}>
+      <Wrapper
+        type="section"
+        py={60}
+        width="100%"
+        px={isMobile ? 20 : 400}
+        >
+        <div style={{marginTop:'6vh'}}>
 
-          </div>
-</div>
+            <Block
+              type="sticky"
+              contentArray={contentArray3}
+              changeInterval={400}
+            />
+        </div>
+          </Wrapper>
+          <div style={{width:'100%', background:'radial-gradient(rgba(255, 255, 255, 0.6), rgb(3, 121, 234))', height:'65vh', zIndex:99}}></div>
 
+        </div>
+      </div>
 
 </div>
 <Block

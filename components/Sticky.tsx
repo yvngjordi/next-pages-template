@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Block from './Block';
 
-// Simplified and consolidated ContentItem type definition
 type ContentType = 'markdown' | 'text' | 'component';
 
 type ContentItem =
   | { type: 'markdown' | 'text', value: string }
-  | { type: 'component', value: React.ComponentType<any> }; // Note: <any> can be replaced with more specific props types if known
+  | { type: 'component', value: React.ComponentType<any> };
 
 interface StickyProps {
   contentArray: ContentItem[];
@@ -15,18 +14,47 @@ interface StickyProps {
 
 const Sticky: React.FC<StickyProps> = ({ contentArray, changeInterval }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleScroll = () => {
-    const rawIndex = Math.floor(window.scrollY / changeInterval);
-    const maxIndex = contentArray.length - 1;
-    const newIndex = Math.max(0, Math.min(rawIndex, maxIndex));
-    setCurrentIndex(newIndex);
-  };
+  const [hasEnteredView, setHasEnteredView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEnteredView(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasEnteredView) return;
+
+      const componentTop = ref.current?.getBoundingClientRect().top ?? 0;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY + windowHeight - componentTop;
+      const rawIndex = Math.floor(scrollY / changeInterval);
+      const maxIndex = contentArray.length - 1;
+      const newIndex = Math.max(0, Math.min(rawIndex, maxIndex));
+      setCurrentIndex(newIndex);
+    };
+
+    if (hasEnteredView) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [changeInterval, contentArray.length]);
+  }, [hasEnteredView, changeInterval, contentArray.length]);
+
 
   const renderContent = () => {
     const currentItem = contentArray[currentIndex];
@@ -44,7 +72,7 @@ const Sticky: React.FC<StickyProps> = ({ contentArray, changeInterval }) => {
   };
 
   return (
-    <div style={{ position: 'sticky', top: '20vh', zIndex: 1 }}>
+    <div ref={ref} style={{ position: 'sticky', top: '20vh', zIndex: 1 }}>
       {renderContent()}
     </div>
   );

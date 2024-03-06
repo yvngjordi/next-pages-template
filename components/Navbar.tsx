@@ -11,8 +11,9 @@ const Transition = dynamic(() => import('./wrappers/Transition'), {
 });
 
 type LinkItem = {
-  link: string;
+  link?: string;
   label: string;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   links?: LinkItem[];
 };
 
@@ -69,28 +70,34 @@ export default function Navbar({
 
 
   const items = links?.map((link) => {
-    const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
-    ));
+    const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      if (link.onClick) {
+        event.preventDefault();
+        link.onClick(event);
+      }
+    }
+      const menuItems = link.links?.map((item) => (
+        <Menu.Item key={item.link}>{item.label}</Menu.Item>
+      ));
 
-    return menuItems ? (
-      <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
-        <Menu.Target>
-          <a href={link.link} className={classes.link} onClick={(event) => event.preventDefault()}>
-            <Center>
-              <span className={classes.linkLabel}>{link.label}</span>
-              <IconChevronDown size="0.9rem" stroke={1.5} />
-            </Center>
-          </a>
-        </Menu.Target>
-        <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-      </Menu>
-    ) : (
-      <a key={link.label} href={link.link} className={classes.link} onClick={(event) => event.preventDefault()}>
-        {link.label}
-      </a>
-    );
-  }) || [];
+      return menuItems ? (
+        <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+          <Menu.Target>
+            <a href={link.link} className={classes.link} onClick={handleLinkClick}>
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                <IconChevronDown size="0.9rem" stroke={1.5} />
+              </Center>
+            </a>
+          </Menu.Target>
+          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+        </Menu>
+      ) : (
+        <a key={link.label} href={link.link} className={classes.link} onClick={handleLinkClick}>
+          {link.label}
+        </a>
+      );
+    }) || [];
 
   const defaultMobileMenu = (
     <>

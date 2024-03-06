@@ -79,6 +79,7 @@ export default function HomePage() {
             textCenter
             variant="A"
           />
+          <div id="about"></div>
           </Wrapper>
           <Wrapper
             type="section"
@@ -116,6 +117,7 @@ export default function HomePage() {
                   image="https://via.placeholder.com/150"
                   textCenter
                 />
+                <div id="services"></div>
           </Wrapper>
           <Wrapper
             type="section"
@@ -166,13 +168,13 @@ export default function HomePage() {
               paragraph="Screenings to identify developmental delays early and provide timely interventions."
             />
             </Wrapper>
+            <div id="team"></div>
           </Wrapper>
           <Wrapper
             type="section"
             py={60}
             px={isMobile ? 20 : 200}
           >
-          <div id="about"></div>
           <Flex direction="column" >
           <Block
 
@@ -222,6 +224,7 @@ export default function HomePage() {
             </Flex>
           </Wrapper>
           </Flex>
+          <div id="contact"></div>
         </Wrapper>
       </Box>
         <Wrapper
