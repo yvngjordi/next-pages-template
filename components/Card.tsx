@@ -59,7 +59,7 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
       {tags && tags.length > 0 && (
         <Card.Section className={classes.section} style={{marginTop:'1vh'}}>
           <Group gap={7} mt={5}>
-            {tags.map((tag) => (
+            {tags.map((tag: any) => (
               <Badge key={tag} variant="light">
                 {tag}
               </Badge>
