@@ -6,7 +6,7 @@ import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
 import Contact from '../components/Contact';
 import { Box, Flex, Divider } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconApple, IconHome, IconBuildingSkyscraper } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconSoup, IconBed, IconWifi, IconApple, IconHome, IconBuildingSkyscraper } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import Map from '../components/Map';
 
@@ -48,6 +48,20 @@ const recaptchaSiteKey = '6LeJAGgpAAAAAJMPwrZeB3H5reXW_CdvDJsrMmfg';
 
 export default function HomePage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const placeholderImages = [
+    'https://via.placeholder.com/1024',
+    'bg2.jpg',
+    'bg1.jpg',
+    'bg3.jpg',
+    'bg4.jpg',
+    'https://via.placeholder.com/1024',
+    'bg2.jpg',
+    'bg1.jpg',
+    'bg3.jpg',
+    'https://via.placeholder.com/1024',
+    'bg2.jpg',
+
+  ];
 
   return (
     <>
@@ -127,51 +141,51 @@ export default function HomePage() {
             py={50}
             px={isMobile ? 30 : 200}
           >
-            <Wrapper
-              type="grid"
-              heading="Your stay will feature..."
-              columns={4}
-              spacing="md"
-              verticalSpacing={{ base: 'sm', lg: 'md' }}
-              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
-            >
-              <Block
-                type="feature"
-                icon={<IconBuildingSkyscraper size={44} />}
-                textCenter
-                stack
-                heading="Downtown Blessings"
-                subheading="Comprehensive Care"
-                paragraph="We provide a wide range of pediatric care services, from routine checkups to immunizations."
-              />
-              <Block
-                type="feature"
-                icon={<IconVaccine size={44} />}
-                textCenter
-                stack
-                heading="Immunizations"
-                subheading="Protecting Health"
-                paragraph="Our clinic offers all recommended childhood vaccines to protect against various diseases."
-              />
-              <Block
-                type="feature"
-                icon={<IconApple size={44} />}
-                textCenter
-                stack
-                heading="Nutrition Advice"
-                subheading="Healthy Eating"
-                paragraph="Guidance on best nutrition practices to ensure the healthy growth and development of your child."
-              />
-              <Block
-                type="feature"
-                icon={<IconNotebook size={44} />}
-                textCenter
-                stack
-                heading="Screening"
-                subheading="Monitoring Growth"
-                paragraph="Early detection and intervention for developmental disorders to keep your child happy and healthy."
-              />
-            </Wrapper>
+          <Wrapper
+            type="grid"
+            heading="Your stay will feature..."
+            columns={4}
+            spacing="md"
+            verticalSpacing={{ base: 'sm', lg: 'md' }}
+            button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
+          >
+            <Block
+              type="feature"
+              icon={<IconWifi size={44} />}
+              textCenter
+              stack
+              heading="High-Speed Internet"
+              subheading="Stay Connected"
+              paragraph="Enjoy uninterrupted browsing, streaming, and work with our high-speed internet connection available in every home."
+            />
+            <Block
+              type="feature"
+              icon={<IconBed size={44} />}
+              textCenter
+              stack
+              heading="Comfortable Lodging"
+              subheading="Rest & Relax"
+              paragraph="Experience ultimate comfort with premium bedding in all bedrooms, ensuring a restful night's sleep."
+            />
+            <Block
+              type="feature"
+              icon={<IconSoup size={44} />}
+              textCenter
+              stack
+              heading="Fully Equipped Kitchen"
+              subheading="Dine In"
+              paragraph="Prepare your favorite meals with ease using our fully equipped kitchens, complete with modern appliances."
+            />
+            <Block
+              type="feature"
+              icon={<IconMap size={44} />}
+              textCenter
+              stack
+              heading="Visit Key Locations"
+              subheading="Explore with Ease"
+              paragraph="Our properties are located in prime areas, giving you easy access to local attractions, dining, and shopping."
+            />
+          </Wrapper>
           </Wrapper>
           <Wrapper
             type="section"
@@ -185,46 +199,51 @@ export default function HomePage() {
               paragraph="View some of our listings on AirBnb and book a beautiful stay in a beautiful place of your choosing."
               textCenter
             />
-            <Wrapper
-              type="carousel"
-              seconds={10}
-              fill
-              transitionEffect="opacity"
-              >
-              <Flex direction="column">
-                <Block
-                  type="section"
-                  variant="B"
-                  heading="Dr. Smith"
-                  subheading="Lead Pediatrician"
-                  paragraph={["With years of experience, Dr. Smith leads our team with passion and dedication to pediatric care."]}
-                  image="https://via.placeholder.com/150"
-                />
-              </Flex>
-              <Flex direction="column">
-                <Block
-                  type="section"
-                  variant="B"
-                  heading="Dr. Jones"
-                  subheading="Pediatric Nurse Practitioner"
-                  paragraph={["Dr. Jones specializes in pediatric nursing, providing compassionate care and support to our patients."]}
-                  image="https://via.placeholder.com/150"
-                />
-              </Flex>
-              <Flex direction="column">
-                <Block
-                  type="section"
-                  variant="B"
-                  heading="Dr. Lee"
-                  subheading="Child Development Specialist"
-                  paragraph={["Dr. Lee offers specialized care in child development, helping children reach their full potential."]}
-                  image="https://via.placeholder.com/150"
-                />
-              </Flex>
-            </Wrapper>
+            <Flex direction={isMobile ? 'column' : 'row'}>
+            <Box p="5px">
+            <Block
+              type="card"
+              heading="Property"
+              badge="New!"
+              tags={["speed", "modularity", "ease"]}
+              paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+              image="https://via.placeholder.com/1024"
+              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+            />
+            </Box>
+            <Box p="5px">
+            <Block
+              type="card"
+              heading="Property"
+              tags={["speed", "modularity", "ease"]}
+              paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+              image="https://via.placeholder.com/1024"
+              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+            />
+            </Box>
+            <Box p="5px">
+            <Block
+              type="card"
+              heading="Property"
+              tags={["speed", "modularity", "ease"]}
+              paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
+              image="https://via.placeholder.com/1024"
+              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+            />
+            </Box>
+            </Flex>
             </Flex>
           </Wrapper>
         </Box>
+        <Block
+          type="gallery"
+          images={placeholderImages}
+          spacing={16}
+          columns={4}
+        />
         <Wrapper
           type="section"
           py={20}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Text, Group, Badge, Button, ActionIcon, Title } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, Button, ActionIcon, Title, Flex } from '@mantine/core';
 import classes from './card.module.css';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -8,14 +8,27 @@ interface BadgeCardProps {
   heading?: string;
   subheading?: string;
   paragraph?: string;
-  buttonLabel?: string;
+  badge?: string;
+  tags?: string[];
+  style?: React.CSSProperties;
+  button?: {
+    color?: string;
+    backgroundColor?: string;
+    text?: string;
+    onClick?: () => void;
+    border?: string;
+  };
+  button2?: {
+    color?: string;
+    backgroundColor?: string;
+    text?: string;
+    onClick?: () => void;
+    border?: string;
+  };
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   leftIconClick?: () => void;
   rightIconClick?: () => void;
-  badge?: string;
-  tags?: any;
-  style?: React.CSSProperties;
 }
 
 const BadgeCard: React.FC<BadgeCardProps> = ({
@@ -23,14 +36,15 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
   heading,
   subheading,
   paragraph,
-  buttonLabel,
+  badge,
+  tags,
+  style,
+  button,
+  button2,
   leftIcon,
   rightIcon,
   leftIconClick,
   rightIconClick,
-  badge,
-  tags,
-  style,
 }) => {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -43,9 +57,9 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
       {heading || subheading ? (
         <Card.Section className={classes.section} mt="md">
           <Group justify="apart">
-          {heading && <Title size={isMobile ? 'h1' : 'h1'}>{heading}</Title>}
-          {subheading && <Title size={isMobile ? 'h3' : 'h4'} c="dimmed">{subheading}</Title>}
-          {badge && <Badge size="md" variant="light">{badge}</Badge>}
+            {heading && <Title order={isMobile ? 1 : 1}>{heading}</Title>}
+            {subheading && <Text size="sm" color="dimmed">{subheading}</Text>}
+            {badge && <Badge size="md" variant="light">{badge}</Badge>}
           </Group>
         </Card.Section>
       ) : null}
@@ -56,11 +70,11 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
         </Text>
       )}
 
-      {tags && tags.length > 0 && (
-        <Card.Section className={classes.section} style={{marginTop:'1vh'}}>
+      {tags && (
+        <Card.Section className={classes.section}>
           <Group gap={7} mt={5}>
-            {tags.map((tag: any) => (
-              <Badge key={tag} variant="light">
+            {tags.map((tag, index) => (
+              <Badge key={index} variant="light">
                 {tag}
               </Badge>
             ))}
@@ -68,15 +82,38 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
         </Card.Section>
       )}
 
-      <Group mt="xs">
+      <Group position="apart" mt="md">
+      <Flex w="100%">
         {leftIcon && (
           <ActionIcon variant="default" radius="md" size={36} onClick={leftIconClick}>
             {leftIcon}
           </ActionIcon>
         )}
-        {buttonLabel && (
-          <Button radius="md" style={{ flex: 1 }}>
-            {buttonLabel}
+        {button && (
+          <Button
+            w="100%"
+            onClick={button.onClick}
+            style={{
+              color: button.color,
+              backgroundColor: button.backgroundColor,
+              border: button.border,
+              marginRight: button2 ? '8px' : 0,
+            }}
+          >
+            {button.text}
+          </Button>
+        )}
+        {button2 && (
+          <Button
+            w="100%"
+            onClick={button2.onClick}
+            style={{
+              color: button2.color,
+              backgroundColor: button2.backgroundColor,
+              border: button2.border,
+            }}
+          >
+            {button2.text}
           </Button>
         )}
         {rightIcon && (
@@ -84,6 +121,7 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
             {rightIcon}
           </ActionIcon>
         )}
+        </Flex>
       </Group>
     </Card>
   );
