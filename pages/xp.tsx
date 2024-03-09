@@ -209,7 +209,7 @@ export default function HomePage() {
               paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
               image="https://via.placeholder.com/1024"
               button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
-              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'white', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
             />
             </Box>
             <Box p="5px">
@@ -220,7 +220,7 @@ export default function HomePage() {
               paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
               image="https://via.placeholder.com/1024"
               button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
-              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'white', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
             />
             </Box>
             <Box p="5px">
@@ -231,7 +231,7 @@ export default function HomePage() {
               paragraph="Most developers build by the button, but for developers with specific end goals like landing page creation, rapid prototyping and quick content displaying, we needed an approach that had a mix of..."
               image="https://via.placeholder.com/1024"
               button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => console.log('Discover More Clicked!'), border: 'none' }}
-              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'white', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
             />
             </Box>
             </Flex>
