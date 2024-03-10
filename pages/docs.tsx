@@ -382,6 +382,7 @@ export default function Docs() {
             data={data}
             image="logo-sb.png"
             heading="Sparkblock UI"
+            copyright="Spark Engine © 2024 | All rights reserved"
             paragraph={["The fastest and simplest UI kit in the world."]}
           />
         </Box>

@@ -24,6 +24,7 @@ type FooterLinksProps = {
   image?: string;
   imageDarkMode?: string;
   heading?: string;
+  copyright?: string;
   paragraph?: string | string[];
   style?: CSSProperties;
   linkTwitter?: string;
@@ -41,6 +42,7 @@ export default function Footer({
   image,
   imageDarkMode,
   heading,
+  copyright,
   paragraph,
   style,
   linkTwitter,
@@ -104,14 +106,20 @@ export default function Footer({
       <Container className={classes.afterFooter}>
       {isMobile ? (
         <Flex w="100%" justify="center" align="center">
-          <Text color="dimmed" size="sm">
-            © 2024 {heading} | All rights reserved.
-          </Text>
+            {copyright && (
+              <Text color="dimmed" size="sm">
+              {copyright}
+              </Text>
+            )}
         </Flex>
       ) : (
+        <>
+        {copyright && (
           <Text color="dimmed" size="sm">
-            © 2024 {heading} | All rights reserved.
+          {copyright}
           </Text>
+        )}
+        </>
       )}
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
           {linkTwitter && (

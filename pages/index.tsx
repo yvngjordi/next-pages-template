@@ -264,6 +264,7 @@ export default function HomePage() {
           type="footer"
           data={data}
           image="logo.png"
+          copyright="Ancaster Central Children's Clinic © 2024 | All rights reserved"
           heading="Ancaster Central Children's Clinic"
           paragraph={["Providing compassionate and comprehensive pediatric care in Ancaster, Ontario. Our team is dedicated to supporting your child's health and well-being."]}
         />

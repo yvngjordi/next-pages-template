@@ -12,26 +12,18 @@ import Map from '../components/Map';
 
 const links = [
   { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
-  {
-    link: '#1',
-    label: 'Resources',
-    links: [
-      { link: '/resource-1', label: 'Resource 1' },
-      { link: '/resource-2', label: 'Resource 2' },
-    ],
-  },
-  { link: '/contact', label: 'Contact' },
+  { link: '#about', label: 'About' },
+  { link: '/landlords', label: 'Landlords' },
+  { link: '#contact', label: 'Contact' },
 ];
 
 const data = [
   {
     title: 'Sitemap',
     links: [
-      { label: 'About', link: '#' },
-      { label: 'Contact', link: '#' },
-      { label: 'Resource 1', link: '#' },
-      { label: 'Resource 2', link: '#' },
+      { label: 'About', link: '#about' },
+      { label: 'Landlords', link: '/landlords' },
+      { label: 'Contact', link: '#contact' },
     ],
   },
 ];
@@ -98,6 +90,7 @@ export default function HomePage() {
             textCenter
             variant="A"
           />
+          <div id="about"></div>
           </Wrapper>
           <Wrapper
             type="section"
@@ -244,6 +237,7 @@ export default function HomePage() {
           spacing={16}
           columns={4}
         />
+        <div id="contact"></div>
         <Wrapper
           type="section"
           py={20}
@@ -257,31 +251,19 @@ export default function HomePage() {
           captcha
           siteKey={recaptchaSiteKey}
           heading="Get in Touch"
-          paragraphs={[
+          paragraph={[
               "Feel free to reach out with any questions you might have. We look forward to hearing from you!",
           ]}
           buttonLabel="Submit"
           button={{ backgroundColor: '#AE8625', color: '#000' }}
       />
       </Wrapper>
-      <Wrapper
-        type="section"
-        py={40}
-        px={isMobile ? 20 : 200}
-      >
-        <Block
-          type="map"
-          address="1039 Upper James St. Hamilton Ontario"
-          title="Ancaster Central Childrens Clinic"
-          height={400}
-          borderRadius="8px"
-        />
-      </Wrapper>
       <Block
         type="footer"
         data={data}
         imageDarkMode="xp/logo-light.png"
         image="xp/logo.png"
+        copyright="Xclusive Properties © 2024 | All rights reserved"
         paragraph={["Join us for a stay at our premium properties and experience unparalleled hospitality and comfort."]}
       />
       </Box>
