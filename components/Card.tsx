@@ -82,7 +82,7 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
         </Card.Section>
       )}
 
-      <Group position="apart" mt="md">
+      <Group mt="md">
       <Flex w="100%">
         {leftIcon && (
           <ActionIcon variant="default" radius="md" size={36} onClick={leftIconClick}>
