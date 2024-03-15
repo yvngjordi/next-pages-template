@@ -273,7 +273,7 @@ default:
     <Flex direction={isMobile ? 'column' : 'row-reverse'}>
     {image && (
       <Flex align="center" justify="center" w="100%" mb="xs">
-        {image && <Image src={image} alt="" style={{ width: isMobile ? '90vw' : '20vw', borderRadius: imageCircle ? '100%' : theme.radius.md }} />}
+        {image && <Image src={image} alt="" style={{ filter: 'grayscale(80%)',width: isMobile ? '90vw' : '20vw', borderRadius: imageCircle ? '100%' : theme.radius.md }} />}
       </Flex>
     )}
     <Flex justify="center" align="center" w="100%">

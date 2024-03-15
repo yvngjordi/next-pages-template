@@ -57,7 +57,7 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
       {heading || subheading ? (
         <Card.Section className={classes.section} mt="md">
           <Group justify="apart">
-            {heading && <Title order={isMobile ? 1 : 1}>{heading}</Title>}
+            {heading && <Title order={isMobile ? 3 : 3}>{heading}</Title>}
             {subheading && <Text size="sm" color="dimmed">{subheading}</Text>}
             {badge && <Badge size="md" variant="light" color="yellow">{badge}</Badge>}
           </Group>
@@ -74,7 +74,7 @@ const BadgeCard: React.FC<BadgeCardProps> = ({
         <Card.Section className={classes.section} style={{paddingTop:'10px'}}>
           <Group gap={7} mt={5}>
             {tags.map((tag, index) => (
-              <Badge key={index} variant="light" color="black">
+              <Badge key={index} variant="light" color="gray">
                 {tag}
               </Badge>
             ))}
