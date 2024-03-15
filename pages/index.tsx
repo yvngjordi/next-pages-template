@@ -1,31 +1,28 @@
+import Section from '../components/Section';
+import Banner from '../components/Banner';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import Block from '../components/Block';
 import Wrapper from '../components/Wrapper';
+import Contact from '../components/Contact';
 import { Box, Flex, Divider } from '@mantine/core';
-import { IconStethoscope, IconNotebook, IconMap, IconHeart, IconVaccine, IconApple } from '@tabler/icons-react';
+import { IconStethoscope, IconNotebook, IconMap, IconVaccine, IconSoup, IconBed, IconWifi, IconApple, IconHome, IconBuildingSkyscraper } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
+import Map from '../components/Map';
 
 const links = [
   { link: '/', label: 'Home' },
   { link: '#about', label: 'About' },
-  {
-    link: '#services',
-    label: 'Services',
-    links: [
-      { link: '/pediatric-cardiology', label: 'Pediatric Cardiology' },
-      { link: '/general-pediatrics', label: 'General Pediatrics' },
-    ],
-  },
-  { link: '#team', label: 'Our Team' },
+  { link: '/landlords', label: 'Landlords' },
   { link: '#contact', label: 'Contact' },
 ];
 
 const data = [
   {
-    title: 'Ancaster Central',
+    title: 'Sitemap',
     links: [
-      { label: 'About Us', link: '#about' },
-      { label: 'Our Services', link: '#services' },
-      { label: 'Meet Our Team', link: '#team' },
+      { label: 'About', link: '#about' },
+      { label: 'Landlords', link: '/landlords' },
       { label: 'Contact', link: '#contact' },
     ],
   },
@@ -43,22 +40,36 @@ const recaptchaSiteKey = '6LeJAGgpAAAAAJMPwrZeB3H5reXW_CdvDJsrMmfg';
 
 export default function HomePage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const placeholderImages = [
+    'https://via.placeholder.com/1024',
+    'bg2.jpg',
+    'bg1.jpg',
+    'bg3.jpg',
+    'bg4.jpg',
+    'https://via.placeholder.com/1024',
+    'bg2.jpg',
+    'bg1.jpg',
+    'bg3.jpg',
+    'https://via.placeholder.com/1024',
+    'bg2.jpg',
+
+  ];
 
   return (
     <>
     <Box>
     <Block
       type="banner"
-      heading="We have recently moved locations!"
-      background="navy"
-      color="white"
-      icon={<IconMap size={20} />}
+      heading="Check out our listings!"
+      background="linear-gradient(90deg, #AE8625, #F7EF8A 40%, #D2AC47 80%, #EDC967)"
+      color="#000"
+      icon={<IconHome size={20} />}
     />
         <Block
           type="navbar"
           links={links}
-          image="logo.png"
-          heading="Ancaster Central"
+          image="xp/logo.png"
+          imageDarkMode="xp/logo-light.png"
           sticky
           theme
         />
@@ -67,15 +78,27 @@ export default function HomePage() {
             type="section"
             py={120}
             px={isMobile ? 20 : 200}
-            background="url('bg4.jpg')"
+            background="url('xp/bg4.jpg')"
             fill={true}
           >
           <Block
             type="section"
-            heading="Dedicated to Your Child's Health"
-            subheading="Expert Care for Every Child"
-            paragraph="At Ancaster Central Children's Clinic, we offer a wide range of pediatric services tailored to meet the unique needs of your child. From routine checkups to specialized cardiac care, our experienced team is here to support your family."
-            button={{ color: 'white', backgroundColor: 'navy', text: 'Discover Our Services', onClick: () => console.log('Discover Services Clicked!') }}
+            heading="Discover Your Perfect Getaway"
+            subheading="Home Away From Home"
+            paragraph="Explore our exclusive range of properties tailored to ensure your comfort and satisfaction. From beachfront villas to cozy mountain cabins, find the perfect setting for your next vacation."
+            button={
+              {
+                color: '#000',
+                backgroundColor: '#AE8625',
+                text: 'Explore Now',
+                onClick: () => {
+                  const aboutSection = document.getElementById('about');
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }
+            }
             textCenter
             variant="A"
           />
@@ -83,150 +106,172 @@ export default function HomePage() {
           </Wrapper>
           <Wrapper
             type="section"
-            py={20}
+            py={120}
             px={isMobile ? 20 : 200}
           >
-          <Block
-            type="section"
-            variant="C"
-            heading="Why Choose Us"
-            subheading="A Commitment to Excellence"
-            paragraph={["Ancaster Central Children's Clinic is led by Dr. Rubeena Khan, a pediatrician with a specialty in pediatric cardiology. Our clinic provides a comprehensive approach to pediatric care, ensuring that every child receives the highest standard of medical attention."]}
-            list={
-              [
-                "Specialized Pediatric Cardiology Care", "Experienced Pediatricians", "Family-Friendly Environment"
-              ]
-            }
-            image="logo-full.png"
-            button={{ color: 'white', backgroundColor: 'navy', text: 'Learn More About Us', onClick: () => console.log('Learn More Clicked!'), border: 'none' }}
-            button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us', onClick: () => console.log('Contact Us Clicked!'), border: 'none' }}
-          />
+            <Block
+              type="section"
+              variant="C"
+              heading="About Our Properties"
+              subheading="Exceeding Expectations"
+              paragraph={["Each of our properties is carefully selected and maintained to ensure the highest standards of quality and comfort. Enjoy the amenities and personalized service that make our rentals stand out."]}
+              list={
+                [
+                  "Prime Locations", "Luxury Amenities", "Personalized Services"
+                ]
+              }
+              image="xp/bg5.jpg"
+              button={{ color: '#000', backgroundColor: '#AE8625', text: 'Read More',     onClick: () => window.location.href = '/about', border: 'none' }}
+              button2={{ color: 'black', backgroundColor: 'gray', text: 'Contact Us',                onClick: () => {
+                                const conSection = document.getElementById('contact');
+                                if (conSection) {
+                                  conSection.scrollIntoView({ behavior: 'smooth' });
+                                }
+                              }, border: 'none' }}
+            />
           </Wrapper>
           <Wrapper
             type="section"
             py={60}
-            background="url('bg4.jpg')"
+            background="url('xp/bg7.jpg')"
 
             px={isMobile ? 20 : 240}
             fill={true}
           >
-                <Block
-                  type="section"
-                  heading="Now serving students!"
-                  paragraph={["Come by our clinic if you're a student for anything from XYZ to ABC. We'll address what you need help with and work alongside you."]}
-                  image="https://via.placeholder.com/150"
-                  textCenter
-                />
-                <div id="services"></div>
+          <Block
+            type="section"
+            heading="Special Offers for Early Bookings!"
+            paragraph={["Book your next holiday in advance and save! Check out our early bird specials and exclusive offers for an unforgettable getaway."]}
+            image="xp/so.png"
+            textCenter
+          />
           </Wrapper>
           <Wrapper
             type="section"
             py={50}
             px={isMobile ? 30 : 200}
           >
-            <Wrapper
-              type="grid"
-              heading="Our Services"
-              columns={4}
-              spacing="md"
-              verticalSpacing={{ base: 'sm', lg: 'md' }}
-            >
+          <Wrapper
+            type="grid"
+            heading="Your stay will feature..."
+            columns={4}
+            spacing="md"
+            verticalSpacing={{ base: 'sm', lg: 'md' }}
+            button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => {
+                              const con2Section = document.getElementById('contact');
+                              if (con2Section) {
+                                con2Section.scrollIntoView({ behavior: 'smooth' });
+                              }
+                            }, border: 'none' }}
+          >
             <Block
               type="feature"
-              icon={<IconHeart size={44} />}
+              icon={<IconWifi size={44} />}
               textCenter
               stack
-              heading="Pediatrics"
-              subheading="Expert Heart Care"
-              paragraph="Cardiology consultations, ECGs, and echocardiograms for your children."
+              heading="High-Speed Internet"
+              subheading="Stay Connected"
+              paragraph="Enjoy uninterrupted browsing, streaming, and work with our high-speed internet connection available in every home."
             />
             <Block
               type="feature"
-              icon={<IconVaccine size={44} />}
+              icon={<IconBed size={44} />}
               textCenter
               stack
-              heading="Immunizations"
-              subheading="Protect Your Child"
-              paragraph="Complete vaccination services to protect against childhood diseases."
+              heading="Comfortable Lodging"
+              subheading="Rest & Relax"
+              paragraph="Experience ultimate comfort with premium bedding in all bedrooms, ensuring a restful night's sleep."
             />
             <Block
               type="feature"
-              icon={<IconApple size={44} />}
+              icon={<IconSoup size={44} />}
               textCenter
               stack
-              heading="Nutrition"
-              subheading="Healthy Development"
-              paragraph="Guidance on nutrition and growth to ensure your child's healthy development."
+              heading="Fully Equipped Kitchen"
+              subheading="Dine In"
+              paragraph="Prepare your favorite meals with ease using our fully equipped kitchens, complete with modern appliances."
             />
             <Block
               type="feature"
-              icon={<IconNotebook size={44} />}
+              icon={<IconMap size={44} />}
               textCenter
               stack
-              heading="Screening"
-              subheading="Early Detection"
-              paragraph="Screenings to identify developmental delays early and provide timely interventions."
+              heading="Visit Key Locations"
+              subheading="Explore with Ease"
+              paragraph="Our properties are located in prime areas, giving you easy access to local attractions, dining, and shopping."
             />
-            </Wrapper>
-            <div id="team"></div>
+          </Wrapper>
           </Wrapper>
           <Wrapper
             type="section"
             py={60}
             px={isMobile ? 20 : 200}
           >
-          <Flex direction="column" >
-          <Block
-
-            type="section"
-            heading="Meet Our Dedicated Team"
-            paragraph="Our clinic is home to a team of experienced pediatricians and healthcare professionals who are passionate about providing the best care for your child."
-            textCenter
-          />
-          <Wrapper
-            type="carousel"
-            seconds={10}
-            fill
-            transitionEffect="opacity"
-            >
-            <Flex direction="column">
+          <Flex direction="column">
+            <Block
+              type="section"
+              heading="Our listings"
+              paragraph="View some of our listings on AirBnb and book a beautiful stay in a beautiful place of your choosing."
+              textCenter
+            />
+            <Flex direction={isMobile ? 'column' : 'row'}>
+            <Box p="5px">
               <Block
-                type="section"
-                variant="B"
-                imageCircle
-                heading="Dr. Rubeena Khan"
-                subheading="Pediatric Cardiologist"
-                paragraph={["Leading our clinic, Dr. Khan brings extensive experience in pediatric cardiology to provide specialized care."]}
-                image="https://via.placeholder.com/150"
+                type="card"
+                heading="Skyline Studio"
+                badge="Featured"
+                tags={["City Views", "Modern", "Central"]}
+                paragraph="Nestled in the bustling heart of the downtown district, Skyline Studio offers breathtaking views of the city skyline. Its prime location ensures you're only steps away from premium dining, entertainment, and shopping experiences."
+                image="xp/props/4.jpg"
+                button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => {
+                                  const conSection = document.getElementById('contact');
+                                  if (conSection) {
+                                    conSection.scrollIntoView({ behavior: 'smooth' });
+                                  }
+                                }, border: 'none' }}
               />
+            </Box>
+            <Box p="5px">
+              <Block
+                type="card"
+                heading="Metropolitan Haven"
+                tags={["Luxury", "Exclusive", "Secure"]}
+                paragraph="Metropolitan Haven is a luxury retreat in the heart of the city. Offering exclusivity and unparalleled comfort, this property is a sanctuary amidst the urban excitement, with top-tier amenities and security."
+                image="xp/props/2.jpg"
+                button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => {
+                                  const conSection = document.getElementById('contact');
+                                  if (conSection) {
+                                    conSection.scrollIntoView({ behavior: 'smooth' });
+                                  }
+                                }, border: 'none' }}
+              />
+            </Box>
+            <Box p="5px">
+              <Block
+                type="card"
+                heading="Cultural Loft"
+                tags={["Artsy", "Vibrant", "Spacious"]}
+                paragraph="Cultural Loft stands at the intersection of comfort and culture, located near iconic art galleries, theaters, and music venues. Its spacious, art-filled interiors mirror the creative spirit of the surrounding neighborhood."
+                image="xp/props/1.jpg"
+                button={{ color: '#000', backgroundColor: '#AE8625', text: 'Get in touch', onClick: () => {
+                                  const conSection = document.getElementById('contact');
+                                  if (conSection) {
+                                    conSection.scrollIntoView({ behavior: 'smooth' });
+                                  }
+                                }, border: 'none' }}
+              />
+            </Box>
             </Flex>
-            <Flex direction="column">
-              <Block
-                type="section"
-                variant="B"
-                imageCircle
-                heading="Dinisha Patel"
-                subheading="Nurse Practitioner"
-                paragraph={["Dinisha Patel offers expert care and advice for children and their families, focusing on general pediatrics and developmental concerns."]}
-                image="https://via.placeholder.com/150"
-              />
-            </Flex>
-            <Flex direction="column">
-              <Block
-                type="section"
-                variant="B"
-                imageCircle
-                heading="Dr. Juliana Giraldo Salazar"
-                subheading="Pediatric Respirologist"
-                paragraph={["Dr. Giraldo Salazar specializes in treating asthma, allergies, and respiratory diseases in children."]}
-                image="https://via.placeholder.com/150"
-              />
             </Flex>
           </Wrapper>
-          </Flex>
-          <div id="contact"></div>
-        </Wrapper>
-      </Box>
+        </Box>
+        <Block
+          type="gallery"
+          images={placeholderImages}
+          spacing={16}
+          columns={4}
+        />
+        <div id="contact"></div>
         <Wrapper
           type="section"
           py={20}
@@ -240,34 +285,21 @@ export default function HomePage() {
           captcha
           siteKey={recaptchaSiteKey}
           heading="Get in Touch"
-          paragraphs={[
+          paragraph={[
               "Feel free to reach out with any questions you might have. We look forward to hearing from you!",
           ]}
           buttonLabel="Submit"
-          button={{ backgroundColor: 'navy', color: '#FFFFFF' }}
+          button={{ backgroundColor: '#AE8625', color: '#000' }}
       />
       </Wrapper>
-      <Wrapper
-        type="section"
-        py={40}
-        px={isMobile ? 20 : 200}
-      >
-        <Block
-          type="map"
-          address="1039 Upper James St. Hamilton Ontario"
-          title="Ancaster Central Childrens Clinic"
-          height={400}
-          borderRadius="8px"
-        />
-      </Wrapper>
-        <Block
-          type="footer"
-          data={data}
-          image="logo.png"
-          copyright="Ancaster Central Children's Clinic © 2024 | All rights reserved"
-          heading="Ancaster Central Children's Clinic"
-          paragraph={["Providing compassionate and comprehensive pediatric care in Ancaster, Ontario. Our team is dedicated to supporting your child's health and well-being."]}
-        />
+      <Block
+        type="footer"
+        data={data}
+        imageDarkMode="xp/logo-light.png"
+        image="xp/logo.png"
+        copyright="Xclusive Properties © 2024 | All rights reserved"
+        paragraph={["Join us for a stay at our premium properties and experience unparalleled hospitality and comfort."]}
+      />
       </Box>
     </>
   );
